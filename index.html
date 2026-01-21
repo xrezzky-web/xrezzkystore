@@ -9,12 +9,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-:root {
+:root{
     --primary:#007bff;
     --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
     --dark:#1a1a1a;
-    --glass:rgba(255,255,255,.95);
+    --glass:rgba(255,255,255,.96);
+    --radius:18px;
 }
+
+*{box-sizing:border-box}
 
 body{
     margin:0;
@@ -31,48 +34,48 @@ body{
     width:100%;
     max-width:480px;
     background:var(--glass);
-    backdrop-filter:blur(15px);
-    padding:40px 25px;
+    padding:35px 25px;
     border-radius:25px;
-    box-shadow:0 15px 35px rgba(0,0,0,.1);
+    box-shadow:0 18px 40px rgba(0,0,0,.12);
     text-align:center;
 }
 
+/* HEADER */
 h1{
     margin:0;
     font-size:26px;
     font-weight:800;
     color:var(--dark);
 }
-
 .divider{
-    width:50px;
+    width:52px;
     height:4px;
     background:var(--primary);
-    margin:15px auto 20px;
+    margin:14px auto 18px;
     border-radius:10px;
 }
-
 .desc{
     font-size:14px;
     color:#555;
-    margin-bottom:25px;
+    margin-bottom:22px;
 }
 
 /* INFO BOARD */
 .info-board{
     background:#fff;
     border-left:5px solid var(--primary);
-    padding:15px;
-    border-radius:15px;
+    padding:16px;
+    border-radius:var(--radius);
     font-size:13px;
     color:#444;
-    margin-bottom:25px;
     text-align:left;
+    margin-bottom:24px;
 }
 .info-board strong{
-    display:block;
-    margin-bottom:6px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:8px;
     color:#000;
 }
 
@@ -84,35 +87,46 @@ h1{
     gap:10px;
     width:100%;
     padding:14px;
-    border-radius:12px;
+    border-radius:14px;
     text-decoration:none;
     font-weight:600;
     color:#fff;
     margin-bottom:12px;
-    transition:.3s;
+    transition:.25s;
 }
+.btn-main:hover{transform:translateY(-2px)}
 
 .btn-wa{background:#222;}
-.btn-info{background:var(--gradient);animation:pulse 3s infinite;}
+.btn-info{
+    background:var(--gradient);
+    animation:pulse 3s infinite;
+}
 
 @keyframes pulse{
     0%{transform:scale(1)}
-    50%{transform:scale(1.02)}
+    50%{transform:scale(1.03)}
     100%{transform:scale(1)}
+}
+
+/* SECTION TITLE */
+.section-title{
+    margin:26px 0 14px;
+    font-size:14px;
+    font-weight:700;
+    color:#444;
 }
 
 /* GRID */
 .grid-container{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:15px;
-    margin-top:20px;
+    gap:14px;
 }
 
 .grid-item{
     background:#fff;
-    padding:15px;
-    border-radius:18px;
+    padding:16px 10px;
+    border-radius:20px;
     font-size:13px;
     font-weight:600;
     color:#333;
@@ -120,18 +134,23 @@ h1{
     display:flex;
     flex-direction:column;
     align-items:center;
+    gap:6px;
     cursor:pointer;
-    transition:.3s;
+    transition:.25s;
+    text-decoration:none;
 }
-
-.grid-item i{
-    font-size:22px;
-    margin-bottom:8px;
-}
-
+.grid-item i{font-size:22px}
 .grid-item:hover{
     transform:translateY(-3px);
     border-color:var(--primary);
+}
+
+/* FOOTER */
+.footer{
+    font-size:11px;
+    color:#888;
+    margin-top:32px;
+    line-height:1.5;
 }
 
 /* MODAL */
@@ -139,51 +158,43 @@ h1{
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.5);
+    background:rgba(0,0,0,.55);
     backdrop-filter:blur(4px);
     z-index:999;
     justify-content:center;
     align-items:center;
 }
-
 .modal-box{
     background:#fff;
-    width:85%;
+    width:90%;
     max-width:340px;
-    padding:25px;
-    border-radius:20px;
+    padding:26px;
+    border-radius:22px;
     text-align:center;
 }
-
-.modal-box h3{
-    margin-top:0;
-}
+.modal-box h3{margin-top:0}
 
 .btn-choice{
-    display:block;
-    padding:12px;
-    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    padding:13px;
+    border-radius:12px;
     color:#fff;
     text-decoration:none;
     margin:10px 0;
     font-weight:600;
 }
-
 .bg-komunitas{background:#25D366;}
 .bg-grup{background:var(--primary);}
 
 .close-btn{
     font-size:12px;
-    color:#888;
-    margin-top:15px;
+    color:#777;
+    margin-top:14px;
     cursor:pointer;
     text-decoration:underline;
-}
-
-.footer{
-    font-size:11px;
-    color:#888;
-    margin-top:35px;
 }
 </style>
 </head>
@@ -192,18 +203,15 @@ h1{
 
 <div class="container animate__animated animate__fadeIn">
 
-<header>
 <h1>XREZZKY STORE</h1>
 <div class="divider"></div>
 <p class="desc">Layanan digital game profesional. Aman, konsisten, dan terkontrol.</p>
-</header>
 
-<!-- INFO BOARD -->
 <div class="info-board">
-<strong>📢 Informasi</strong>
+<strong><i class="fas fa-bullhorn"></i> Informasi</strong>
 • Jam operasional: 09.00 – 23.00 WIB<br>
 • Fast respon saat online<br>
-• Update & pengumuman bisa berubah sewaktu-waktu
+• Update & pengumuman dapat berubah sewaktu-waktu
 </div>
 
 <a href="https://wa.me/6288293064112" class="btn-main btn-wa">
@@ -214,13 +222,13 @@ h1{
 <i class="fas fa-certificate"></i> Info Stok & Testimoni
 </a>
 
-<h4 style="margin-top:25px;color:#444;font-size:14px">Platform & Komunitas</h4>
+<div class="section-title">Platform & Komunitas</div>
 
 <div class="grid-container">
-<button class="grid-item" onclick="openModal(event)">
+<div class="grid-item" onclick="openModal(event)">
 <i class="fab fa-whatsapp" style="color:#25D366"></i>
 Komunitas & Grup
-</button>
+</div>
 
 <a href="https://www.instagram.com/xrezzkystore" class="grid-item">
 <i class="fab fa-instagram" style="color:#E1306C"></i>
@@ -238,10 +246,10 @@ Discord
 </a>
 </div>
 
-<footer class="footer">
+<div class="footer">
 © 2026 XREZZKY STORE<br>
 Terima kasih telah mempercayai layanan kami
-</footer>
+</div>
 
 </div>
 
@@ -256,7 +264,7 @@ Terima kasih telah mempercayai layanan kami
 </a>
 
 <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="btn-choice bg-grup">
-<i class="fas fa-gamepad"></i> Grup Jb all game
+<i class="fas fa-gamepad"></i> Grup JB All Game
 </a>
 
 <div class="close-btn" onclick="closeModal()">Batal</div>
@@ -278,4 +286,4 @@ window.onclick=function(e){
 </script>
 
 </body>
-  </html>
+</html>
