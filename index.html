@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XREZZKY STORE | Digital Game Services</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+:root {
+  --primary:#007bff;
+  --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
+  --dark:#1a1a1a;
+  --glass:rgba(255,255,255,.95);
+}
+body{
+  font-family:Inter,-apple-system,sans-serif;
+  background:linear-gradient(135deg,#e0eafc,#cfdef3);
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+.container{
+  width:100%;
+  max-width:480px;
+  background:var(--glass);
+  padding:40px 25px;
+  border-radius:25px;
+  box-shadow:0 15px 35px rgba(0,0,0,.1);
+}
+h1{margin:0;font-size:26px;font-weight:800}
+.divider{width:50px;height:4px;background:var(--primary);margin:15px auto;border-radius:10px}
+.desc{font-size:14px;color:#555;margin-bottom:25px}
+.btn-main{
+  display:flex;align-items:center;justify-content:center;
+  padding:14px;border-radius:12px;
+  color:#fff;text-decoration:none;font-weight:600;
+  margin-bottom:12px;
+}
+.btn-wa-admin{background:#222}
+.btn-info{background:var(--gradient)}
+.section{margin-top:30px}
+.section h3{font-size:15px;margin-bottom:12px;color:#333}
+.card{
+  background:#fff;
+  border-radius:15px;
+  padding:15px;
+  font-size:13px;
+  margin-bottom:10px;
+  border:1px solid #eee;
+}
+.testi-name{font-weight:700;color:#111}
+.testi-time{font-size:11px;color:#888}
+input,textarea{
+  width:100%;padding:10px;margin:6px 0;
+  border-radius:10px;border:1px solid #ddd;font-size:13px;
+}
+button{
+  width:100%;padding:12px;border:none;
+  border-radius:12px;background:var(--primary);
+  color:#fff;font-weight:700;cursor:pointer;
+}
+.footer{margin-top:35px;font-size:11px;color:#777;text-align:center}
+</style>
+</head>
+
+<body>
+<div class="container animate__animated animate__fadeIn">
+
+<header style="text-align:center">
+<h1>XREZZKY STORE</h1>
+<div class="divider"></div>
+<p class="desc">Layanan digital game profesional. Aman, Konsisten, dan Terkontrol.</p>
+</header>
+
+<a href="https://wa.me/6288293064112" class="btn-main btn-wa-admin">
+<i class="fab fa-whatsapp" style="margin-right:8px"></i> Kontak Admin
+</a>
+
+<a href="https://whatsapp.com/channel/0029Vb6wSkq05MUaGz8NkL26" class="btn-main btn-info">
+<i class="fas fa-certificate" style="margin-right:8px"></i> Info & Testimoni
+</a>
+
+<!-- JAM AKTIF -->
+<div class="section">
+<h3>🕒 Jam Operasional</h3>
+<div class="card">
+<strong>Setiap Hari</strong><br>
+10.00 – 22.00 WIB<br>
+Fast response di jam aktif
+</div>
+</div>
+
+<!-- TESTIMONI -->
+<div class="section">
+<h3>⭐ Testimoni Pembeli</h3>
+<div id="testiList"></div>
+</div>
+
+<!-- INPUT TESTI -->
+<div class="section">
+<h3>✍️ Kirim Testimoni</h3>
+<input id="name" placeholder="Nama / Username">
+<textarea id="message" placeholder="Tulis pengalaman kamu..."></textarea>
+<button onclick="sendTesti()">Kirim Testimoni</button>
+</div>
+
+<!-- FAQ -->
+<div class="section">
+<h3>❓ FAQ</h3>
+<div class="card"><strong>Apakah aman?</strong><br>100% aman & tanpa cheat.</div>
+<div class="card"><strong>Berapa lama proses?</strong><br>Tergantung layanan & antrian.</div>
+<div class="card"><strong>Garansi?</strong><br>Ada, sesuai ketentuan layanan.</div>
+</div>
+
+<footer class="footer">
+© 2026 XREZZKY STORE<br>
+Terimakasih sudah mempercayai kami.
+</footer>
+
+</div>
+
+<script>
+const supabase = window.supabase.createClient(
+  "https://hxamnrwimmirjckvxjgx.supabase.co",
+  "sb_publishable_01Icz2_9XjBXpQL8sxIo3w_nHz9foX2"
+);
+
+async function loadTesti(){
+  const {data} = await supabase
+    .from("testimonials")
+    .select("*")
+    .order("created_at",{ascending:false})
+    .limit(5);
+
+  const list = document.getElementById("testiList");
+  list.innerHTML = "";
+
+  data.forEach(t=>{
+    list.innerHTML += `
+      <div class="card">
+        <div class="testi-name">${t.name}</div>
+        ${t.message}<br>
+        <span class="testi-time">${new Date(t.created_at).toLocaleString()}</span>
+      </div>`;
+  });
+}
+
+async function sendTesti(){
+  const name = document.getElementById("name").value;
+  const msg = document.getElementById("message").value;
+  if(!name || !msg) return alert("Lengkapi data");
+
+  await supabase.from("testimonials").insert([{name:name,message:msg}]);
+  document.getElementById("name").value="";
+  document.getElementById("message").value="";
+  loadTesti();
+}
+
+loadTesti();
+</script>
+
+</body>
+</html>
