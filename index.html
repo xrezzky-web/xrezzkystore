@@ -1,229 +1,281 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>XREZZKY STORE | Digital Game Services</title>  <!-- CDN -->  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />  <style>
-    :root {
-      --primary: #007bff;
-      --gradient: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
-      --dark: #1a1a1a;
-      --glass: rgba(255, 255, 255, 0.95);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XREZZKY STORE | Digital Game Services</title>
 
-    body {
-      font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    .container {
-      width: 100%;
-      max-width: 480px;
-      background: var(--glass);
-      backdrop-filter: blur(15px);
-      padding: 40px 25px;
-      border-radius: 25px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+<style>
+:root {
+    --primary:#007bff;
+    --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
+    --dark:#1a1a1a;
+    --glass:rgba(255,255,255,.95);
+}
 
-    h1 { font-size: 26px; font-weight: 800; margin: 0; color: var(--dark); }
-    .divider { width: 50px; height: 4px; background: var(--primary); margin: 15px auto; border-radius: 10px; }
-    .desc { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 30px; }
+body{
+    margin:0;
+    font-family:Inter,-apple-system,sans-serif;
+    background:linear-gradient(135deg,#e0eafc,#cfdef3);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
 
-    .btn-main {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px;
-      border-radius: 12px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 600;
-      margin-bottom: 12px;
-      transition: .3s;
-    }
+.container{
+    width:100%;
+    max-width:480px;
+    background:var(--glass);
+    backdrop-filter:blur(15px);
+    padding:40px 25px;
+    border-radius:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,.1);
+    text-align:center;
+}
 
-    .btn-wa { background: #222; }
-    .btn-info { background: var(--gradient); animation: pulse 3s infinite; }
+h1{
+    margin:0;
+    font-size:26px;
+    font-weight:800;
+    color:var(--dark);
+}
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-      100% { transform: scale(1); }
-    }
+.divider{
+    width:50px;
+    height:4px;
+    background:var(--primary);
+    margin:15px auto 20px;
+    border-radius:10px;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 15px;
-      margin-top: 25px;
-    }
+.desc{
+    font-size:14px;
+    color:#555;
+    margin-bottom:25px;
+}
 
-    .grid a, .grid div {
-      background: #fff;
-      padding: 15px;
-      border-radius: 18px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #333;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: .3s;
-      cursor: pointer;
-    }
+/* INFO BOARD */
+.info-board{
+    background:#fff;
+    border-left:5px solid var(--primary);
+    padding:15px;
+    border-radius:15px;
+    font-size:13px;
+    color:#444;
+    margin-bottom:25px;
+    text-align:left;
+}
+.info-board strong{
+    display:block;
+    margin-bottom:6px;
+    color:#000;
+}
 
-    .grid i { font-size: 22px; margin-bottom: 8px; }
-    .grid a:hover, .grid div:hover { transform: translateY(-3px); }
+/* BUTTON UTAMA */
+.btn-main{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:600;
+    color:#fff;
+    margin-bottom:12px;
+    transition:.3s;
+}
 
-    /* TESTIMONI */
-    .testimoni {
-      margin-top: 35px;
-      text-align: left;
-    }
+.btn-wa{background:#222;}
+.btn-info{background:var(--gradient);animation:pulse 3s infinite;}
 
-    .testimoni h3 {
-      text-align: center;
-      font-size: 16px;
-      margin-bottom: 15px;
-      color: #333;
-    }
+@keyframes pulse{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.02)}
+    100%{transform:scale(1)}
+}
 
-    .card {
-      background: #fff;
-      border-radius: 15px;
-      padding: 15px;
-      margin-bottom: 12px;
-      font-size: 13px;
-      box-shadow: 0 5px 15px rgba(0,0,0,.05);
-    }
+/* GRID */
+.grid-container{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-top:20px;
+}
 
-    .card span {
-      font-size: 11px;
-      color: #888;
-    }
+.grid-item{
+    background:#fff;
+    padding:15px;
+    border-radius:18px;
+    font-size:13px;
+    font-weight:600;
+    color:#333;
+    border:1px solid #eee;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    cursor:pointer;
+    transition:.3s;
+}
 
-    .info-admin {
-      font-size: 11px;
-      color: #777;
-      background: #f1f5ff;
-      padding: 10px;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
+.grid-item i{
+    font-size:22px;
+    margin-bottom:8px;
+}
 
-    footer {
-      font-size: 11px;
-      color: #888;
-      margin-top: 40px;
-      text-align: center;
-    }
+.grid-item:hover{
+    transform:translateY(-3px);
+    border-color:var(--primary);
+}
 
-    /* MODAL WA */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.5);
-      backdrop-filter: blur(4px);
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-    }
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    backdrop-filter:blur(4px);
+    z-index:999;
+    justify-content:center;
+    align-items:center;
+}
 
-    .modal-box {
-      background: #fff;
-      padding: 30px;
-      border-radius: 20px;
-      width: 85%;
-      max-width: 350px;
-    }
+.modal-box{
+    background:#fff;
+    width:85%;
+    max-width:340px;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+}
 
-    .btn-choice {
-      display: block;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 10px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-      text-align: center;
-    }
+.modal-box h3{
+    margin-top:0;
+}
 
-    .bg-green { background: #25D366; }
-    .bg-blue { background: var(--primary); }
+.btn-choice{
+    display:block;
+    padding:12px;
+    border-radius:10px;
+    color:#fff;
+    text-decoration:none;
+    margin:10px 0;
+    font-weight:600;
+}
 
-    .close {
-      text-align: center;
-      font-size: 12px;
-      margin-top: 10px;
-      color: #888;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-  </style></head>
-<body><div class="container animate__animated animate__fadeIn">
-  <h1>XREZZKY STORE</h1>
-  <div class="divider"></div>
-  <p class="desc">Layanan digital game profesional. Aman, Konsisten, dan Terkontrol.</p>  <!-- TOMBOL UTAMA (TIDAK DIHILANGKAN) --><a href="https://wa.me/6288293064112" class="btn-main btn-wa"><i class="fab fa-whatsapp"></i> Kontak Resmi Admin</a> <a href="https://whatsapp.com/channel/0029Vb6wSkq05MUaGz8NkL26" class="btn-main btn-info"><i class="fas fa-certificate"></i> INFO STOK & TESTI</a>
+.bg-komunitas{background:#25D366;}
+.bg-grup{background:var(--primary);}
 
-  <!-- GRID SOSIAL -->  <div class="grid">
-    <div onclick="openModal()"><i class="fab fa-whatsapp" style="color:#25D366"></i> Grup WA</div>
-    <a href="https://www.instagram.com/xrezzkystore"><i class="fab fa-instagram" style="color:#E1306C"></i> Instagram</a>
-    <a href="https://www.tiktok.com/@xrezzky.store"><i class="fab fa-tiktok"></i> TikTok</a>
-    <a href="https://discord.gg/xDfZJHb2yK"><i class="fab fa-discord" style="color:#5865F2"></i> Discord</a>
-  </div>  <!-- TESTIMONI -->  <div class="testimoni">
-    <h3>Testimoni Pelanggan</h3>
-    <div id="testi-list"></div>
-  </div>  <!-- INFO ADMIN -->  <div class="info-admin">
-    ℹ️ Informasi di website ini dapat diubah sewaktu-waktu oleh admin melalui panel khusus.
-  </div>  <footer>
-    © 2026 XREZZKY STORE<br />Terimakasih telah mempercayai layanan kami
-  </footer>
-</div><!-- MODAL WA --><div id="waModal" class="modal">
-  <div class="modal-box animate__animated animate__zoomIn">
-    <h3>Pilih Grup</h3>
-    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="btn-choice bg-green">Komunitas</a>
-    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="btn-choice bg-blue">Grup Diskusi</a>
-    <div class="close" onclick="closeModal()">Batal</div>
-  </div>
-</div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
-  const supabase = supabase.createClient(
-    'https://hxamnrwimmirjckvxjgx.supabase.co',
-    'sb_publishable_01Icz2_9XjBXpQL8sxIo3w_nHz9foX2'
-  );
+.close-btn{
+    font-size:12px;
+    color:#888;
+    margin-top:15px;
+    cursor:pointer;
+    text-decoration:underline;
+}
 
-  async function loadTesti() {
-    const { data } = await supabase
-      .from('testimoni')
-      .select('*')
-      .order('created_at', { ascending: false });
+.footer{
+    font-size:11px;
+    color:#888;
+    margin-top:35px;
+}
+</style>
+</head>
 
-    const el = document.getElementById('testi-list');
-    el.innerHTML = '';
+<body>
 
-    data?.forEach(t => {
-      el.innerHTML += `
-        <div class="card">
-          <b>${t.nama}</b><br />
-          ${t.pesan}<br />
-          <span>${new Date(t.created_at).toLocaleString()}</span>
-        </div>`;
-    });
-  }
+<div class="container animate__animated animate__fadeIn">
 
-  loadTesti();
+<header>
+<h1>XREZZKY STORE</h1>
+<div class="divider"></div>
+<p class="desc">Layanan digital game profesional. Aman, konsisten, dan terkontrol.</p>
+</header>
 
-  function openModal(){ document.getElementById('waModal').style.display='flex'; }
-  function closeModal(){ document.getElementById('waModal').style.display='none'; }
-</script></body>
-</html>
+<!-- INFO BOARD -->
+<div class="info-board">
+<strong>📢 Informasi</strong>
+• Jam operasional: 09.00 – 23.00 WIB<br>
+• Fast respon saat online<br>
+• Update & pengumuman bisa berubah sewaktu-waktu
+</div>
+
+<a href="https://wa.me/6288293064112" class="btn-main btn-wa">
+<i class="fab fa-whatsapp"></i> Kontak Resmi Admin
+</a>
+
+<a href="https://whatsapp.com/channel/0029Vb6wSkq05MUaGz8NkL26" class="btn-main btn-info">
+<i class="fas fa-certificate"></i> Info Stok & Testimoni
+</a>
+
+<h4 style="margin-top:25px;color:#444;font-size:14px">Platform & Komunitas</h4>
+
+<div class="grid-container">
+<button class="grid-item" onclick="openModal(event)">
+<i class="fab fa-whatsapp" style="color:#25D366"></i>
+Komunitas & Grup
+</button>
+
+<a href="https://www.instagram.com/xrezzkystore" class="grid-item">
+<i class="fab fa-instagram" style="color:#E1306C"></i>
+Instagram
+</a>
+
+<a href="https://www.tiktok.com/@xrezzky.store" class="grid-item">
+<i class="fab fa-tiktok"></i>
+TikTok
+</a>
+
+<a href="https://discord.gg/xDfZJHb2yK" class="grid-item">
+<i class="fab fa-discord" style="color:#5865F2"></i>
+Discord
+</a>
+</div>
+
+<footer class="footer">
+© 2026 XREZZKY STORE<br>
+Terima kasih telah mempercayai layanan kami
+</footer>
+
+</div>
+
+<!-- MODAL -->
+<div id="waModal" class="modal">
+<div class="modal-box animate__animated animate__zoomIn">
+<h3>Pilih Tujuan</h3>
+<p>Silakan pilih grup yang ingin kamu masuki</p>
+
+<a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="btn-choice bg-komunitas">
+<i class="fas fa-users"></i> Komunitas
+</a>
+
+<a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="btn-choice bg-grup">
+<i class="fas fa-gamepad"></i> Grup Jb all game
+</a>
+
+<div class="close-btn" onclick="closeModal()">Batal</div>
+</div>
+</div>
+
+<script>
+function openModal(e){
+    e.stopPropagation();
+    document.getElementById("waModal").style.display="flex";
+}
+function closeModal(){
+    document.getElementById("waModal").style.display="none";
+}
+window.onclick=function(e){
+    const modal=document.getElementById("waModal");
+    if(e.target===modal) closeModal();
+}
+</script>
+
+</body>
+  </html>
