@@ -1,170 +1,229 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XREZZKY STORE | Digital Game Services</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XREZZKY STORE | Digital Game Services</title>  <!-- CDN -->  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />  <style>
+    :root {
+      --primary: #007bff;
+      --gradient: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+      --dark: #1a1a1a;
+      --glass: rgba(255, 255, 255, 0.95);
+    }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
 
-<style>
-:root {
-  --primary:#007bff;
-  --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
-  --dark:#1a1a1a;
-  --glass:rgba(255,255,255,.95);
-}
-body{
-  font-family:Inter,-apple-system,sans-serif;
-  background:linear-gradient(135deg,#e0eafc,#cfdef3);
-  margin:0;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-}
-.container{
-  width:100%;
-  max-width:480px;
-  background:var(--glass);
-  padding:40px 25px;
-  border-radius:25px;
-  box-shadow:0 15px 35px rgba(0,0,0,.1);
-}
-h1{margin:0;font-size:26px;font-weight:800}
-.divider{width:50px;height:4px;background:var(--primary);margin:15px auto;border-radius:10px}
-.desc{font-size:14px;color:#555;margin-bottom:25px}
-.btn-main{
-  display:flex;align-items:center;justify-content:center;
-  padding:14px;border-radius:12px;
-  color:#fff;text-decoration:none;font-weight:600;
-  margin-bottom:12px;
-}
-.btn-wa-admin{background:#222}
-.btn-info{background:var(--gradient)}
-.section{margin-top:30px}
-.section h3{font-size:15px;margin-bottom:12px;color:#333}
-.card{
-  background:#fff;
-  border-radius:15px;
-  padding:15px;
-  font-size:13px;
-  margin-bottom:10px;
-  border:1px solid #eee;
-}
-.testi-name{font-weight:700;color:#111}
-.testi-time{font-size:11px;color:#888}
-input,textarea{
-  width:100%;padding:10px;margin:6px 0;
-  border-radius:10px;border:1px solid #ddd;font-size:13px;
-}
-button{
-  width:100%;padding:12px;border:none;
-  border-radius:12px;background:var(--primary);
-  color:#fff;font-weight:700;cursor:pointer;
-}
-.footer{margin-top:35px;font-size:11px;color:#777;text-align:center}
-</style>
-</head>
+    .container {
+      width: 100%;
+      max-width: 480px;
+      background: var(--glass);
+      backdrop-filter: blur(15px);
+      padding: 40px 25px;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      text-align: center;
+    }
 
-<body>
-<div class="container animate__animated animate__fadeIn">
+    h1 { font-size: 26px; font-weight: 800; margin: 0; color: var(--dark); }
+    .divider { width: 50px; height: 4px; background: var(--primary); margin: 15px auto; border-radius: 10px; }
+    .desc { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 30px; }
 
-<header style="text-align:center">
-<h1>XREZZKY STORE</h1>
-<div class="divider"></div>
-<p class="desc">Layanan digital game profesional. Aman, Konsisten, dan Terkontrol.</p>
-</header>
+    .btn-main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 12px;
+      transition: .3s;
+    }
 
-<a href="https://wa.me/6288293064112" class="btn-main btn-wa-admin">
-<i class="fab fa-whatsapp" style="margin-right:8px"></i> Kontak Admin
-</a>
+    .btn-wa { background: #222; }
+    .btn-info { background: var(--gradient); animation: pulse 3s infinite; }
 
-<a href="https://whatsapp.com/channel/0029Vb6wSkq05MUaGz8NkL26" class="btn-main btn-info">
-<i class="fas fa-certificate" style="margin-right:8px"></i> Info & Testimoni
-</a>
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
 
-<!-- JAM AKTIF -->
-<div class="section">
-<h3>🕒 Jam Operasional</h3>
-<div class="card">
-<strong>Setiap Hari</strong><br>
-10.00 – 22.00 WIB<br>
-Fast response di jam aktif
-</div>
-</div>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 15px;
+      margin-top: 25px;
+    }
 
-<!-- TESTIMONI -->
-<div class="section">
-<h3>⭐ Testimoni Pembeli</h3>
-<div id="testiList"></div>
-</div>
+    .grid a, .grid div {
+      background: #fff;
+      padding: 15px;
+      border-radius: 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: .3s;
+      cursor: pointer;
+    }
 
-<!-- INPUT TESTI -->
-<div class="section">
-<h3>✍️ Kirim Testimoni</h3>
-<input id="name" placeholder="Nama / Username">
-<textarea id="message" placeholder="Tulis pengalaman kamu..."></textarea>
-<button onclick="sendTesti()">Kirim Testimoni</button>
-</div>
+    .grid i { font-size: 22px; margin-bottom: 8px; }
+    .grid a:hover, .grid div:hover { transform: translateY(-3px); }
 
-<!-- FAQ -->
-<div class="section">
-<h3>❓ FAQ</h3>
-<div class="card"><strong>Apakah aman?</strong><br>100% aman & tanpa cheat.</div>
-<div class="card"><strong>Berapa lama proses?</strong><br>Tergantung layanan & antrian.</div>
-<div class="card"><strong>Garansi?</strong><br>Ada, sesuai ketentuan layanan.</div>
-</div>
+    /* TESTIMONI */
+    .testimoni {
+      margin-top: 35px;
+      text-align: left;
+    }
 
-<footer class="footer">
-© 2026 XREZZKY STORE<br>
-Terimakasih sudah mempercayai kami.
-</footer>
+    .testimoni h3 {
+      text-align: center;
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #333;
+    }
 
-</div>
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 12px;
+      font-size: 13px;
+      box-shadow: 0 5px 15px rgba(0,0,0,.05);
+    }
 
-<script>
-const supabase = window.supabase.createClient(
-  "https://hxamnrwimmirjckvxjgx.supabase.co",
-  "sb_publishable_01Icz2_9XjBXpQL8sxIo3w_nHz9foX2"
-);
+    .card span {
+      font-size: 11px;
+      color: #888;
+    }
 
-async function loadTesti(){
-  const {data} = await supabase
-    .from("testimonials")
-    .select("*")
-    .order("created_at",{ascending:false})
-    .limit(5);
+    .info-admin {
+      font-size: 11px;
+      color: #777;
+      background: #f1f5ff;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
 
-  const list = document.getElementById("testiList");
-  list.innerHTML = "";
+    footer {
+      font-size: 11px;
+      color: #888;
+      margin-top: 40px;
+      text-align: center;
+    }
 
-  data.forEach(t=>{
-    list.innerHTML += `
-      <div class="card">
-        <div class="testi-name">${t.name}</div>
-        ${t.message}<br>
-        <span class="testi-time">${new Date(t.created_at).toLocaleString()}</span>
-      </div>`;
-  });
-}
+    /* MODAL WA */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.5);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
 
-async function sendTesti(){
-  const name = document.getElementById("name").value;
-  const msg = document.getElementById("message").value;
-  if(!name || !msg) return alert("Lengkapi data");
+    .modal-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      width: 85%;
+      max-width: 350px;
+    }
 
-  await supabase.from("testimonials").insert([{name:name,message:msg}]);
-  document.getElementById("name").value="";
-  document.getElementById("message").value="";
+    .btn-choice {
+      display: block;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .bg-green { background: #25D366; }
+    .bg-blue { background: var(--primary); }
+
+    .close {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 10px;
+      color: #888;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  </style></head>
+<body><div class="container animate__animated animate__fadeIn">
+  <h1>XREZZKY STORE</h1>
+  <div class="divider"></div>
+  <p class="desc">Layanan digital game profesional. Aman, Konsisten, dan Terkontrol.</p>  <!-- TOMBOL UTAMA (TIDAK DIHILANGKAN) --><a href="https://wa.me/6288293064112" class="btn-main btn-wa"><i class="fab fa-whatsapp"></i> Kontak Resmi Admin</a> <a href="https://whatsapp.com/channel/0029Vb6wSkq05MUaGz8NkL26" class="btn-main btn-info"><i class="fas fa-certificate"></i> INFO STOK & TESTI</a>
+
+  <!-- GRID SOSIAL -->  <div class="grid">
+    <div onclick="openModal()"><i class="fab fa-whatsapp" style="color:#25D366"></i> Grup WA</div>
+    <a href="https://www.instagram.com/xrezzkystore"><i class="fab fa-instagram" style="color:#E1306C"></i> Instagram</a>
+    <a href="https://www.tiktok.com/@xrezzky.store"><i class="fab fa-tiktok"></i> TikTok</a>
+    <a href="https://discord.gg/xDfZJHb2yK"><i class="fab fa-discord" style="color:#5865F2"></i> Discord</a>
+  </div>  <!-- TESTIMONI -->  <div class="testimoni">
+    <h3>Testimoni Pelanggan</h3>
+    <div id="testi-list"></div>
+  </div>  <!-- INFO ADMIN -->  <div class="info-admin">
+    ℹ️ Informasi di website ini dapat diubah sewaktu-waktu oleh admin melalui panel khusus.
+  </div>  <footer>
+    © 2026 XREZZKY STORE<br />Terimakasih telah mempercayai layanan kami
+  </footer>
+</div><!-- MODAL WA --><div id="waModal" class="modal">
+  <div class="modal-box animate__animated animate__zoomIn">
+    <h3>Pilih Grup</h3>
+    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="btn-choice bg-green">Komunitas</a>
+    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="btn-choice bg-blue">Grup Diskusi</a>
+    <div class="close" onclick="closeModal()">Batal</div>
+  </div>
+</div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
+  const supabase = supabase.createClient(
+    'https://hxamnrwimmirjckvxjgx.supabase.co',
+    'sb_publishable_01Icz2_9XjBXpQL8sxIo3w_nHz9foX2'
+  );
+
+  async function loadTesti() {
+    const { data } = await supabase
+      .from('testimoni')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    const el = document.getElementById('testi-list');
+    el.innerHTML = '';
+
+    data?.forEach(t => {
+      el.innerHTML += `
+        <div class="card">
+          <b>${t.nama}</b><br />
+          ${t.pesan}<br />
+          <span>${new Date(t.created_at).toLocaleString()}</span>
+        </div>`;
+    });
+  }
+
   loadTesti();
-}
 
-loadTesti();
-</script>
-
-</body>
+  function openModal(){ document.getElementById('waModal').style.display='flex'; }
+  function closeModal(){ document.getElementById('waModal').style.display='none'; }
+</script></body>
 </html>
