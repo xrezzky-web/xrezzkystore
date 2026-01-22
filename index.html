@@ -69,7 +69,7 @@ h1{
     color:#444;
     margin-bottom:25px;
     text-align:left;
-    min-height:60px; /* biar keliatan ada box */
+    min-height:60px; /* placeholder kosong */
 }
 
 /* BUTTON UTAMA */
@@ -86,6 +86,7 @@ h1{
     color:#fff;
     margin-bottom:12px;
     transition:.3s;
+    box-sizing:border-box;
 }
 
 .btn-wa{background:#222;}
@@ -97,7 +98,7 @@ h1{
     100%{transform:scale(1)}
 }
 
-/* GRID */
+/* GRID KOMUNITAS */
 .grid-container{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -116,6 +117,7 @@ h1{
     display:flex;
     flex-direction:column;
     align-items:center;
+    justify-content:center;
     cursor:pointer;
     transition:.3s;
 }
@@ -228,12 +230,11 @@ h1{
 <p class="desc">Layanan digital game profesional. Aman, konsisten, dan terkontrol.</p>
 </header>
 
-<!-- INFO BOARD KOSONG -->
-<div class="info-board" id="infoBoard">
-<!-- Nanti diisi dari Admin HTML -->
-</div>
+<!-- INFO BOARD (Kosong, untuk Admin HTML nanti) -->
+<div class="info-board" id="infoBoard"></div>
 
 <!-- BUTTON UTAMA -->
+<div style="display:flex; flex-direction:column; gap:12px; margin-bottom:20px;">
 <a href="https://wa.me/6288293064112" class="btn-main btn-wa">
 <i class="fab fa-whatsapp"></i> Kontak Resmi Admin
 </a>
@@ -241,8 +242,9 @@ h1{
 <a href="https://whatsapp.com/channel/0029Vb6wSkq05MUaGz8NkL26" class="btn-main btn-info">
 <i class="fas fa-certificate"></i> Info Stok & Testimoni
 </a>
+</div>
 
-<h4 style="margin-top:25px;color:#444;font-size:14px">Platform & Komunitas</h4>
+<h4 style="margin-top:15px;color:#444;font-size:14px">Platform & Komunitas</h4>
 
 <div class="grid-container">
 <button class="grid-item" onclick="openModal(event)">
@@ -266,10 +268,8 @@ Discord
 </a>
 </div>
 
-<!-- TESTIMONI KOSONG -->
-<div class="testimoni-container" id="testimoniContainer">
-<!-- Nanti diisi dari Admin HTML / Supabase -->
-</div>
+<!-- TESTIMONI (Kosong, untuk Admin HTML nanti) -->
+<div class="testimoni-container" id="testimoniContainer"></div>
 
 <footer class="footer">
 © 2026 XREZZKY STORE<br>
@@ -278,7 +278,7 @@ Terima kasih telah mempercayai layanan kami
 
 </div>
 
-<!-- MODAL -->
+<!-- MODAL KOMUNITAS & GRUP -->
 <div id="waModal" class="modal">
 <div class="modal-box animate__animated animate__zoomIn">
 <h3>Pilih Tujuan</h3>
@@ -297,7 +297,6 @@ Terima kasih telah mempercayai layanan kami
 </div>
 
 <script>
-// Modal WA
 function openModal(e){ e.stopPropagation(); document.getElementById("waModal").style.display="flex";}
 function closeModal(){ document.getElementById("waModal").style.display="none";}
 window.onclick=function(e){ const modal=document.getElementById("waModal"); if(e.target===modal) closeModal();}
