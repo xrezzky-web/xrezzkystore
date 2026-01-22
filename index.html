@@ -296,32 +296,62 @@ Terima kasih telah mempercayai layanan kami
 <div id="testiModal" class="modal">
 <div class="modal-box animate__animated animate__zoomIn">
 <h3>Testimoni Pelanggan</h3>
-
-<div id="testimoniContainerModal">
-<!-- Testimoni akan muncul di sini -->
-</div>
-
+<div id="testimoniContainerModal"></div>
 <div class="close-btn" onclick="closeTestiModal()">Tutup</div>
 </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+// Supabase client
+const supabaseUrl = 'https://hxamnrwimmirjckvxjgx.supabase.co';
+const supabaseKey = 'sb_publishable_01Icz2_9XjBXpQL8sxIo3w_nHz9foX2';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+// Load Info Board
+async function loadInfo(){
+  const {data,error} = await supabase.from('info').select('*').limit(1).single();
+  if(error) return console.error(error);
+  if(data) document.getElementById('infoBoard').innerHTML = data.text;
+}
+
+// Load Testimoni
+async function loadTestimoni(){
+  const {data,error} = await supabase.from('testimoni').select('*').order('id',{ascending:true});
+  if(error) return console.error(error);
+  const container = document.getElementById('testimoniContainer');
+  container.innerHTML = data.map(t=>`
+    <div class="testimoni-item">
+      <img src="${t.photo}" alt="Foto"/>
+      <div class="testimoni-content">
+        <strong>${t.name}</strong>
+        ${t.content}
+      </div>
+    </div>
+  `).join('');
+}
+
+// Open modal
 function openModal(e){ e.stopPropagation(); document.getElementById("waModal").style.display="flex";}
 function closeModal(){ document.getElementById("waModal").style.display="none";}
 window.onclick=function(e){ const modal=document.getElementById("waModal"); if(e.target===modal) closeModal();}
 
 // Testimoni Modal
-function openTestiModal(){ 
-    const modal=document.getElementById("testiModal");
-    modal.style.display="flex";
+function openTestiModal(){
+  const modal=document.getElementById("testiModal");
+  modal.style.display="flex";
 
-    // Copy testi dari container index ke modal
-    const source=document.getElementById("testimoniContainer");
-    const target=document.getElementById("testimoniContainerModal");
-    target.innerHTML=source.innerHTML;
+  const source=document.getElementById("testimoniContainer");
+  const target=document.getElementById("testimoniContainerModal");
+  target.innerHTML=source.innerHTML;
 }
 function closeTestiModal(){ document.getElementById("testiModal").style.display="none";}
-</script>
 
+// Load data on page load
+window.addEventListener('DOMContentLoaded', ()=>{
+  loadInfo();
+  loadTestimoni();
+});
+</script>
 </body>
 </html>
