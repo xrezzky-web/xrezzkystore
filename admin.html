@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel XREZZKY STORE</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+    margin:0;
+    font-family:Inter,-apple-system,sans-serif;
+    background:#f0f2f5;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:20px;
+}
+
+.admin-container{
+    width:100%;
+    max-width:600px;
+    background:#fff;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+h1{margin-top:0;font-size:24px;text-align:center;color:#007bff;}
+
+section{margin-bottom:25px;}
+
+label{
+    display:block;
+    margin-bottom:5px;
+    font-weight:600;
+}
+
+input[type="text"], textarea{
+    width:100%;
+    padding:10px;
+    margin-bottom:12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+    font-size:14px;
+}
+
+textarea{resize:vertical;}
+
+button{
+    background:#007bff;
+    color:#fff;
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+    margin-right:5px;
+}
+
+button.delete{
+    background:#dc3545;
+}
+
+.testimoni-list{
+    margin-top:15px;
+}
+
+.testimoni-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#f8f9fa;
+    padding:8px 10px;
+    border-radius:8px;
+    margin-bottom:8px;
+}
+
+.testimoni-item span{flex:1;}
+
+</style>
+</head>
+<body>
+
+<div class="admin-container animate__animated animate__fadeIn">
+
+<h1>Admin Panel XREZZKY STORE</h1>
+
+<!-- INFO BOARD -->
+<section>
+<h2>Info Board</h2>
+<label for="infoText">Isi Info Board:</label>
+<textarea id="infoText" placeholder="Isi info di sini..." rows="4"></textarea>
+<button onclick="saveInfo()">Simpan Info</button>
+</section>
+
+<!-- TESTIMONI -->
+<section>
+<h2>Testimoni</h2>
+
+<label for="testiName">Nama:</label>
+<input type="text" id="testiName" placeholder="Nama pelanggan">
+
+<label for="testiText">Isi Testimoni:</label>
+<textarea id="testiText" placeholder="Tulis testimoni..." rows="3"></textarea>
+
+<label for="testiImg">Link Foto (jpg/png):</label>
+<input type="text" id="testiImg" placeholder="https://...">
+
+<button onclick="addTestimoni()">Tambah Testimoni</button>
+
+<div class="testimoni-list" id="testimoniList">
+<!-- Testimoni akan muncul di sini -->
+</div>
+
+</section>
+
+<script>
+// Load data dari localStorage (sementara untuk demo)
+let infoBoard = localStorage.getItem('infoBoard') || '';
+let testimoniData = JSON.parse(localStorage.getItem('testimoniData') || '[]');
+
+document.getElementById('infoText').value = infoBoard;
+renderTestimoniList();
+
+// SIMPAN INFO BOARD
+function saveInfo(){
+    const info = document.getElementById('infoText').value;
+    localStorage.setItem('infoBoard', info);
+    alert('Info Board disimpan!');
+}
+
+// TAMBAH TESTIMONI
+function addTestimoni(){
+    const name = document.getElementById('testiName').value.trim();
+    const text = document.getElementById('testiText').value.trim();
+    const img = document.getElementById('testiImg').value.trim();
+
+    if(!name || !text){
+        alert('Nama dan Testimoni harus diisi!');
+        return;
+    }
+
+    testimoniData.push({name,text,img});
+    localStorage.setItem('testimoniData', JSON.stringify(testimoniData));
+
+    document.getElementById('testiName').value = '';
+    document.getElementById('testiText').value = '';
+    document.getElementById('testiImg').value = '';
+
+    renderTestimoniList();
+}
+
+// RENDER LIST TESTIMONI
+function renderTestimoniList(){
+    const container = document.getElementById('testimoniList');
+    container.innerHTML = '';
+
+    testimoniData.forEach((item,index)=>{
+        const div = document.createElement('div');
+        div.className='testimoni-item';
+        div.innerHTML = `<span>${item.name}: ${item.text}</span>
+        <button class="delete" onclick="deleteTesti(${index})">Hapus</button>`;
+        container.appendChild(div);
+    });
+}
+
+// HAPUS TESTIMONI
+function deleteTesti(index){
+    if(confirm('Hapus testimoni ini?')){
+        testimoniData.splice(index,1);
+        localStorage.setItem('testimoniData', JSON.stringify(testimoniData));
+        renderTestimoniList();
+    }
+}
+</script>
+
+</div>
+
+</body>
+  </html>
