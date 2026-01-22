@@ -32,7 +32,7 @@ body{
     max-width:480px;
     background:var(--glass);
     backdrop-filter:blur(15px);
-    padding:40px 25px;
+    padding:30px 20px;
     border-radius:25px;
     box-shadow:0 15px 35px rgba(0,0,0,.1);
     text-align:center;
@@ -69,11 +69,7 @@ h1{
     color:#444;
     margin-bottom:25px;
     text-align:left;
-}
-.info-board strong{
-    display:block;
-    margin-bottom:6px;
-    color:#000;
+    min-height:60px; /* biar keliatan ada box */
 }
 
 /* BUTTON UTAMA */
@@ -232,12 +228,9 @@ h1{
 <p class="desc">Layanan digital game profesional. Aman, konsisten, dan terkontrol.</p>
 </header>
 
-<!-- INFO BOARD -->
-<div class="info-board">
-<strong>📢 Informasi</strong>
-• Jam operasional: 09.00 – 23.00 WIB<br>
-• Fast respon saat online<br>
-• Update & pengumuman bisa berubah sewaktu-waktu
+<!-- INFO BOARD KOSONG -->
+<div class="info-board" id="infoBoard">
+<!-- Nanti diisi dari Admin HTML -->
 </div>
 
 <!-- BUTTON UTAMA -->
@@ -273,9 +266,9 @@ Discord
 </a>
 </div>
 
-<!-- TESTIMONI -->
+<!-- TESTIMONI KOSONG -->
 <div class="testimoni-container" id="testimoniContainer">
-<!-- Testi bakal muncul dari Supabase -->
+<!-- Nanti diisi dari Admin HTML / Supabase -->
 </div>
 
 <footer class="footer">
@@ -303,42 +296,11 @@ Terima kasih telah mempercayai layanan kami
 </div>
 </div>
 
-<!-- Supabase JS -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.28.0/dist/supabase.min.js"></script>
-
 <script>
 // Modal WA
 function openModal(e){ e.stopPropagation(); document.getElementById("waModal").style.display="flex";}
 function closeModal(){ document.getElementById("waModal").style.display="none";}
 window.onclick=function(e){ const modal=document.getElementById("waModal"); if(e.target===modal) closeModal();}
-
-// Supabase setup
-const supabaseUrl = 'https://hxamnrwimmirjckvxjgx.supabase.co';
-const supabaseKey = 'sb_publishable_01Icz2_9XjBXpQL8sxIo3w_nHz9foX2';
-const supabase = Supabase.createClient(supabaseUrl, supabaseKey);
-
-// Ambil testi realtime
-async function loadTestimoni(){
-    const { data, error } = await supabase.from('testimoni').select('*').order('created_at',{ascending:false});
-    const container = document.getElementById('testimoniContainer');
-    container.innerHTML = '';
-    if(error){ container.innerHTML='<p>Gagal memuat testi.</p>'; return; }
-    data.forEach(t=>{
-        const div = document.createElement('div');
-        div.className = 'testimoni-item';
-        div.innerHTML = `
-            <img src="${t.foto}" alt="Foto Testi">
-            <div class="testimoni-content">
-                <strong>${t.nama}</strong>
-                <p>${t.teks}</p>
-            </div>
-        `;
-        container.appendChild(div);
-    });
-}
-
-// Jalankan saat load
-loadTestimoni();
 </script>
 
 </body>
