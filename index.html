@@ -1,305 +1,261 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XREZZKY STORE | Digital Game Services</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XREZZKY STORE | Digital Game Services</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-:root {
-    --primary:#007bff;
-    --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
-    --dark:#1a1a1a;
-    --glass:rgba(255,255,255,.95);
-}
+    <style>
+        :root {
+            --primary: #007bff;
+            --gradient: linear-gradient(135deg, #00c6ff, #0072ff);
+            --dark: #1a1a1a;
+            --glass: rgba(255, 255, 255, .95);
+            --success: #25D366;
+        }
 
-body{
-    margin:0;
-    font-family:Inter,-apple-system,sans-serif;
-    background:linear-gradient(135deg,#e0eafc,#cfdef3);
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-}
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-.container{
-    width:100%;
-    max-width:480px;
-    background:var(--glass);
-    backdrop-filter:blur(15px);
-    padding:30px 20px;
-    border-radius:25px;
-    box-shadow:0 15px 35px rgba(0,0,0,.1);
-    text-align:center;
-}
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 30px 20px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .1);
+            text-align: center;
+        }
 
-h1{
-    margin:0;
-    font-size:26px;
-    font-weight:800;
-    color:var(--dark);
-}
+        h1 { margin: 0; font-size: 26px; font-weight: 800; color: var(--dark); }
+        .divider { width: 50px; height: 4px; background: var(--primary); margin: 15px auto 20px; border-radius: 10px; }
+        .desc { font-size: 14px; color: #555; margin-bottom: 25px; }
 
-.divider{
-    width:50px;
-    height:4px;
-    background:var(--primary);
-    margin:15px auto 20px;
-    border-radius:10px;
-}
+        /* STATUS & INFO BOARD */
+        .info-board {
+            background: #fff;
+            border-left: 5px solid var(--primary);
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 13px;
+            color: #444;
+            margin-bottom: 25px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
 
-.desc{
-    font-size:14px;
-    color:#555;
-    margin-bottom:25px;
-}
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--success);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px var(--success);
+            animation: blink 1.5s infinite;
+        }
 
-/* INFO BOARD */
-.info-board{
-    background:#fff;
-    border-left:5px solid var(--primary);
-    padding:15px;
-    border-radius:15px;
-    font-size:13px;
-    color:#444;
-    margin-bottom:25px;
-    text-align:left;
-    min-height:60px; /* placeholder kosong */
-}
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-/* BUTTON UTAMA */
-.btn-main{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    width:100%;
-    padding:14px;
-    border-radius:12px;
-    text-decoration:none;
-    font-weight:600;
-    color:#fff;
-    margin-bottom:12px;
-    transition:.3s;
-    box-sizing:border-box;
-}
+        /* BUTTONS */
+        .btn-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 12px;
+            transition: .3s;
+            box-sizing: border-box;
+            border: none;
+            cursor: pointer;
+        }
 
-.btn-wa{background:#222;}
-.btn-info{background:var(--gradient);animation:pulse 3s infinite;}
+        .btn-wa { background: #222; }
+        .btn-info { background: var(--gradient); animation: pulse 3s infinite; }
 
-@keyframes pulse{
-    0%{transform:scale(1)}
-    50%{transform:scale(1.02)}
-    100%{transform:scale(1)}
-}
+        @keyframes pulse { 0% { transform: scale(1) } 50% { transform: scale(1.02) } 100% { transform: scale(1) } }
 
-/* GRID KOMUNITAS */
-.grid-container{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
-    margin-top:20px;
-}
+        /* GRID */
+        .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px; }
+        .grid-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 18px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: .3s;
+            text-decoration: none;
+        }
+        .grid-item i { font-size: 22px; margin-bottom: 8px; }
+        .grid-item:hover { transform: translateY(-3px); border-color: var(--primary); }
 
-.grid-item{
-    background:#fff;
-    padding:15px;
-    border-radius:18px;
-    font-size:13px;
-    font-weight:600;
-    color:#333;
-    border:1px solid #eee;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:.3s;
-}
+        /* TESTIMONI SECTION */
+        .testimoni-section { margin-top: 30px; text-align: left; }
+        .testimoni-title { font-size: 14px; font-weight: bold; color: #444; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .testimoni-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #f0f0f0;
+            display: flex;
+            gap: 12px;
+            transition: 0.3s;
+        }
+        .testimoni-card img { width: 50px; height: 50px; border-radius: 10px; object-fit: cover; }
+        .testimoni-text strong { display: block; font-size: 13px; color: #333; }
+        .testimoni-text p { margin: 4px 0 0; font-size: 12px; color: #666; line-height: 1.4; }
+        .stars { color: #ffc107; font-size: 10px; margin-top: 4px; }
 
-.grid-item i{
-    font-size:22px;
-    margin-bottom:8px;
-}
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.5);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-box { background: #fff; width: 85%; max-width: 340px; padding: 25px; border-radius: 20px; text-align: center; }
+        .btn-choice { display: block; padding: 12px; border-radius: 10px; color: #fff; text-decoration: none; margin: 10px 0; font-weight: 600; }
+        .bg-komunitas { background: var(--success); }
+        .bg-grup { background: var(--primary); }
+        .close-btn { font-size: 12px; color: #888; margin-top: 15px; cursor: pointer; text-decoration: underline; }
 
-.grid-item:hover{
-    transform:translateY(-3px);
-    border-color:var(--primary);
-}
-
-/* MODAL */
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.5);
-    backdrop-filter:blur(4px);
-    z-index:999;
-    justify-content:center;
-    align-items:center;
-}
-
-.modal-box{
-    background:#fff;
-    width:85%;
-    max-width:340px;
-    padding:25px;
-    border-radius:20px;
-    text-align:center;
-}
-
-.modal-box h3{
-    margin-top:0;
-}
-
-.btn-choice{
-    display:block;
-    padding:12px;
-    border-radius:10px;
-    color:#fff;
-    text-decoration:none;
-    margin:10px 0;
-    font-weight:600;
-}
-
-.bg-komunitas{background:#25D366;}
-.bg-grup{background:var(--primary);}
-
-.close-btn{
-    font-size:12px;
-    color:#888;
-    margin-top:15px;
-    cursor:pointer;
-    text-decoration:underline;
-}
-
-/* TESTIMONI */
-.testimoni-container{
-    margin-top:25px;
-    text-align:left;
-}
-
-.testimoni-item{
-    background:#fff;
-    border-radius:12px;
-    padding:12px;
-    margin-bottom:12px;
-    display:flex;
-    gap:10px;
-    align-items:flex-start;
-    border:1px solid #eee;
-}
-
-.testimoni-item img{
-    width:60px;
-    height:60px;
-    object-fit:cover;
-    border-radius:10px;
-}
-
-.testimoni-content{
-    flex:1;
-    font-size:13px;
-}
-
-.testimoni-content strong{
-    display:block;
-    margin-bottom:4px;
-    color:#000;
-}
-
-.footer{
-    font-size:11px;
-    color:#888;
-    margin-top:35px;
-}
-</style>
+        .footer { font-size: 11px; color: #888; margin-top: 40px; }
+    </style>
 </head>
 <body>
 
 <div class="container animate__animated animate__fadeIn">
 
-<header>
-<h1>XREZZKY STORE</h1>
-<div class="divider"></div>
-<p class="desc">Layanan digital game profesional. Aman, konsisten, dan terkontrol.</p>
-</header>
+    <header>
+        <h1>XREZZKY STORE</h1>
+        <div class="divider"></div>
+        <p class="desc">Layanan digital game profesional. Aman, konsisten, dan terkontrol.</p>
+    </header>
 
-<!-- INFO BOARD (Kosong, untuk Admin HTML nanti) -->
-<div class="info-board" id="infoBoard"></div>
+    <div class="info-board">
+        <span class="status-dot"></span>
+        <span id="adminStatus">Admin Online - Siap Melayani Transaksi</span>
+    </div>
 
-<!-- BUTTON UTAMA -->
-<div style="display:flex; flex-direction:column; gap:12px; margin-bottom:20px;">
-<a href="https://wa.me/6288293064112" class="btn-main btn-wa">
-<i class="fab fa-whatsapp"></i> Kontak Resmi Admin
-</a>
+    <div style="display:flex; flex-direction:column; gap:12px;">
+        <a href="https://wa.me/6288293064112" class="btn-main btn-wa">
+            <i class="fab fa-whatsapp"></i> Kontak Resmi Admin
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb6wSkq05MUaGz8NkL26" class="btn-main btn-info">
+            <i class="fas fa-certificate"></i> Info All Stok & Testimoni
+        </a>
+    </div>
 
-<a href="https://whatsapp.com/channel/0029Vb6wSkq05MUaGz8NkL26" class="btn-main btn-info">
-<i class="fas fa-certificate"></i> Info Stok & Testimoni
-</a>
-</div>
+    <div class="grid-container">
+        <div class="grid-item" onclick="openModal()" style="cursor: pointer;">
+            <i class="fab fa-whatsapp" style="color:#25D366"></i> Komunitas & Grup
+        </div>
+        <a href="https://www.instagram.com/xrezzkystore" class="grid-item">
+            <i class="fab fa-instagram" style="color:#E1306C"></i> Instagram
+        </a>
+        <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item">
+            <i class="fab fa-tiktok" style="color:#000"></i> TikTok
+        </a>
+        <a href="https://discord.gg/xDfZJHb2yK" class="grid-item">
+            <i class="fab fa-discord" style="color:#5865F2"></i> Discord
+        </a>
+    </div>
 
-<h4 style="margin-top:15px;color:#444;font-size:14px">Platform & Komunitas</h4>
+    <div class="testimoni-section">
+        <div class="testimoni-title">
+            <i class="fas fa-star" style="color:#ffc107"></i> Testimoni Terbaru
+        </div>
+        <div id="testiList">
+            </div>
+    </div>
 
-<div class="grid-container">
-<button class="grid-item" onclick="openModal(event)">
-<i class="fab fa-whatsapp" style="color:#25D366"></i>
-Komunitas & Grup
-</button>
-
-<a href="https://www.instagram.com/xrezzkystore" class="grid-item">
-<i class="fab fa-instagram" style="color:#E1306C"></i>
-Instagram
-</a>
-
-<a href="https://www.tiktok.com/@xrezzky.store" class="grid-item">
-<i class="fab fa-tiktok" style="color:#000"></i>
-TikTok
-</a>
-
-<a href="https://discord.gg/xDfZJHb2yK" class="grid-item">
-<i class="fab fa-discord" style="color:#5865F2"></i>
-Discord
-</a>
-</div>
-
-<!-- TESTIMONI (Kosong, untuk Admin HTML nanti) -->
-<div class="testimoni-container" id="testimoniContainer"></div>
-
-<footer class="footer">
-© 2026 XREZZKY STORE<br>
-Terima kasih telah mempercayai layanan kami
-</footer>
+    <footer class="footer">
+        © 2026 XREZZKY STORE<br>
+        Terima kasih telah mempercayai layanan kami
+    </footer>
 
 </div>
 
-<!-- MODAL KOMUNITAS & GRUP -->
 <div id="waModal" class="modal">
-<div class="modal-box animate__animated animate__zoomIn">
-<h3>Pilih Tujuan</h3>
-<p>Silakan pilih grup yang ingin kamu masuki</p>
-
-<a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="btn-choice bg-komunitas">
-<i class="fas fa-users"></i> Komunitas
-</a>
-
-<a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="btn-choice bg-grup">
-<i class="fas fa-gamepad"></i> Grup Jb all game
-</a>
-
-<div class="close-btn" onclick="closeModal()">Batal</div>
-</div>
+    <div class="modal-box animate__animated animate__zoomIn">
+        <h3 style="margin-top:0">Pilih Tujuan</h3>
+        <p style="font-size:13px; color:#666">Silakan pilih grup yang ingin kamu masuki</p>
+        <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="btn-choice bg-komunitas">
+            <i class="fas fa-users"></i> Komunitas
+        </a>
+        <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="btn-choice bg-grup">
+            <i class="fas fa-gamepad"></i> Grup Jb All Game
+        </a>
+        <div class="close-btn" onclick="closeModal()">Batal</div>
+    </div>
 </div>
 
 <script>
-function openModal(e){ e.stopPropagation(); document.getElementById("waModal").style.display="flex";}
-function closeModal(){ document.getElementById("waModal").style.display="none";}
-window.onclick=function(e){ const modal=document.getElementById("waModal"); if(e.target===modal) closeModal();}
+    // FUNGSI MODAL
+    function openModal() { document.getElementById("waModal").style.display = "flex"; }
+    function closeModal() { document.getElementById("waModal").style.display = "none"; }
+    window.onclick = function(e) { if(e.target == document.getElementById("waModal")) closeModal(); }
+
+    // DATA TESTIMONI (Ganti konten di sini)
+    const testimoniData = [
+        {
+            nama: "Andi Saputra",
+            pesan: "Top up aman banget, proses gak nyampe 5 menit langsung masuk. Recommended!",
+            foto: "https://i.pravatar.cc/100?u=1"
+        },
+        {
+            nama: "Budi Jb",
+            pesan: "Grup JB nya aktif, admin fast respon kalau ada masalah. Gak nyesel join.",
+            foto: "https://i.pravatar.cc/100?u=2"
+        }
+    ];
+
+    // RENDER TESTIMONI
+    const testiList = document.getElementById('testiList');
+    testimoniData.forEach(item => {
+        testiList.innerHTML += `
+            <div class="testimoni-card">
+                <img src="${item.foto}" alt="User">
+                <div class="testimoni-text">
+                    <strong>${item.nama}</strong>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>${item.pesan}</p>
+                </div>
+            </div>
+        `;
+    });
 </script>
 
 </body>
