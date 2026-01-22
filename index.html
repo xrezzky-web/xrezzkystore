@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-:root{
+:root {
     --primary:#007bff;
     --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
     --dark:#1a1a1a;
@@ -76,7 +76,7 @@ h1{
     color:#000;
 }
 
-/* BUTTON */
+/* BUTTON UTAMA */
 .btn-main{
     display:flex;
     align-items:center;
@@ -134,44 +134,6 @@ h1{
     border-color:var(--primary);
 }
 
-/* TESTIMONI */
-.testimoni-section{
-    margin-top:30px;
-    text-align:left;
-}
-.testimoni-section h4{
-    text-align:center;
-    font-size:14px;
-    color:#444;
-    margin-bottom:15px;
-}
-.testimoni-list{
-    max-height:230px;
-    overflow-y:auto;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-}
-.testi-item{
-    background:#fff;
-    border-radius:14px;
-    padding:12px;
-    font-size:13px;
-    border-left:4px solid var(--primary);
-}
-.testi-name{
-    font-weight:700;
-    color:#000;
-}
-.testi-text{
-    color:#555;
-    margin:6px 0;
-}
-.testi-time{
-    font-size:11px;
-    color:#888;
-}
-
 /* MODAL */
 .modal{
     display:none;
@@ -191,6 +153,10 @@ h1{
     padding:25px;
     border-radius:20px;
     text-align:center;
+}
+
+.modal-box h3{
+    margin-top:0;
 }
 
 .btn-choice{
@@ -214,6 +180,41 @@ h1{
     text-decoration:underline;
 }
 
+/* TESTIMONI */
+.testimoni-container{
+    margin-top:25px;
+    text-align:left;
+}
+
+.testimoni-item{
+    background:#fff;
+    border-radius:12px;
+    padding:12px;
+    margin-bottom:12px;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    border:1px solid #eee;
+}
+
+.testimoni-item img{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.testimoni-content{
+    flex:1;
+    font-size:13px;
+}
+
+.testimoni-content strong{
+    display:block;
+    margin-bottom:4px;
+    color:#000;
+}
+
 .footer{
     font-size:11px;
     color:#888;
@@ -221,7 +222,6 @@ h1{
 }
 </style>
 </head>
-
 <body>
 
 <div class="container animate__animated animate__fadeIn">
@@ -232,13 +232,15 @@ h1{
 <p class="desc">Layanan digital game profesional. Aman, konsisten, dan terkontrol.</p>
 </header>
 
+<!-- INFO BOARD -->
 <div class="info-board">
 <strong>📢 Informasi</strong>
 • Jam operasional: 09.00 – 23.00 WIB<br>
 • Fast respon saat online<br>
-• Update & pengumuman dapat berubah sewaktu-waktu
+• Update & pengumuman bisa berubah sewaktu-waktu
 </div>
 
+<!-- BUTTON UTAMA -->
 <a href="https://wa.me/6288293064112" class="btn-main btn-wa">
 <i class="fab fa-whatsapp"></i> Kontak Resmi Admin
 </a>
@@ -250,10 +252,10 @@ h1{
 <h4 style="margin-top:25px;color:#444;font-size:14px">Platform & Komunitas</h4>
 
 <div class="grid-container">
-<div class="grid-item" onclick="openModal()">
+<button class="grid-item" onclick="openModal(event)">
 <i class="fab fa-whatsapp" style="color:#25D366"></i>
 Komunitas & Grup
-</div>
+</button>
 
 <a href="https://www.instagram.com/xrezzkystore" class="grid-item">
 <i class="fab fa-instagram" style="color:#E1306C"></i>
@@ -261,7 +263,7 @@ Instagram
 </a>
 
 <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item">
-<i class="fab fa-tiktok"></i>
+<i class="fab fa-tiktok" style="color:#000"></i>
 TikTok
 </a>
 
@@ -272,29 +274,9 @@ Discord
 </div>
 
 <!-- TESTIMONI -->
-<section class="testimoni-section">
-<h4>⭐ Testimoni Pelanggan</h4>
-
-<div class="testimoni-list">
-<div class="testi-item">
-<div class="testi-name">R***i</div>
-<div class="testi-text">Fast respon, aman & terpercaya. Recommended!</div>
-<div class="testi-time">2 jam lalu</div>
+<div class="testimoni-container" id="testimoniContainer">
+<!-- Testi bakal muncul dari Supabase -->
 </div>
-
-<div class="testi-item">
-<div class="testi-name">A***a</div>
-<div class="testi-text">Admin ramah, proses cepat 👍</div>
-<div class="testi-time">Hari ini</div>
-</div>
-
-<div class="testi-item">
-<div class="testi-name">D***y</div>
-<div class="testi-text">Joki rapi dan sesuai request.</div>
-<div class="testi-time">Kemarin</div>
-</div>
-</div>
-</section>
 
 <footer class="footer">
 © 2026 XREZZKY STORE<br>
@@ -307,31 +289,56 @@ Terima kasih telah mempercayai layanan kami
 <div id="waModal" class="modal">
 <div class="modal-box animate__animated animate__zoomIn">
 <h3>Pilih Tujuan</h3>
-<p>Silakan pilih grup</p>
+<p>Silakan pilih grup yang ingin kamu masuki</p>
 
 <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="btn-choice bg-komunitas">
 <i class="fas fa-users"></i> Komunitas
 </a>
 
 <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="btn-choice bg-grup">
-<i class="fas fa-gamepad"></i> Grup JB All Game
+<i class="fas fa-gamepad"></i> Grup Jb all game
 </a>
 
 <div class="close-btn" onclick="closeModal()">Batal</div>
 </div>
 </div>
 
+<!-- Supabase JS -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.28.0/dist/supabase.min.js"></script>
+
 <script>
-function openModal(){
-    document.getElementById("waModal").style.display="flex";
+// Modal WA
+function openModal(e){ e.stopPropagation(); document.getElementById("waModal").style.display="flex";}
+function closeModal(){ document.getElementById("waModal").style.display="none";}
+window.onclick=function(e){ const modal=document.getElementById("waModal"); if(e.target===modal) closeModal();}
+
+// Supabase setup
+const supabaseUrl = 'https://hxamnrwimmirjckvxjgx.supabase.co';
+const supabaseKey = 'sb_publishable_01Icz2_9XjBXpQL8sxIo3w_nHz9foX2';
+const supabase = Supabase.createClient(supabaseUrl, supabaseKey);
+
+// Ambil testi realtime
+async function loadTestimoni(){
+    const { data, error } = await supabase.from('testimoni').select('*').order('created_at',{ascending:false});
+    const container = document.getElementById('testimoniContainer');
+    container.innerHTML = '';
+    if(error){ container.innerHTML='<p>Gagal memuat testi.</p>'; return; }
+    data.forEach(t=>{
+        const div = document.createElement('div');
+        div.className = 'testimoni-item';
+        div.innerHTML = `
+            <img src="${t.foto}" alt="Foto Testi">
+            <div class="testimoni-content">
+                <strong>${t.nama}</strong>
+                <p>${t.teks}</p>
+            </div>
+        `;
+        container.appendChild(div);
+    });
 }
-function closeModal(){
-    document.getElementById("waModal").style.display="none";
-}
-window.onclick=function(e){
-    const modal=document.getElementById("waModal");
-    if(e.target===modal) closeModal();
-}
+
+// Jalankan saat load
+loadTestimoni();
 </script>
 
 </body>
