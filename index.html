@@ -5,218 +5,224 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XREZZKY STORE | Digital Game Services</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
+:root{
+  --primary:#007bff;
+  --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
+  --dark:#1a1a1a;
+  --glass:rgba(255,255,255,.95);
+}
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family:Arial, sans-serif;
-  background:#f2f4f8;
+  font-family:Inter,-apple-system,sans-serif;
+  background:linear-gradient(135deg,#e0eafc,#cfdef3);
+  min-height:100vh;
   display:flex;
   justify-content:center;
+  align-items:center;
+  padding:20px;
 }
 .container{
   width:100%;
-  max-width:420px;
-  background:#fff;
-  padding:20px;
+  max-width:480px;
+  background:var(--glass);
+  backdrop-filter:blur(15px);
+  padding:30px 20px;
+  border-radius:25px;
+  box-shadow:0 15px 35px rgba(0,0,0,.1);
+  text-align:center;
 }
 
 /* HEADER */
 h1{
   margin:0;
-  text-align:center;
-  font-size:24px;
+  font-size:26px;
+  font-weight:800;
 }
-.tagline{
-  text-align:center;
-  font-size:13px;
+.desc{
+  font-size:14px;
   color:#555;
-  margin-bottom:18px;
+  margin:10px 0 20px;
+}
+.divider{
+  width:50px;
+  height:4px;
+  background:var(--primary);
+  margin:15px auto;
+  border-radius:10px;
 }
 
-/* BUTTON WA */
-.btn-wa{
+/* BUTTON */
+.btn-main{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:8px;
-  background:#25D366;
-  color:#fff;
+  gap:10px;
+  width:100%;
   padding:14px;
   border-radius:12px;
   text-decoration:none;
-  font-weight:bold;
-  margin-bottom:16px;
+  font-weight:600;
+  color:#fff;
+  margin-bottom:12px;
+}
+.btn-wa{background:#25D366}
+.btn-info{background:var(--gradient);animation:pulse 3s infinite}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.03)}
+  100%{transform:scale(1)}
 }
 
-/* INFO BOARD */
-.info-board{
-  background:#f9f9f9;
-  border-left:5px solid #25D366;
-  padding:12px;
-  border-radius:10px;
-  font-size:13px;
-  margin-bottom:20px;
-}
-
-/* SECTION */
+/* SERVICE LIST */
 .section-title{
-  font-weight:bold;
+  margin:25px 0 15px;
   font-size:14px;
-  margin:18px 0 10px;
+  color:#444;
+  font-weight:700;
 }
-
-/* TESTIMONI */
-.testi-list{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
+.service-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
 }
-.testi-card{
-  display:flex;
-  gap:10px;
+.service-card{
+  background:#fff;
+  border-radius:18px;
   padding:10px;
-  border:1px solid #eee;
-  border-radius:12px;
-}
-.testi-card img{
-  width:60px;
-  height:60px;
-  object-fit:cover;
-  border-radius:8px;
+  text-align:left;
+  box-shadow:0 8px 20px rgba(0,0,0,.05);
+  transition:.3s;
   cursor:pointer;
 }
-.testi-text{
-  font-size:12px;
+.service-card:hover{
+  transform:translateY(-4px);
 }
-.testi-text strong{
+.service-card img{
+  width:100%;
+  height:110px;
+  object-fit:cover;
+  border-radius:12px;
+}
+.service-card strong{
   display:block;
+  margin-top:8px;
+  font-size:13px;
 }
-.testi-text small{
+.service-card small{
+  font-size:12px;
   color:#666;
 }
 
-/* SOSIAL */
-.social{
+/* SOCIAL */
+.grid-container{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-top:15px;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  margin-top:20px;
 }
-.social a{
+.grid-item{
+  background:#fff;
+  padding:15px;
+  border-radius:18px;
+  font-size:13px;
+  font-weight:600;
+  border:1px solid #eee;
   display:flex;
+  flex-direction:column;
   align-items:center;
   gap:8px;
-  padding:12px;
-  border-radius:10px;
   text-decoration:none;
   color:#000;
-  border:1px solid #eee;
-  font-weight:bold;
-  font-size:13px;
 }
 
 /* FOOTER */
 .footer{
-  text-align:center;
   font-size:11px;
-  color:#777;
-  margin-top:25px;
-}
-
-/* MODAL FOTO */
-#imgModal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.85);
-  justify-content:center;
-  align-items:center;
-  z-index:999;
-}
-#imgModal img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:12px;
+  color:#888;
+  margin-top:30px;
 }
 </style>
 </head>
 <body>
 
-<div class="container">
+<div class="container animate__animated animate__fadeInUp">
 
 <h1>XREZZKY STORE</h1>
-<div class="tagline">Layanan Digital Game • Aman • Cepat • Terpercaya</div>
+<div class="divider"></div>
+<p class="desc">Layanan digital game profesional • Aman • Cepat • Terpercaya</p>
 
-<a class="btn-wa" href="https://wa.me/6288293064112">
+<a href="https://wa.me/6288293064112" class="btn-main btn-wa">
 <i class="fab fa-whatsapp"></i> Chat Admin Sekarang
 </a>
 
-<div class="info-board">
-📢 OPEN JOKI & GIFT ALL GAME<br>
-⚡ Proses cepat & aman<br>
-💯 Testimoni real (scroll ke bawah)
+<a href="#" class="btn-main btn-info">
+<i class="fas fa-bolt"></i> Info & Stok Hari Ini
+</a>
+
+<div class="section-title">Layanan Joki & Gift</div>
+
+<div class="service-list">
+
+<!-- CARD 1 -->
+<div class="service-card" onclick="order('Joki Rank')">
+<img src="https://i.imgur.com/fGoF8rk.jpeg">
+<strong>Joki Rank</strong>
+<small>Push rank aman & terkontrol</small>
 </div>
 
-<div class="section-title">Testimoni Pelanggan</div>
-<div class="testi-list">
-
-<!-- TESTI 1 -->
-<div class="testi-card">
-<img src="https://i.imgur.com/fGoF8rk.jpeg" onclick="openImage(this)">
-<div class="testi-text">
-<strong>User A</strong>
-<small>Gift Item</small>
-<p>Admin fast respon, aman, recommended.</p>
-</div>
+<!-- CARD 2 -->
+<div class="service-card" onclick="order('Joki Quest')">
+<img src="https://i.imgur.com/2yaf2wb.jpeg">
+<strong>Joki Quest</strong>
+<small>Quest & mission harian</small>
 </div>
 
-<!-- TESTI 2 -->
-<div class="testi-card">
-<img src="https://i.supaimg.com/644a0148-6642-4a03-af44-f88383213271.jpg" onclick="openImage(this)">
-<div class="testi-text">
-<strong>User B</strong>
-<small>Joki Game</small>
-<p>Proses sesuai request, ga ribet.</p>
+<!-- CARD 3 -->
+<div class="service-card" onclick="order('Gift Item')">
+<img src="https://i.imgur.com/644a0148-6642-4a03-af44-f88383213271.jpg">
+<strong>Gift Item</strong>
+<small>Gift cepat & legal</small>
 </div>
+
+<!-- CARD 4 -->
+<div class="service-card" onclick="order('Gift Pass')">
+<img src="https://i.imgur.com/XpYQFZQ.jpeg">
+<strong>Gift Pass</strong>
+<small>Pass & bundle resmi</small>
 </div>
 
 </div>
 
 <div class="section-title">Komunitas & Sosial</div>
-<div class="social">
-<a href="#">
-<i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp
-</a>
-<a href="https://www.instagram.com/xrezzkystore">
-<i class="fab fa-instagram" style="color:#E1306C"></i> Instagram
-</a>
-<a href="https://www.tiktok.com/@xrezzky.store">
-<i class="fab fa-tiktok"></i> TikTok
-</a>
-<a href="https://discord.gg/xDfZJHb2yK">
-<i class="fab fa-discord" style="color:#5865F2"></i> Discord
-</a>
+
+<div class="grid-container">
+<a href="#" class="grid-item"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
+<a href="https://www.instagram.com/xrezzkystore" class="grid-item"><i class="fab fa-instagram" style="color:#E1306C"></i> Instagram</a>
+<a href="https://www.tiktok.com/@xrezzky.store" class="grid-item"><i class="fab fa-tiktok"></i> TikTok</a>
+<a href="https://discord.gg/xDfZJHb2yK" class="grid-item"><i class="fab fa-discord" style="color:#5865F2"></i> Discord</a>
 </div>
 
 <div class="footer">
 © 2026 XREZZKY STORE<br>
-Terima kasih sudah percaya 🙏
+Terima kasih sudah percaya
 </div>
 
-</div>
-
-<!-- MODAL GAMBAR -->
-<div id="imgModal" onclick="this.style.display='none'">
-<img id="modalImg">
 </div>
 
 <script>
-function openImage(el){
-  document.getElementById("modalImg").src = el.src;
-  document.getElementById("imgModal").style.display = "flex";
+function order(service){
+  const text = encodeURIComponent(
+    "Halo Admin, saya mau order " + service +
+    ". Mohon info harga & prosesnya."
+  );
+  window.location.href =
+    "https://wa.me/6288293064112?text=" + text;
 }
 </script>
 
