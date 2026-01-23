@@ -5,353 +5,232 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XREZZKY STORE | Digital Game Services</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-:root {
-    --primary:#007bff;
-    --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
-    --dark:#1a1a1a;
-    --glass:rgba(255,255,255,.95);
+:root{
+  --primary:#007bff;
+  --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
 }
 
 body{
-    margin:0;
-    font-family:Inter,-apple-system,sans-serif;
-    background:linear-gradient(135deg,#e0eafc,#cfdef3);
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#e0eafc,#cfdef3);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
 }
 
 .container{
-    width:100%;
-    max-width:480px;
-    background:var(--glass);
-    backdrop-filter:blur(15px);
-    padding:30px 20px;
-    border-radius:25px;
-    box-shadow:0 15px 35px rgba(0,0,0,.1);
-    text-align:center;
+  width:100%;
+  max-width:480px;
+  background:#fff;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 15px 30px rgba(0,0,0,.1);
+  text-align:center;
 }
 
-h1{
-    margin:0;
-    font-size:26px;
-    font-weight:800;
-    color:var(--dark);
-}
+/* HEADER */
+h1{margin:0;font-size:24px;}
+.desc{font-size:14px;color:#555;margin:10px 0 20px}
 
-.divider{
-    width:50px;
-    height:4px;
-    background:var(--primary);
-    margin:15px auto 20px;
-    border-radius:10px;
-}
-
-.desc{
-    font-size:14px;
-    color:#555;
-    margin-bottom:25px;
-}
-
-/* INFO BOARD */
+/* INFO */
 .info-board{
-    background:#fff;
-    border-left:5px solid var(--primary);
-    padding:15px;
-    border-radius:15px;
-    font-size:13px;
-    color:#444;
-    margin-bottom:20px;
-    text-align:left;
-    min-height:60px;
+  background:#f9f9f9;
+  border-left:5px solid var(--primary);
+  padding:15px;
+  border-radius:12px;
+  font-size:13px;
+  text-align:left;
+  margin-bottom:20px;
 }
 
-/* BUTTON UTAMA */
-.btn-main{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    width:100%;
-    padding:14px;
-    border-radius:12px;
-    text-decoration:none;
-    font-weight:600;
-    color:#fff;
-    margin-bottom:12px;
-    transition:.3s;
-    box-sizing:border-box;
+/* BUTTON */
+.btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:14px;
+  border-radius:12px;
+  color:#fff;
+  text-decoration:none;
+  font-weight:bold;
+  margin-bottom:10px;
 }
-
 .btn-wa{background:#222;}
-.btn-info{background:var(--gradient);animation:pulse 3s infinite;}
+.btn-info{background:var(--gradient);}
+.btn-testi{background:#ff7f50;cursor:pointer}
 
-@keyframes pulse{
-    0%{transform:scale(1)}
-    50%{transform:scale(1.02)}
-    100%{transform:scale(1)}
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:15px;
 }
-
-/* GRID KOMUNITAS */
-.grid-container{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
-    margin-top:20px;
+.grid a, .grid button{
+  border:none;
+  background:#f9f9f9;
+  border-radius:14px;
+  padding:15px;
+  font-weight:bold;
+  cursor:pointer;
 }
-
-.grid-item{
-    background:#fff;
-    padding:15px;
-    border-radius:18px;
-    font-size:13px;
-    font-weight:600;
-    color:#333;
-    border:1px solid #eee;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.grid-item i{
-    font-size:22px;
-    margin-bottom:8px;
-}
-
-.grid-item:hover{
-    transform:translateY(-3px);
-    border-color:var(--primary);
-}
+.grid i{font-size:22px;margin-bottom:6px}
 
 /* MODAL */
 .modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.5);
-    backdrop-filter:blur(4px);
-    z-index:999;
-    justify-content:center;
-    align-items:center;
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  justify-content:center;
+  align-items:center;
+  z-index:999;
 }
-
 .modal-box{
-    background:#fff;
-    width:85%;
-    max-width:340px;
-    padding:25px;
-    border-radius:20px;
-    text-align:center;
-    max-height:70vh;
-    overflow-y:auto;
+  background:#fff;
+  width:90%;
+  max-width:360px;
+  max-height:70vh;
+  overflow-y:auto;
+  border-radius:18px;
+  padding:20px;
 }
 
-/* MODAL BUTTON */
-.btn-choice{
-    display:block;
-    padding:12px;
-    border-radius:10px;
-    color:#fff;
-    text-decoration:none;
-    margin:10px 0;
-    font-weight:600;
+/* TESTIMONI */
+.testimoni{
+  display:flex;
+  gap:10px;
+  margin-bottom:12px;
+  text-align:left;
+}
+.testimoni img{
+  width:50px;
+  height:50px;
+  border-radius:8px;
+  object-fit:cover;
+}
+.testimoni strong{display:block;font-size:13px}
+
+.close{
+  font-size:12px;
+  color:#777;
+  margin-top:10px;
+  cursor:pointer;
 }
 
-.bg-komunitas{background:#25D366;}
-.bg-grup{background:var(--primary);}
-.bg-testimoni{background:#ff7f50;} /* warna testi */
-
-/* TESTIMONI ITEM */
-.testimoni-item{
-    display:flex;
-    gap:10px;
-    align-items:flex-start;
-    border:1px solid #eee;
-    padding:10px;
-    border-radius:12px;
-    margin-bottom:10px;
-    text-align:left;
-}
-
-.testimoni-item img{
-    width:50px;
-    height:50px;
-    border-radius:8px;
-    object-fit:cover;
-}
-
-.testimoni-content{
-    flex:1;
-    font-size:13px;
-}
-
-.testimoni-content strong{
-    display:block;
-    margin-bottom:4px;
-    color:#000;
-}
-
-.close-btn{
-    font-size:12px;
-    color:#888;
-    margin-top:15px;
-    cursor:pointer;
-    text-decoration:underline;
-}
-
-.footer{
-    font-size:11px;
-    color:#888;
-    margin-top:35px;
+footer{
+  font-size:11px;
+  color:#777;
+  margin-top:20px;
 }
 </style>
 </head>
+
 <body>
 
-<div class="container animate__animated animate__fadeIn">
+<div class="container">
 
-<header>
 <h1>XREZZKY STORE</h1>
-<div class="divider"></div>
-<p class="desc">Layanan digital game profesional. Aman, konsisten, dan terkontrol.</p>
-</header>
+<p class="desc">Jasa digital game aman & terpercaya</p>
 
 <!-- INFO BOARD -->
-<div class="info-board" id="infoBoard"></div>
+<div class="info-board">
+🔥 OPEN JOKI & GIFT ALL GAME  
+<br>⏱ Fast respon  
+<br>✅ Trusted & aman
+</div>
 
-<!-- BUTTON UTAMA -->
-<div style="display:flex; flex-direction:column; gap:12px; margin-bottom:20px;">
-<a href="https://wa.me/6288293064112" class="btn-main btn-wa">
-<i class="fab fa-whatsapp"></i> Kontak Resmi Admin
+<a class="btn btn-wa" href="https://wa.me/6288293064112">
+<i class="fab fa-whatsapp"></i> Kontak Admin
 </a>
 
-<a href="https://whatsapp.com/channel/0029Vb6wSkq05MUaGz8NkL26" class="btn-main btn-info">
-<i class="fas fa-certificate"></i> Info Stok
+<a class="btn btn-info" href="#">
+<i class="fas fa-info-circle"></i> Info Stok
 </a>
 
-<button class="btn-main bg-testimoni" onclick="openTestiModal()">
+<div class="btn btn-testi" onclick="openTesti()">
 <i class="fas fa-star"></i> Testimoni
-</button>
 </div>
 
-<h4 style="margin-top:15px;color:#444;font-size:14px">Platform & Komunitas</h4>
-
-<div class="grid-container">
-<button class="grid-item" onclick="openModal(event)">
-<i class="fab fa-whatsapp" style="color:#25D366"></i>
-Komunitas & Grup
+<div class="grid">
+<button onclick="openGrup()">
+<i class="fab fa-whatsapp"></i><br>Grup
 </button>
 
-<a href="https://www.instagram.com/xrezzkystore" class="grid-item">
-<i class="fab fa-instagram" style="color:#E1306C"></i>
-Instagram
+<a href="https://instagram.com/xrezzkystore">
+<i class="fab fa-instagram"></i><br>Instagram
 </a>
 
-<a href="https://www.tiktok.com/@xrezzky.store" class="grid-item">
-<i class="fab fa-tiktok" style="color:#000"></i>
-TikTok
+<a href="https://tiktok.com/@xrezzky.store">
+<i class="fab fa-tiktok"></i><br>TikTok
 </a>
 
-<a href="https://discord.gg/xDfZJHb2yK" class="grid-item">
-<i class="fab fa-discord" style="color:#5865F2"></i>
-Discord
+<a href="#">
+<i class="fab fa-discord"></i><br>Discord
 </a>
 </div>
 
-<footer class="footer">
-© 2026 XREZZKY STORE<br>
-Terima kasih telah mempercayai layanan kami
+<footer>
+© 2026 XREZZKY STORE
 </footer>
 
 </div>
 
-<!-- MODAL KOMUNITAS & GRUP -->
-<div id="waModal" class="modal">
-<div class="modal-box animate__animated animate__zoomIn">
-<h3>Pilih Tujuan</h3>
-<p>Silakan pilih grup yang ingin kamu masuki</p>
-
-<a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="btn-choice bg-komunitas">
-<i class="fas fa-users"></i> Komunitas
-</a>
-
-<a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="btn-choice bg-grup">
-<i class="fas fa-gamepad"></i> Grup Jb all game
-</a>
-
-<div class="close-btn" onclick="closeModal()">Batal</div>
-</div>
-</div>
-
 <!-- MODAL TESTIMONI -->
-<div id="testiModal" class="modal">
-<div class="modal-box animate__animated animate__zoomIn">
-<h3>Testimoni Pelanggan</h3>
-<div id="testimoniContainerModal"></div>
-<div class="close-btn" onclick="closeTestiModal()">Tutup</div>
+<div class="modal" id="modalTesti">
+<div class="modal-box">
+
+<h3>Testimoni</h3>
+
+<!-- ====== TESTIMONI ISI SENDIRI DI SINI ====== -->
+
+<div class="testimoni">
+<img src="https://i.imgur.com/fGoF8rk.jpeg">
+<div>
+<strong>R***</strong>
+Pelayanan cepat, trusted!
 </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<div class="testimoni">
+<img src="https://i.imgur.com/fGoF8rk.jpeg">
+<div>
+<strong>G****</strong>
+Admin ramah, recommended 👍
+</div>
+</div>
+
+<!-- ====== BATAS TESTIMONI ====== -->
+
+<div class="close" onclick="closeTesti()">Tutup</div>
+</div>
+</div>
+
+<!-- MODAL GRUP -->
+<div class="modal" id="modalGrup">
+<div class="modal-box">
+<h3>Pilih Grup</h3>
+
+<a class="btn btn-info" href="https://chat.whatsapp.com/xxxx">Komunitas</a>
+<a class="btn btn-info" href="https://chat.whatsapp.com/yyyy">Grup JB</a>
+
+<div class="close" onclick="closeGrup()">Tutup</div>
+</div>
+</div>
+
 <script>
-// Supabase client
-const supabaseUrl = 'https://hxamnrwimmirjckvxjgx.supabase.co';
-const supabaseKey = 'sb_publishable_01Icz2_9XjBXpQL8sxIo3w_nHz9foX2';
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-// Load Info Board
-async function loadInfo(){
-  const {data,error} = await supabase.from('info').select('*').limit(1).single();
-  if(error) return console.error(error);
-  if(data) document.getElementById('infoBoard').innerHTML = data.text;
-}
-
-// Load Testimoni
-async function loadTestimoni(){
-  const {data,error} = await supabase.from('testimoni').select('*').order('id',{ascending:true});
-  if(error) return console.error(error);
-  const container = document.getElementById('testimoniContainer');
-  container.innerHTML = data.map(t=>`
-    <div class="testimoni-item">
-      <img src="${t.photo}" alt="Foto"/>
-      <div class="testimoni-content">
-        <strong>${t.name}</strong>
-        ${t.content}
-      </div>
-    </div>
-  `).join('');
-}
-
-// Open modal
-function openModal(e){ e.stopPropagation(); document.getElementById("waModal").style.display="flex";}
-function closeModal(){ document.getElementById("waModal").style.display="none";}
-window.onclick=function(e){ const modal=document.getElementById("waModal"); if(e.target===modal) closeModal();}
-
-// Testimoni Modal
-function openTestiModal(){
-  const modal=document.getElementById("testiModal");
-  modal.style.display="flex";
-
-  const source=document.getElementById("testimoniContainer");
-  const target=document.getElementById("testimoniContainerModal");
-  target.innerHTML=source.innerHTML;
-}
-function closeTestiModal(){ document.getElementById("testiModal").style.display="none";}
-
-// Load data on page load
-window.addEventListener('DOMContentLoaded', ()=>{
-  loadInfo();
-  loadTestimoni();
-});
+function openTesti(){document.getElementById("modalTesti").style.display="flex"}
+function closeTesti(){document.getElementById("modalTesti").style.display="none"}
+function openGrup(){document.getElementById("modalGrup").style.display="flex"}
+function closeGrup(){document.getElementById("modalGrup").style.display="none"}
 </script>
+
 </body>
 </html>
