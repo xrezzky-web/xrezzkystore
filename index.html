@@ -2,235 +2,246 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XREZZKY STORE | Digital Game Services</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>XRezzky Store</title>
 
 <style>
-:root{
-  --primary:#007bff;
-  --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 16px;
+  background: #020617;
+  color: #e5e7eb;
+  font-family: system-ui, sans-serif;
 }
 
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(135deg,#e0eafc,#cfdef3);
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
+/* ===== HEADER ===== */
+h1 { margin: 0 0 6px }
+p.desc { color:#94a3b8; margin-top:0 }
+
+/* ===== BUTTON ===== */
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 14px;
+  margin-top: 10px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
 }
 
-.container{
-  width:100%;
-  max-width:480px;
-  background:#fff;
-  border-radius:20px;
-  padding:25px;
-  box-shadow:0 15px 30px rgba(0,0,0,.1);
-  text-align:center;
+.ig { background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af); }
+.wa { background: #25D366; color:#062e1c; }
+
+/* ===== SECTION ===== */
+.section {
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 18px;
+  padding: 14px;
+  margin-top: 18px;
 }
 
-/* HEADER */
-h1{margin:0;font-size:24px;}
-.desc{font-size:14px;color:#555;margin:10px 0 20px}
-
-/* INFO */
-.info-board{
-  background:#f9f9f9;
-  border-left:5px solid var(--primary);
-  padding:15px;
-  border-radius:12px;
-  font-size:13px;
-  text-align:left;
-  margin-bottom:20px;
+/* ===== FILTER ===== */
+.filter {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  overflow-x: auto;
+}
+.filter button {
+  background: #1e293b;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+.filter button.active {
+  background: #2563eb;
 }
 
-/* BUTTON */
-.btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  padding:14px;
-  border-radius:12px;
-  color:#fff;
-  text-decoration:none;
-  font-weight:bold;
-  margin-bottom:10px;
-}
-.btn-wa{background:#222;}
-.btn-info{background:var(--gradient);}
-.btn-testi{background:#ff7f50;cursor:pointer}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin-top:15px;
-}
-.grid a, .grid button{
-  border:none;
-  background:#f9f9f9;
-  border-radius:14px;
-  padding:15px;
-  font-weight:bold;
-  cursor:pointer;
-}
-.grid i{font-size:22px;margin-bottom:6px}
-
-/* MODAL */
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.5);
-  justify-content:center;
-  align-items:center;
-  z-index:999;
-}
-.modal-box{
-  background:#fff;
-  width:90%;
-  max-width:360px;
-  max-height:70vh;
-  overflow-y:auto;
-  border-radius:18px;
-  padding:20px;
+/* ===== TESTI GRID ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px,1fr));
+  gap: 10px;
 }
 
-/* TESTIMONI */
-.testimoni{
-  display:flex;
-  gap:10px;
-  margin-bottom:12px;
-  text-align:left;
+.testi {
+  position: relative;
+  cursor: pointer;
 }
-.testimoni img{
-  width:50px;
-  height:50px;
-  border-radius:8px;
-  object-fit:cover;
-}
-.testimoni strong{display:block;font-size:13px}
-
-.close{
-  font-size:12px;
-  color:#777;
-  margin-top:10px;
-  cursor:pointer;
+.testi img {
+  width: 100%;
+  border-radius: 12px;
 }
 
-footer{
-  font-size:11px;
-  color:#777;
-  margin-top:20px;
+/* WATERMARK */
+.watermark {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  font-size: 10px;
+  background: rgba(0,0,0,.6);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+/* ===== MODAL ===== */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-box {
+  background: #020617;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.modal-box img {
+  width: 100%;
+  border-radius: 14px;
+}
+
+.close {
+  text-align: right;
+  color: #38bdf8;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* DISABLE SAVE */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<h1>XRezzky Store</h1>
+<p class="desc">Jasa joki & gift • Aman • Trusted</p>
 
-<h1>XREZZKY STORE</h1>
-<p class="desc">Jasa digital game aman & terpercaya</p>
+<a class="btn ig" href="#">
+  Instagram
+</a>
 
-<!-- INFO BOARD -->
-<div class="info-board">
-🔥 OPEN JOKI & GIFT ALL GAME  
-<br>⏱ Fast respon  
-<br>✅ Trusted & aman
+<a class="btn wa" href="#">
+  WhatsApp
+</a>
+
+<!-- ===== KOMUNITAS ===== -->
+<div class="section">
+  <h3>Komunitas & Grup</h3>
+  <button class="btn" style="background:#1e293b" onclick="openKomunitas()">Lihat Grup</button>
 </div>
 
-<a class="btn btn-wa" href="https://wa.me/6288293064112">
-<i class="fab fa-whatsapp"></i> Kontak Admin
-</a>
-
-<a class="btn btn-info" href="#">
-<i class="fas fa-info-circle"></i> Info Stok
-</a>
-
-<div class="btn btn-testi" onclick="openTesti()">
-<i class="fas fa-star"></i> Testimoni
-</div>
-
-<div class="grid">
-<button onclick="openGrup()">
-<i class="fab fa-whatsapp"></i><br>Grup
-</button>
-
-<a href="https://instagram.com/xrezzkystore">
-<i class="fab fa-instagram"></i><br>Instagram
-</a>
-
-<a href="https://tiktok.com/@xrezzky.store">
-<i class="fab fa-tiktok"></i><br>TikTok
-</a>
-
-<a href="#">
-<i class="fab fa-discord"></i><br>Discord
-</a>
-</div>
-
-<footer>
-© 2026 XREZZKY STORE
-</footer>
-
-</div>
-
-<!-- MODAL TESTIMONI -->
-<div class="modal" id="modalTesti">
-<div class="modal-box">
-
+<!-- ===== TESTIMONI ===== -->
+<div class="section">
 <h3>Testimoni</h3>
 
-<!-- ====== TESTIMONI ISI SENDIRI DI SINI ====== -->
+<div class="filter">
+  <button class="active" onclick="filterTesti('all')">Semua</button>
+  <button onclick="filterTesti('joki')">Joki</button>
+  <button onclick="filterTesti('gift')">Gift</button>
+</div>
 
-<div class="testimoni">
-<img src="https://i.imgur.com/fGoF8rk.jpeg">
-<div>
-<strong>R***</strong>
-Pelayanan cepat, trusted!
+<div class="grid" id="grid">
+
+<!-- TESTI -->
+<div class="testi" data-kat="joki" data-time="20260123"
+onclick="openTesti(
+'testi1.jpg',
+'Joki Rank',
+'Rp50.000',
+'1 Jam',
+'⭐⭐⭐⭐⭐ Aman & cepat'
+)">
+<img src="testi1.jpg">
+<div class="watermark">xrezzky</div>
+</div>
+
+<div class="testi" data-kat="gift" data-time="20260122"
+onclick="openTesti(
+'testi2.jpg',
+'Gift Item',
+'Rp25.000',
+'Instan',
+'⭐⭐⭐⭐⭐ Trusted'
+)">
+<img src="testi2.jpg">
+<div class="watermark">xrezzky</div>
+</div>
+
 </div>
 </div>
 
-<div class="testimoni">
-<img src="https://i.imgur.com/fGoF8rk.jpeg">
-<div>
-<strong>G****</strong>
-Admin ramah, recommended 👍
-</div>
-</div>
-
-<!-- ====== BATAS TESTIMONI ====== -->
-
-<div class="close" onclick="closeTesti()">Tutup</div>
-</div>
+<!-- ===== MODAL TESTI ===== -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="close" onclick="closeModal()">Tutup ✖</div>
+    <img id="mImg">
+    <p><b>Jenis:</b> <span id="mJenis"></span></p>
+    <p><b>Harga:</b> <span id="mHarga"></span></p>
+    <p><b>Durasi:</b> <span id="mDurasi"></span></p>
+    <p><b>Review:</b> <span id="mReview"></span></p>
+  </div>
 </div>
 
-<!-- MODAL GRUP -->
-<div class="modal" id="modalGrup">
-<div class="modal-box">
-<h3>Pilih Grup</h3>
-
-<a class="btn btn-info" href="https://chat.whatsapp.com/xxxx">Komunitas</a>
-<a class="btn btn-info" href="https://chat.whatsapp.com/yyyy">Grup JB</a>
-
-<div class="close" onclick="closeGrup()">Tutup</div>
-</div>
+<!-- ===== MODAL KOMUNITAS ===== -->
+<div class="modal" id="komunitas">
+  <div class="modal-box">
+    <div class="close" onclick="closeKomunitas()">Tutup ✖</div>
+    <p>📌 Grup WhatsApp Joki</p>
+    <p>📌 Grup Diskusi Dead Rails</p>
+    <p>📌 Grup Testimoni</p>
+  </div>
 </div>
 
 <script>
-function openTesti(){document.getElementById("modalTesti").style.display="flex"}
-function closeTesti(){document.getElementById("modalTesti").style.display="none"}
-function openGrup(){document.getElementById("modalGrup").style.display="flex"}
-function closeGrup(){document.getElementById("modalGrup").style.display="none"}
+// SORT
+const grid = document.getElementById("grid");
+[...grid.children]
+.sort((a,b)=>b.dataset.time - a.dataset.time)
+.forEach(e=>grid.appendChild(e));
+
+// FILTER
+function filterTesti(k){
+  document.querySelectorAll('.filter button').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.testi').forEach(t=>{
+    t.style.display = (k==='all'||t.dataset.kat===k)?'block':'none';
+  });
+}
+
+// MODAL TESTI
+function openTesti(img,j,h,d,r){
+  modal.style.display='flex';
+  mImg.src=img;
+  mJenis.innerText=j;
+  mHarga.innerText=h;
+  mDurasi.innerText=d;
+  mReview.innerText=r;
+}
+function closeModal(){ modal.style.display='none'; }
+
+// KOMUNITAS
+function openKomunitas(){ komunitas.style.display='flex'; }
+function closeKomunitas(){ komunitas.style.display='none'; }
 </script>
 
 </body>
-</html>
+  </html>
