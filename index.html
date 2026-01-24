@@ -72,66 +72,26 @@ h1{text-align:center;margin:0}
   margin-top:10px;
   transition:.25s;
 }
-.btn-wa{
-  background:linear-gradient(135deg,var(--dark1),var(--dark2));
-}
-.btn-info{
-  background:linear-gradient(135deg,#00c6ff,#0072ff);
-}
-.btn:hover{
-  transform:translateY(-2px);
-  opacity:.95;
-}
+.btn-wa{background:linear-gradient(135deg,var(--dark1),var(--dark2));}
+.btn-info{background:linear-gradient(135deg,#00c6ff,#0072ff);}
+.btn:hover{transform:translateY(-2px);opacity:.95;}
 
 /* SECTION */
-.section-title{
-  margin:26px 0 12px;
-  font-size:15px;
-  color:#444;
-}
+.section-title{margin:26px 0 12px;font-size:15px;color:#444;}
 
 /* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-}
-.grid-item{
-  background:#fff;
-  border:1px solid #eee;
-  border-radius:18px;
-  padding:14px;
-  text-align:center;
-  font-size:13px;
-  font-weight:600;
-  color:#000;
-  cursor:pointer;
-  transition:.25s;
-}
-.grid-item i{
-  font-size:22px;
-  margin-bottom:6px;
-}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.grid-item{background:#fff;border:1px solid #eee;border-radius:18px;padding:14px;text-align:center;font-size:13px;font-weight:600;color:#000;cursor:pointer;transition:.25s;}
+.grid-item i{font-size:22px;margin-bottom:6px;}
 .grid-item:hover{transform:translateY(-3px)}
 
 /* LAYANAN */
-.services{display:grid;gap:18px}
-.service{
-  border:1px solid #eee;
-  border-radius:20px;
-  padding:12px;
-}
-.service h3{
-  font-size:15px;
-  margin:10px 0;
-}
+.services{display:grid;gap:18px;}
+.service{border:1px solid #eee;border-radius:20px;padding:12px;}
+.service h3{font-size:15px;margin:10px 0;}
 
-/* FOTO AUTO RAPI */
-.photos{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:8px;
-}
+/* FOTO GRID */
+.photos{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
 .photos img{
   width:100%;
   height:140px;
@@ -158,42 +118,34 @@ h1{text-align:center;margin:0}
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.55);
+  background:rgba(0,0,0,.65);
   justify-content:center;
   align-items:center;
   z-index:999;
 }
 .modal-box{
   background:#fff;
-  width:85%;
-  max-width:360px;
   padding:16px;
   border-radius:22px;
   animation:zoom .25s ease;
+  max-width:90vw;
+  max-height:90vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 .modal-box img{
-  width:100%;
+  max-width:100%;
+  max-height:100%;
   border-radius:14px;
 }
-.close{
-  text-align:center;
-  font-size:13px;
-  color:#777;
-  margin-top:10px;
-  cursor:pointer;
-}
-.choice{
-  display:block;
-  margin:10px 0;
-  padding:12px;
-  border-radius:12px;
-  color:#fff;
-  text-decoration:none;
-  text-align:center;
-  font-weight:600;
-}
-.bg-wa{background:#25D366}
-.bg-grup{background:var(--primary)}
+
+/* GROUP MODAL */
+.choice{display:block;margin:10px 0;padding:12px;border-radius:12px;color:#fff;text-decoration:none;text-align:center;font-weight:600;}
+.bg-wa{background:#25D366;}
+.bg-grup{background:var(--primary);}
+.close{margin-top:10px;text-align:center;font-size:13px;color:#777;cursor:pointer;}
+
 </style>
 </head>
 
@@ -229,7 +181,7 @@ h1{text-align:center;margin:0}
     Instagram
   </a>
   <a href="#" class="grid-item">
-    <i class="fab fa-tiktok" style="color:#000"></i>
+    <i class="fab fa-tiktok"></i>
     TikTok
   </a>
   <a href="#" class="grid-item">
@@ -244,12 +196,10 @@ h1{text-align:center;margin:0}
 
   <div class="service">
     <div class="photos">
-      <img src="https://i.ibb.co.com/JwHrC44z/XREZZKY-STORE-20260124-220857-0000.webp" onclick="openImg(this.src)">
+      <img src="https://i.supaimg.com/5a53e524-000c-4195-9921-cd0da270a4ba.png" onclick="openImg(this.src)">
     </div>
     <h3>Jasa joki & gift Dead Rails</h3>
-    <button onclick="pesan(this)" data-pesan="Halo admin, saya mau pesan Jasa Joki & gift. Mohon kirimkan listnya 🙏">
-      Pesan Sekarang
-    </button>
+    <button onclick="pesan(this)" data-pesan="Halo admin, saya mau pesan Jasa Joki & Gift.">Pesan Sekarang</button>
   </div>
 
 </div>
@@ -259,13 +209,12 @@ h1{text-align:center;margin:0}
 <div id="imgModal" class="modal" onclick="closeImg()">
   <div class="modal-box">
     <img id="modalImg">
-    <div class="close" onclick="closeImg()">Tutup</div>
   </div>
 </div>
 
 <!-- MODAL GROUP -->
 <div id="groupModal" class="modal" onclick="closeGroup()">
-  <div class="modal-box">
+  <div class="modal-box" style="flex-direction:column;">
     <a href="#" class="choice bg-wa">Komunitas</a>
     <a href="#" class="choice bg-grup">Grup Jual Beli</a>
     <div class="close" onclick="closeGroup()">Tutup</div>
@@ -275,29 +224,17 @@ h1{text-align:center;margin:0}
 <script>
 const WA = "6288293064112";
 
-// Ambil modal & elemen
-const imgModal = document.getElementById("imgModal");
-const modalImg = document.getElementById("modalImg");
-const groupModal = document.getElementById("groupModal");
-
-// Modal Foto
 function openImg(src){
-  modalImg.src = src;
-  imgModal.style.display="flex";
+  document.getElementById("modalImg").src = src;
+  document.getElementById("imgModal").style.display="flex";
 }
 function closeImg(){
-  imgModal.style.display="none";
+  document.getElementById("imgModal").style.display="none";
 }
 
-// Modal Grup
-function openGroup(){
-  groupModal.style.display="flex";
-}
-function closeGroup(){
-  groupModal.style.display="none";
-}
+function openGroup(){ document.getElementById("groupModal").style.display="flex"; }
+function closeGroup(){ document.getElementById("groupModal").style.display="none"; }
 
-// Pesan otomatis WA
 function pesan(btn){
   const text = encodeURIComponent(btn.dataset.pesan);
   window.open(`https://wa.me/${WA}?text=${text}`,"_blank");
@@ -305,4 +242,4 @@ function pesan(btn){
 </script>
 
 </body>
-</html>
+  </html>
