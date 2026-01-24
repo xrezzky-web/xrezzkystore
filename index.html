@@ -89,7 +89,6 @@ h1{text-align:center;margin:0}
   color:#111;
   cursor:pointer;
   transition:.25s;
-  text-decoration:none;
 }
 .grid-item i{
   font-size:22px;
@@ -98,7 +97,6 @@ h1{text-align:center;margin:0}
 .grid-item:hover{transform:translateY(-3px)}
 
 /* LAYANAN */
-.services{display:grid;gap:20px}
 .service{
   border:1px solid #eee;
   border-radius:22px;
@@ -153,11 +151,6 @@ h1{text-align:center;margin:0}
   width:100%;
   border-radius:16px;
 }
-.modal-text{
-  font-size:13px;
-  color:#444;
-  margin-top:10px;
-}
 .close{
   text-align:center;
   font-size:13px;
@@ -165,6 +158,18 @@ h1{text-align:center;margin:0}
   margin-top:14px;
   cursor:pointer;
 }
+.choice{
+  display:block;
+  margin-top:10px;
+  padding:12px;
+  border-radius:14px;
+  text-align:center;
+  font-weight:600;
+  color:#fff;
+  text-decoration:none;
+}
+.bg-wa{background:#25D366}
+.bg-grup{background:var(--primary)}
 </style>
 </head>
 
@@ -190,64 +195,61 @@ h1{text-align:center;margin:0}
 
 <div class="section-title">Platform & Komunitas</div>
 <div class="grid">
-  <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="grid-item">
-    <i class="fab fa-whatsapp" style="color:#25D366"></i> Komunitas
-  </a>
+  <div class="grid-item" onclick="openGroup()">
+    <i class="fab fa-whatsapp" style="color:#25D366"></i>
+    Komunitas & Grup
+  </div>
   <a href="https://www.instagram.com/xrezzkystore" class="grid-item">
-    <i class="fab fa-instagram" style="color:#E1306C"></i> Instagram
+    <i class="fab fa-instagram" style="color:#E1306C"></i>
+    Instagram
   </a>
   <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item">
-    <i class="fab fa-tiktok"></i> TikTok
+    <i class="fab fa-tiktok"></i>
+    TikTok
   </a>
   <a href="https://discord.gg/xDfZJHb2yK" class="grid-item">
-    <i class="fab fa-discord" style="color:#5865F2"></i> Discord
+    <i class="fab fa-discord" style="color:#5865F2"></i>
+    Discord
   </a>
 </div>
 
 <div class="section-title">Layanan Kami</div>
-<div class="services">
 
-<!-- ===== LAYANAN 1 ===== -->
+<!-- ===== SATU LAYANAN SAJA ===== -->
 <div class="service">
   <div class="photos">
     <img src="https://i.supaimg.com/5a53e524-000c-4195-9921-cd0da270a4ba.png"
-         onclick="openImg(this.src,'Joki Rank','Estimasi 1–3 hari • Aman')">
+         onclick="openImg(this.src)">
   </div>
+
   <h3>Joki Rank</h3>
-  <p>Naik rank cepat & aman.</p>
+  <p>Naik rank cepat, aman, dan terpercaya.</p>
 
-  <!-- PESAN WA BISA DIUBAH DI SINI -->
-  <button 
-    data-pesan="Halo admin, saya mau pesan layanan Joki Rank. Mohon info harga & prosesnya."
-    onclick="orderWA(this)">
+  <!-- EDIT PESAN DI SINI SAJA -->
+  <button onclick="orderWA()">
     Pesan Sekarang
   </button>
 </div>
 
-<!-- ===== LAYANAN 2 (CONTOH) ===== -->
-<div class="service">
-  <div class="photos">
-    <img src="https://i.imgur.com/9QO6U8S.jpg"
-         onclick="openImg(this.src,'Gift Diamond','Legal & aman')">
-  </div>
-  <h3>Gift Diamond</h3>
-  <p>Top up diamond legal & cepat.</p>
-
-  <button 
-    data-pesan="Halo admin, saya mau pesan Gift Diamond. Game: ______."
-    onclick="orderWA(this)">
-    Pesan Sekarang
-  </button>
-</div>
-
-</div>
 </div>
 
 <!-- MODAL GAMBAR -->
 <div id="imgModal" class="modal" onclick="closeImg()">
   <div class="modal-box" onclick="event.stopPropagation()">
     <img id="modalImg">
-    <div id="modalText" class="modal-text"></div>
+    <div class="close">Tutup</div>
+  </div>
+</div>
+
+<!-- MODAL KOMUNITAS -->
+<div id="groupModal" class="modal" onclick="closeGroup()">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa">
+      Komunitas
+    </a>
+    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-grup">
+      Grup Jual Beli
+    </a>
     <div class="close">Tutup</div>
   </div>
 </div>
@@ -255,20 +257,28 @@ h1{text-align:center;margin:0}
 <script>
 const ADMIN_WA = "6288293064112";
 
-function orderWA(btn){
-  const text = btn.getAttribute("data-pesan");
-  const url = `https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(text)}`;
+/* EDIT PESAN OTOMATIS DI SINI */
+const PESAN_LAYANAN =
+"Halo admin, saya mau pesan layanan Joki Rank. Mohon info harga & prosesnya.";
+
+function orderWA(){
+  const url = `https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(PESAN_LAYANAN)}`;
   window.open(url,"_blank");
 }
 
-function openImg(src,title,detail){
+function openImg(src){
   document.getElementById("modalImg").src = src;
-  document.getElementById("modalText").innerHTML =
-    "<strong>"+title+"</strong><br>"+detail;
   document.getElementById("imgModal").style.display="flex";
 }
 function closeImg(){
   document.getElementById("imgModal").style.display="none";
+}
+
+function openGroup(){
+  document.getElementById("groupModal").style.display="flex";
+}
+function closeGroup(){
+  document.getElementById("groupModal").style.display="none";
 }
 </script>
 
