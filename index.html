@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -13,29 +17,54 @@
       color: #fff;
     }
 
-    h1 {
-      text-align: center;
-      margin: 30px 0;
+    h1, h2 {
+      margin: 0 0 10px;
     }
 
-    /* ===== CARD LAYANAN ===== */
+    p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      padding: 30px 20px;
+      text-align: center;
+      animation: fadeDown 0.8s ease;
+    }
+
+    /* ===== BUTTON ===== */
+    .btn {
+      display: inline-block;
+      margin: 8px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      background: #1f1f1f;
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+      border: 1px solid #333;
+    }
+
+    .btn:hover {
+      background: #00c3ff;
+      color: #000;
+    }
+
+    /* ===== SECTION ===== */
+    section {
+      padding: 30px 20px;
+      animation: fadeUp 0.8s ease;
+    }
+
+    /* ===== LAYANAN ===== */
     .service {
       background: #1a1a1a;
-      margin: 20px;
+      border-radius: 18px;
       padding: 20px;
-      border-radius: 15px;
-      animation: fadeUp 0.6s ease;
+      margin-bottom: 25px;
     }
 
-    .service h2 {
-      margin-top: 0;
-    }
-
-    .service p {
-      color: #ccc;
-    }
-
-    /* ===== GRID GAMBAR ===== */
     .service-images {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -47,7 +76,7 @@
       width: 100%;
       height: 160px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -56,26 +85,14 @@
       transform: scale(1.05);
     }
 
-    /* ===== TOMBOL ===== */
-    .btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 15px;
-      background: #00c3ff;
-      color: #000;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* ===== POPUP ===== */
+    /* ===== POPUP GAMBAR ===== */
     .popup {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.85);
       display: none;
       justify-content: center;
       align-items: center;
@@ -85,52 +102,93 @@
     .popup img {
       max-width: 90%;
       max-height: 80%;
-      border-radius: 10px;
+      border-radius: 12px;
     }
 
     .popup span {
       position: absolute;
       top: 20px;
       right: 25px;
-      font-size: 30px;
+      font-size: 32px;
       cursor: pointer;
     }
 
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 14px;
+    }
+
+    /* ===== ANIMASI ===== */
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 
 <body>
 
-<h1>Daftar Layanan</h1>
+<!-- ===== HEADER ===== -->
+<header>
+  <h1>Website Layanan</h1>
+  <p>Platform layanan digital cepat & terpercaya</p>
 
-<!-- ===== LAYANAN 1 ===== -->
-<div class="service">
-  <h2>Jasa Gift & Joki</h2>
-  <p>Layanan cepat, aman, dan terpercaya.</p>
+  <a href="#" class="btn">Instagram</a>
+  <a href="#" class="btn">WhatsApp</a>
+  <a href="#" class="btn">Discord</a>
+</header>
 
-  <div class="service-images">
-    <img src="https://i.supaimg.com/5a53e524-000c-4195-9921-cd0da270a4ba.png" onclick="openPopup(this.src)">
+<!-- ===== KOMUNITAS ===== -->
+<section>
+  <h2>Platform & Komunitas</h2>
+  <p>Gabung ke grup dan komunitas resmi kami.</p>
+
+  <a href="#" class="btn">Grup WhatsApp</a>
+  <a href="#" class="btn">Server Discord</a>
+</section>
+
+<!-- ===== LAYANAN (PALING BAWAH) ===== -->
+<section>
+  <h2>Layanan</h2>
+
+  <div class="service">
+    <h2>Jasa Gift & Joki</h2>
+    <p>Layanan cepat, aman, dan profesional.</p>
+
+    <div class="service-images">
+      <!-- FOTO 1 -->
+      <img src="https://i.supaimg.com/5a53e524-000c-4195-9921-cd0da270a4ba.png" onclick="openPopup(this.src)">
+
+      <!-- FOTO 2 (opsional) -->
+      <!-- <img src="link-foto-2.png" onclick="openPopup(this.src)"> -->
+
+      <!-- FOTO 3 (opsional) -->
+      <!-- <img src="link-foto-3.png" onclick="openPopup(this.src)"> -->
+
+      <!-- FOTO 4 (opsional) -->
+      <!-- <img src="link-foto-4.png" onclick="openPopup(this.src)"> -->
+    </div>
+
+    <a href="#" class="btn">Pesan Sekarang</a>
   </div>
 
-  <a href="#" class="btn">Pesan Sekarang</a>
-</div>
+</section>
 
-<!-- ===== POPUP GAMBAR ===== -->
+<!-- ===== POPUP ===== -->
 <div class="popup" id="popup">
   <span onclick="closePopup()">✕</span>
   <img id="popupImg">
 </div>
 
+<!-- ===== SCRIPT ===== -->
 <script>
   function openPopup(src) {
     document.getElementById("popup").style.display = "flex";
@@ -141,6 +199,10 @@
     document.getElementById("popup").style.display = "none";
   }
 </script>
+
+<footer>
+  © 2026 Website Layanan
+</footer>
 
 </body>
 </html>
