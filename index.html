@@ -114,10 +114,10 @@ h1{text-align:center;margin-bottom:10px;}
 }
 .photos img{
   width:100%;
-  height:140px;
-  object-fit:cover;
+  height:auto;
   border-radius:12px;
   cursor:pointer;
+  display:block;
 }
 
 /* PESAN */
@@ -133,7 +133,7 @@ h1{text-align:center;margin-bottom:10px;}
   cursor:pointer;
 }
 
-/* MODAL */
+/* MODAL GROUP */
 .modal{
   display:none;
   position:fixed;
@@ -148,25 +148,6 @@ h1{text-align:center;margin-bottom:10px;}
   padding:16px;
   border-radius:22px;
   animation:zoom .25s ease;
-  max-height:95vh;
-  max-width:95vw;
-  overflow:auto;
-}
-.modal-box img{
-  width:auto;
-  height:auto;
-  max-width:95vw;
-  max-height:95vh;
-  display:block;
-  margin:0 auto;
-  border-radius:14px;
-}
-.close{
-  text-align:center;
-  font-size:13px;
-  color:#777;
-  margin-top:10px;
-  cursor:pointer;
 }
 .choice{
   display:block;
@@ -229,7 +210,7 @@ h1{text-align:center;margin-bottom:10px;}
 
   <div class="service">
     <div class="photos">
-      <img src="https://i.ibb.co.com/JwHrC44z/XREZZKY-STORE-20260124-220857-0000.webp" onclick="openImg(this.src)">
+      <img src="https://i.ibb.co.com/JwHrC44z/XREZZKY-STORE-20260124-220857-0000.webp">
     </div>
     <h3>Jasa joki & gift Dead Rails</h3>
     <button onclick="pesan(this)" data-pesan="Halo admin, saya mau pesan *Jasa Joki & gift*. Mohon kirimkan listnya 🙏">
@@ -238,14 +219,6 @@ h1{text-align:center;margin-bottom:10px;}
   </div>
 
 </div>
-</div>
-
-<!-- MODAL GAMBAR -->
-<div id="imgModal" class="modal" onclick="closeImg()">
-  <div class="modal-box">
-    <img id="modalImg">
-    <div class="close">Tutup</div>
-  </div>
 </div>
 
 <!-- MODAL GROUP -->
@@ -259,16 +232,7 @@ h1{text-align:center;margin-bottom:10px;}
 
 <script>
 const WA = "6288293064112";
-
-const modalImg = document.getElementById("modalImg");
-const imgModal = document.getElementById("imgModal");
 const groupModal = document.getElementById("groupModal");
-
-function openImg(src){
-  modalImg.src = src;
-  imgModal.style.display="flex";
-}
-function closeImg(){ imgModal.style.display="none"; }
 
 function openGroup(){ groupModal.style.display="flex"; }
 function closeGroup(){ groupModal.style.display="none"; }
