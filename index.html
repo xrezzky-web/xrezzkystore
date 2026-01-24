@@ -29,25 +29,20 @@ body{
   max-width:480px;
   width:100%;
   background:#fff;
-  border-radius:26px;
+  border-radius:28px;
   padding:26px;
-  box-shadow:0 20px 50px rgba(0,0,0,.12);
-  animation:fade .7s ease;
+  box-shadow:0 25px 60px rgba(0,0,0,.15);
+  animation:fade .5s ease;
 }
 
 @keyframes fade{
   from{opacity:0;transform:translateY(12px)}
-  to{opacity:1;transform:none}
-}
-@keyframes zoom{
-  from{transform:scale(.9);opacity:0}
-  to{transform:scale(1);opacity:1}
+  to{opacity:1}
 }
 
 h1{text-align:center;margin:0}
 .desc{text-align:center;font-size:14px;color:#555;margin:10px 0 20px}
 
-/* INFO */
 .info-board{
   background:#f9fafb;
   border-left:5px solid var(--primary);
@@ -56,46 +51,45 @@ h1{text-align:center;margin:0}
   font-size:13px;
 }
 
-/* BUTTON */
 .btn{
   display:flex;
   align-items:center;
   justify-content:center;
   gap:8px;
   padding:14px;
-  border-radius:14px;
+  border-radius:16px;
   text-decoration:none;
   color:#fff;
   font-weight:600;
-  margin-top:10px;
+  margin-top:12px;
 }
 .btn-wa{background:#111}
 .btn-info{background:var(--gradient)}
 
-/* SECTION */
 .section-title{
-  margin:26px 0 12px;
+  margin:30px 0 14px;
   font-size:15px;
+  font-weight:700;
   color:#444;
 }
 
-/* GRID PLATFORM */
+/* PLATFORM */
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:14px;
 }
 .grid-item{
-  background:#fff;
   border:1px solid #eee;
   border-radius:18px;
   padding:14px;
   text-align:center;
   font-size:13px;
   font-weight:600;
-  color:#000;
+  color:#111;
   cursor:pointer;
   transition:.25s;
+  text-decoration:none;
 }
 .grid-item i{
   font-size:22px;
@@ -104,15 +98,12 @@ h1{text-align:center;margin:0}
 .grid-item:hover{transform:translateY(-3px)}
 
 /* LAYANAN */
-.services{display:grid;gap:18px}
+.services{display:grid;gap:20px}
 .service{
   border:1px solid #eee;
-  border-radius:20px;
-  padding:12px;
+  border-radius:22px;
+  padding:14px;
 }
-.service h3{font-size:15px;margin:10px 0}
-
-/* FOTO GRID */
 .photos{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -122,21 +113,23 @@ h1{text-align:center;margin:0}
   width:100%;
   height:120px;
   object-fit:cover;
-  border-radius:12px;
+  border-radius:14px;
   cursor:pointer;
 }
+.service h3{margin:12px 0 6px;font-size:15px}
+.service p{margin:0;font-size:13px;color:#555}
 
-/* PESAN */
-.service a{
-  display:block;
-  margin-top:10px;
+.service button{
+  width:100%;
+  margin-top:12px;
+  padding:12px;
+  border:none;
+  border-radius:14px;
   background:var(--primary);
   color:#fff;
-  text-align:center;
-  padding:10px;
-  border-radius:12px;
-  text-decoration:none;
+  font-weight:600;
   font-size:14px;
+  cursor:pointer;
 }
 
 /* MODAL */
@@ -144,24 +137,23 @@ h1{text-align:center;margin:0}
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.55);
+  background:rgba(0,0,0,.6);
   justify-content:center;
   align-items:center;
   z-index:999;
 }
 .modal-box{
   background:#fff;
-  width:85%;
+  width:86%;
   max-width:360px;
-  padding:16px;
+  padding:18px;
   border-radius:22px;
-  animation:zoom .25s ease;
 }
 .modal-box img{
   width:100%;
-  border-radius:14px;
+  border-radius:16px;
 }
-.modal-detail{
+.modal-text{
   font-size:13px;
   color:#444;
   margin-top:10px;
@@ -170,21 +162,9 @@ h1{text-align:center;margin:0}
   text-align:center;
   font-size:13px;
   color:#777;
-  margin-top:12px;
+  margin-top:14px;
   cursor:pointer;
 }
-.choice{
-  display:block;
-  margin:10px 0;
-  padding:12px;
-  border-radius:12px;
-  color:#fff;
-  text-decoration:none;
-  text-align:center;
-  font-weight:600;
-}
-.bg-wa{background:#25D366}
-.bg-grup{background:var(--primary)}
 </style>
 </head>
 
@@ -195,7 +175,7 @@ h1{text-align:center;margin:0}
 <p class="desc">Layanan digital game aman & terpercaya</p>
 
 <div class="info-board">
-📌 Ready joki & gift all game<br>
+📌 Joki & gift all game<br>
 ⚡ Proses cepat & aman<br>
 💬 Fast respon admin
 </div>
@@ -204,40 +184,60 @@ h1{text-align:center;margin:0}
 <i class="fab fa-whatsapp"></i> Kontak Admin
 </a>
 
-<a href="#" class="btn btn-info">
+<a href="https://whatsapp.com/channel/0029Vb6wSkq05MUaGz8NkL26" class="btn btn-info">
 <i class="fas fa-bullhorn"></i> Info & Update
 </a>
 
 <div class="section-title">Platform & Komunitas</div>
 <div class="grid">
-  <div class="grid-item" onclick="openGroup()">
-    <i class="fab fa-whatsapp" style="color:#25D366"></i>
-    Komunitas & Grup
-  </div>
-  <a href="#" class="grid-item">
-    <i class="fab fa-instagram" style="color:#E1306C"></i>
-    Instagram
+  <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="grid-item">
+    <i class="fab fa-whatsapp" style="color:#25D366"></i> Komunitas
   </a>
-  <a href="#" class="grid-item">
-    <i class="fab fa-tiktok"></i>
-    TikTok
+  <a href="https://www.instagram.com/xrezzkystore" class="grid-item">
+    <i class="fab fa-instagram" style="color:#E1306C"></i> Instagram
   </a>
-  <a href="#" class="grid-item">
-    <i class="fab fa-discord" style="color:#5865F2"></i>
-    Discord
+  <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item">
+    <i class="fab fa-tiktok"></i> TikTok
+  </a>
+  <a href="https://discord.gg/xDfZJHb2yK" class="grid-item">
+    <i class="fab fa-discord" style="color:#5865F2"></i> Discord
   </a>
 </div>
 
 <div class="section-title">Layanan Kami</div>
 <div class="services">
 
+<!-- ===== LAYANAN 1 ===== -->
 <div class="service">
   <div class="photos">
     <img src="https://i.supaimg.com/5a53e524-000c-4195-9921-cd0da270a4ba.png"
-         onclick="openImg(this.src,'Joki Rank','Estimasi 1–3 hari • Aman • Garansi')">
+         onclick="openImg(this.src,'Joki Rank','Estimasi 1–3 hari • Aman')">
   </div>
   <h3>Joki Rank</h3>
-  <a href="https://wa.me/6288293064112">Pesan Sekarang</a>
+  <p>Naik rank cepat & aman.</p>
+
+  <!-- PESAN WA BISA DIUBAH DI SINI -->
+  <button 
+    data-pesan="Halo admin, saya mau pesan layanan Joki Rank. Mohon info harga & prosesnya."
+    onclick="orderWA(this)">
+    Pesan Sekarang
+  </button>
+</div>
+
+<!-- ===== LAYANAN 2 (CONTOH) ===== -->
+<div class="service">
+  <div class="photos">
+    <img src="https://i.imgur.com/9QO6U8S.jpg"
+         onclick="openImg(this.src,'Gift Diamond','Legal & aman')">
+  </div>
+  <h3>Gift Diamond</h3>
+  <p>Top up diamond legal & cepat.</p>
+
+  <button 
+    data-pesan="Halo admin, saya mau pesan Gift Diamond. Game: ______."
+    onclick="orderWA(this)">
+    Pesan Sekarang
+  </button>
 </div>
 
 </div>
@@ -247,21 +247,20 @@ h1{text-align:center;margin:0}
 <div id="imgModal" class="modal" onclick="closeImg()">
   <div class="modal-box" onclick="event.stopPropagation()">
     <img id="modalImg">
-    <div id="modalText" class="modal-detail"></div>
-    <div class="close">Tutup</div>
-  </div>
-</div>
-
-<!-- MODAL GROUP -->
-<div id="groupModal" class="modal" onclick="closeGroup()">
-  <div class="modal-box" onclick="event.stopPropagation()">
-    <a href="#" class="choice bg-wa">Komunitas</a>
-    <a href="#" class="choice bg-grup">Grup Jual Beli</a>
+    <div id="modalText" class="modal-text"></div>
     <div class="close">Tutup</div>
   </div>
 </div>
 
 <script>
+const ADMIN_WA = "6288293064112";
+
+function orderWA(btn){
+  const text = btn.getAttribute("data-pesan");
+  const url = `https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(text)}`;
+  window.open(url,"_blank");
+}
+
 function openImg(src,title,detail){
   document.getElementById("modalImg").src = src;
   document.getElementById("modalText").innerHTML =
@@ -270,12 +269,6 @@ function openImg(src,title,detail){
 }
 function closeImg(){
   document.getElementById("imgModal").style.display="none";
-}
-function openGroup(){
-  document.getElementById("groupModal").style.display="flex";
-}
-function closeGroup(){
-  document.getElementById("groupModal").style.display="none";
 }
 </script>
 
