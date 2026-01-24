@@ -6,223 +6,207 @@
 <title>XREZZKY STORE | Digital Game Services</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 :root{
   --primary:#007bff;
   --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
   --dark:#1a1a1a;
-  --glass:rgba(255,255,255,.95);
 }
-*{box-sizing:border-box}
+
 body{
   margin:0;
-  font-family:Inter,-apple-system,sans-serif;
+  font-family:Arial,sans-serif;
   background:linear-gradient(135deg,#e0eafc,#cfdef3);
   min-height:100vh;
   display:flex;
   justify-content:center;
-  align-items:center;
   padding:20px;
 }
+
 .container{
-  width:100%;
   max-width:480px;
-  background:var(--glass);
-  backdrop-filter:blur(15px);
-  padding:30px 20px;
-  border-radius:25px;
+  width:100%;
+  background:#fff;
+  border-radius:22px;
+  padding:25px;
   box-shadow:0 15px 35px rgba(0,0,0,.1);
   text-align:center;
 }
 
 /* HEADER */
-h1{
-  margin:0;
-  font-size:26px;
-  font-weight:800;
-}
-.desc{
-  font-size:14px;
-  color:#555;
-  margin:10px 0 20px;
-}
-.divider{
-  width:50px;
-  height:4px;
-  background:var(--primary);
-  margin:15px auto;
-  border-radius:10px;
+h1{margin:0;font-size:26px}
+.desc{font-size:14px;color:#555;margin:10px 0 20px}
+
+/* INFO */
+.info-board{
+  background:#f8f9fa;
+  border-left:5px solid var(--primary);
+  padding:15px;
+  border-radius:12px;
+  text-align:left;
+  font-size:13px;
+  margin-bottom:20px;
 }
 
 /* BUTTON */
-.btn-main{
+.btn{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
-  width:100%;
+  gap:8px;
   padding:14px;
   border-radius:12px;
   text-decoration:none;
-  font-weight:600;
   color:#fff;
-  margin-bottom:12px;
-}
-.btn-wa{background:#25D366}
-.btn-info{background:var(--gradient);animation:pulse 3s infinite}
-
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.03)}
-  100%{transform:scale(1)}
+  font-weight:bold;
+  margin-bottom:10px;
 }
 
-/* SERVICE LIST */
-.section-title{
-  margin:25px 0 15px;
-  font-size:14px;
-  color:#444;
-  font-weight:700;
-}
-.service-list{
+.btn-wa{background:#222}
+.btn-info{background:var(--gradient)}
+
+/* LAYANAN */
+.services{
+  margin-top:25px;
   display:grid;
-  grid-template-columns:repeat(2,1fr);
   gap:15px;
 }
-.service-card{
+
+.service{
   background:#fff;
-  border-radius:18px;
-  padding:10px;
-  text-align:left;
-  box-shadow:0 8px 20px rgba(0,0,0,.05);
-  transition:.3s;
+  border-radius:16px;
+  padding:12px;
+  border:1px solid #eee;
+  animation:fadeUp .6s;
+}
+
+.service img{
+  width:100%;
+  border-radius:12px;
   cursor:pointer;
 }
-.service-card:hover{
-  transform:translateY(-4px);
+
+.service h3{
+  margin:10px 0 8px;
+  font-size:15px;
 }
-.service-card img{
+
+.service a{
+  background:var(--primary);
+  padding:10px;
+  border-radius:10px;
+  color:#fff;
+  display:block;
+  text-decoration:none;
+  font-size:14px;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+.modal-box{
+  background:#fff;
+  max-width:90%;
+  border-radius:18px;
+  padding:15px;
+  animation:zoom .3s;
+}
+
+.modal-box img{
   width:100%;
-  height:110px;
-  object-fit:cover;
   border-radius:12px;
 }
-.service-card strong{
-  display:block;
-  margin-top:8px;
+
+.close{
+  margin-top:10px;
   font-size:13px;
-}
-.service-card small{
-  font-size:12px;
   color:#666;
+  cursor:pointer;
 }
 
-/* SOCIAL */
-.grid-container{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-  margin-top:20px;
-}
-.grid-item{
-  background:#fff;
-  padding:15px;
-  border-radius:18px;
-  font-size:13px;
-  font-weight:600;
-  border:1px solid #eee;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:8px;
-  text-decoration:none;
-  color:#000;
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:none}
 }
 
-/* FOOTER */
-.footer{
-  font-size:11px;
-  color:#888;
-  margin-top:30px;
+@keyframes zoom{
+  from{transform:scale(.8)}
+  to{transform:scale(1)}
 }
 </style>
 </head>
-<body>
 
-<div class="container animate__animated animate__fadeInUp">
+<body>
+<div class="container animate__animated animate__fadeIn">
 
 <h1>XREZZKY STORE</h1>
-<div class="divider"></div>
-<p class="desc">Layanan digital game profesional • Aman • Cepat • Terpercaya</p>
+<p class="desc">Layanan digital game aman & terpercaya</p>
 
-<a href="https://wa.me/6288293064112" class="btn-main btn-wa">
-<i class="fab fa-whatsapp"></i> Chat Admin Sekarang
+<!-- INFO -->
+<div class="info-board">
+📌 Ready joki & gift all game<br>
+⚡ Proses cepat & aman<br>
+💬 Fast respon admin
+</div>
+
+<!-- BUTTON -->
+<a href="https://wa.me/6288293064112" class="btn btn-wa">
+<i class="fab fa-whatsapp"></i> Kontak Admin
 </a>
 
-<a href="#" class="btn-main btn-info">
-<i class="fas fa-bolt"></i> Info & Stok Hari Ini
+<a href="https://whatsapp.com/channel/0029Vb6wSkq05MUaGz8NkL26" class="btn btn-info">
+<i class="fas fa-info-circle"></i> Info & Update
 </a>
 
-<div class="section-title">Layanan Joki & Gift</div>
+<!-- LAYANAN -->
+<h3 style="margin-top:25px">Layanan Kami</h3>
 
-<div class="service-list">
+<div class="services">
 
-<!-- CARD 1 -->
-<div class="service-card" onclick="order('Joki Rank')">
-<img src="https://i.imgur.com/fGoF8rk.jpeg">
-<strong>Joki Rank</strong>
-<small>Push rank aman & terkontrol</small>
-</div>
+  <!-- LAYANAN 1 -->
+  <div class="service">
+    <img src="https://i.imgur.com/fGoF8rk.jpeg" onclick="openImg(this.src)">
+    <h3>Joki Rank</h3>
+    <a href="https://wa.me/6288293064112">Pesan Sekarang</a>
+  </div>
 
-<!-- CARD 2 -->
-<div class="service-card" onclick="order('Joki Quest')">
-<img src="https://i.imgur.com/2yaf2wb.jpeg">
-<strong>Joki Quest</strong>
-<small>Quest & mission harian</small>
-</div>
+  <!-- LAYANAN 2 -->
+  <div class="service">
+    <img src="https://i.supaimg.com/644a0148-6642-4a03-af44-f88383213271.jpg" onclick="openImg(this.src)">
+    <h3>Gift Item</h3>
+    <a href="https://wa.me/6288293064112">Pesan Sekarang</a>
+  </div>
 
-<!-- CARD 3 -->
-<div class="service-card" onclick="order('Gift Item')">
-<img src="https://i.imgur.com/644a0148-6642-4a03-af44-f88383213271.jpg">
-<strong>Gift Item</strong>
-<small>Gift cepat & legal</small>
-</div>
-
-<!-- CARD 4 -->
-<div class="service-card" onclick="order('Gift Pass')">
-<img src="https://i.imgur.com/XpYQFZQ.jpeg">
-<strong>Gift Pass</strong>
-<small>Pass & bundle resmi</small>
+  <!-- TAMBAH LAYANAN = COPY BLOK INI -->
 </div>
 
 </div>
 
-<div class="section-title">Komunitas & Sosial</div>
-
-<div class="grid-container">
-<a href="#" class="grid-item"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp</a>
-<a href="https://www.instagram.com/xrezzkystore" class="grid-item"><i class="fab fa-instagram" style="color:#E1306C"></i> Instagram</a>
-<a href="https://www.tiktok.com/@xrezzky.store" class="grid-item"><i class="fab fa-tiktok"></i> TikTok</a>
-<a href="https://discord.gg/xDfZJHb2yK" class="grid-item"><i class="fab fa-discord" style="color:#5865F2"></i> Discord</a>
-</div>
-
-<div class="footer">
-© 2026 XREZZKY STORE<br>
-Terima kasih sudah percaya
-</div>
-
+<!-- MODAL GAMBAR -->
+<div id="imgModal" class="modal" onclick="closeImg()">
+  <div class="modal-box">
+    <img id="modalImg">
+    <div class="close">Tutup</div>
+  </div>
 </div>
 
 <script>
-function order(service){
-  const text = encodeURIComponent(
-    "Halo Admin, saya mau order " + service +
-    ". Mohon info harga & prosesnya."
-  );
-  window.location.href =
-    "https://wa.me/6288293064112?text=" + text;
+function openImg(src){
+  document.getElementById("modalImg").src = src;
+  document.getElementById("imgModal").style.display="flex";
+}
+function closeImg(){
+  document.getElementById("imgModal").style.display="none";
 }
 </script>
 
