@@ -229,7 +229,7 @@ h1{text-align:center;margin:0}
     Instagram
   </a>
   <a href="#" class="grid-item">
-    <i class="fab fa-tiktok"></i>
+    <i class="fab fa-tiktok" style="color:#000"></i>
     TikTok
   </a>
   <a href="#" class="grid-item">
@@ -245,12 +245,9 @@ h1{text-align:center;margin:0}
   <div class="service">
     <div class="photos">
       <img src="https://i.ibb.co.com/JwHrC44z/XREZZKY-STORE-20260124-220857-0000.webp" onclick="openImg(this.src)">
-          </div>
-
+    </div>
     <h3>Jasa joki & gift Dead Rails</h3>
-
-    <button onclick="pesan(this)"
-      data-pesan="Halo admin, saya mau pesan *Jasa Joki & gift*. Mohon kirimkan listnya 🙏">
+    <button onclick="pesan(this)" data-pesan="Halo admin, saya mau pesan Jasa Joki & gift. Mohon kirimkan listnya 🙏">
       Pesan Sekarang
     </button>
   </div>
@@ -262,7 +259,7 @@ h1{text-align:center;margin:0}
 <div id="imgModal" class="modal" onclick="closeImg()">
   <div class="modal-box">
     <img id="modalImg">
-    <div class="close">Tutup</div>
+    <div class="close" onclick="closeImg()">Tutup</div>
   </div>
 </div>
 
@@ -271,22 +268,36 @@ h1{text-align:center;margin:0}
   <div class="modal-box">
     <a href="#" class="choice bg-wa">Komunitas</a>
     <a href="#" class="choice bg-grup">Grup Jual Beli</a>
-    <div class="close">Tutup</div>
+    <div class="close" onclick="closeGroup()">Tutup</div>
   </div>
 </div>
 
 <script>
 const WA = "6288293064112";
 
+// Ambil modal & elemen
+const imgModal = document.getElementById("imgModal");
+const modalImg = document.getElementById("modalImg");
+const groupModal = document.getElementById("groupModal");
+
+// Modal Foto
 function openImg(src){
   modalImg.src = src;
   imgModal.style.display="flex";
 }
-function closeImg(){ imgModal.style.display="none"; }
+function closeImg(){
+  imgModal.style.display="none";
+}
 
-function openGroup(){ groupModal.style.display="flex"; }
-function closeGroup(){ groupModal.style.display="none"; }
+// Modal Grup
+function openGroup(){
+  groupModal.style.display="flex";
+}
+function closeGroup(){
+  groupModal.style.display="none";
+}
 
+// Pesan otomatis WA
 function pesan(btn){
   const text = encodeURIComponent(btn.dataset.pesan);
   window.open(`https://wa.me/${WA}?text=${text}`,"_blank");
@@ -294,4 +305,4 @@ function pesan(btn){
 </script>
 
 </body>
-</html>
+  </html>
