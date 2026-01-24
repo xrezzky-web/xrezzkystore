@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XREZZKY STORE | Digital Game Services</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -15,11 +14,9 @@
   --soft:#f9fafb;
 }
 
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;}
 
 body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
   background:linear-gradient(135deg,#e0eafc,#cfdef3);
   min-height:100vh;
   display:flex;
@@ -46,8 +43,8 @@ body{
   to{transform:scale(1);opacity:1}
 }
 
-h1{text-align:center;margin:0}
-.desc{text-align:center;font-size:14px;color:#555;margin:10px 0 20px}
+h1{text-align:center;margin-bottom:10px;}
+.desc{text-align:center;font-size:14px;color:#555;margin-bottom:20px;}
 
 /* INFO */
 .info-board{
@@ -72,23 +69,12 @@ h1{text-align:center;margin:0}
   margin-top:10px;
   transition:.25s;
 }
-.btn-wa{
-  background:linear-gradient(135deg,var(--dark1),var(--dark2));
-}
-.btn-info{
-  background:linear-gradient(135deg,#00c6ff,#0072ff);
-}
-.btn:hover{
-  transform:translateY(-2px);
-  opacity:.95;
-}
+.btn-wa{background:linear-gradient(135deg,var(--dark1),var(--dark2));}
+.btn-info{background:linear-gradient(135deg,#00c6ff,#0072ff);}
+.btn:hover{transform:translateY(-2px);opacity:.95;}
 
 /* SECTION */
-.section-title{
-  margin:26px 0 12px;
-  font-size:15px;
-  color:#444;
-}
+.section-title{margin:26px 0 12px;font-size:15px;color:#444;}
 
 /* GRID */
 .grid{
@@ -108,25 +94,19 @@ h1{text-align:center;margin:0}
   cursor:pointer;
   transition:.25s;
 }
-.grid-item i{
-  font-size:22px;
-  margin-bottom:6px;
-}
-.grid-item:hover{transform:translateY(-3px)}
+.grid-item i{font-size:22px;margin-bottom:6px;}
+.grid-item:hover{transform:translateY(-3px);}
 
 /* LAYANAN */
-.services{display:grid;gap:18px;max-height:80vh;overflow-y:auto;}
+.services{display:grid;gap:18px;}
 .service{
   border:1px solid #eee;
   border-radius:20px;
   padding:12px;
 }
-.service h3{
-  font-size:15px;
-  margin:10px 0;
-}
+.service h3{font-size:15px;margin:10px 0;}
 
-/* FOTO AUTO RAPI */
+/* FOTO GRID */
 .photos{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -158,25 +138,27 @@ h1{text-align:center;margin:0}
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.55);
+  background:rgba(0,0,0,.7);
   justify-content:center;
   align-items:center;
   z-index:999;
 }
 .modal-box{
   background:#fff;
-  width:auto;
-  max-width:95vw;
-  max-height:95vh;
   padding:16px;
   border-radius:22px;
   animation:zoom .25s ease;
+  max-height:95vh;
+  max-width:95vw;
+  overflow:auto;
 }
 .modal-box img{
   width:auto;
   height:auto;
   max-width:95vw;
   max-height:95vh;
+  display:block;
+  margin:0 auto;
   border-radius:14px;
 }
 .close{
@@ -203,7 +185,6 @@ h1{text-align:center;margin:0}
 
 <body>
 <div class="container">
-
 <h1>XREZZKY STORE</h1>
 <p class="desc">Layanan digital game aman & terpercaya</p>
 
@@ -233,7 +214,7 @@ h1{text-align:center;margin:0}
     Instagram
   </a>
   <a href="#" class="grid-item">
-    <i class="fab fa-tiktok"></i>
+    <i class="fab fa-tiktok" style="color:#000"></i>
     TikTok
   </a>
   <a href="#" class="grid-item">
@@ -248,13 +229,10 @@ h1{text-align:center;margin:0}
 
   <div class="service">
     <div class="photos">
-      <img src="https://i.supaimg.com/5a53e524-000c-4195-9921-cd0da270a4ba.png" onclick="openImg(this.src)">
+      <img src="https://i.ibb.co.com/JwHrC44z/XREZZKY-STORE-20260124-220857-0000.webp" onclick="openImg(this.src)">
     </div>
-
-    <h3>Jasa Joki & Gift Dead Rails</h3>
-
-    <button onclick="pesan(this)"
-      data-pesan="Halo admin, saya mau pesan *Jasa Joki & Gift Dead Rails*. Mohon listnya 🙏">
+    <h3>Jasa joki & gift Dead Rails</h3>
+    <button onclick="pesan(this)" data-pesan="Halo admin, saya mau pesan *Jasa Joki & gift*. Mohon kirimkan listnya 🙏">
       Pesan Sekarang
     </button>
   </div>
@@ -281,30 +259,24 @@ h1{text-align:center;margin:0}
 
 <script>
 const WA = "6288293064112";
-const imgModal = document.getElementById("imgModal");
+
 const modalImg = document.getElementById("modalImg");
+const imgModal = document.getElementById("imgModal");
 const groupModal = document.getElementById("groupModal");
 
 function openImg(src){
   modalImg.src = src;
   imgModal.style.display="flex";
 }
-function closeImg(){
-  imgModal.style.display="none";
-}
+function closeImg(){ imgModal.style.display="none"; }
 
-function openGroup(){
-  groupModal.style.display="flex";
-}
-function closeGroup(){
-  groupModal.style.display="none";
-}
+function openGroup(){ groupModal.style.display="flex"; }
+function closeGroup(){ groupModal.style.display="none"; }
 
 function pesan(btn){
   const text = encodeURIComponent(btn.dataset.pesan);
   window.open(`https://wa.me/${WA}?text=${text}`,"_blank");
 }
 </script>
-
 </body>
 </html>
