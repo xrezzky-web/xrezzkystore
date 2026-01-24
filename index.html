@@ -79,10 +79,11 @@ h1{text-align:center;margin-bottom:10px;}
 .photos{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
 .photos img{width:100%;height:auto;border-radius:12px;cursor:pointer;display:block;}
 .service button{width:100%;margin-top:10px;background:var(--primary);color:#fff;border:none;padding:12px;border-radius:12px;font-weight:600;cursor:pointer;}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);justify-content:center;align-items:center;z-index:999;}
-.modal-box{max-width:95%;max-height:95%;padding:0;border-radius:12px;display:flex;justify-content:center;align-items:center;}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);justify-content:center;align-items:center;z-index:999;}
+.modal-box{max-width:95%;max-height:95%;padding:20px;background:#fff;border-radius:16px;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;}
 .modal-box img{width:auto;max-width:100%;height:auto;max-height:100%;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.3);display:block;}
-.close{position:absolute;top:15px;right:20px;font-size:18px;color:#fff;cursor:pointer;font-weight:bold;text-shadow:0 0 8px rgba(0,0,0,.7);}
+.modal-title{text-align:center;font-weight:600;margin-bottom:10px;}
+.close{position:absolute;top:15px;right:20px;font-size:18px;color:#333;cursor:pointer;font-weight:bold;}
 .choice{display:block;margin:10px 0;padding:12px;border-radius:12px;color:#fff;text-decoration:none;text-align:center;font-weight:600;}
 .bg-wa{background:#25D366;}
 .bg-grup{background:var(--primary);}
@@ -104,7 +105,7 @@ h1{text-align:center;margin-bottom:10px;}
 <i class="fab fa-whatsapp"></i> Kontak Admin
 </a>
 
-<a href="#" class="btn btn-info">
+<a href="https://link-info-update.com" class="btn btn-info" target="_blank">
 <i class="fas fa-bullhorn"></i> Info & Update
 </a>
 
@@ -138,19 +139,18 @@ h1{text-align:center;margin-bottom:10px;}
 </div>
 
 <!-- MODAL FOTO -->
-<div id="imgModal" class="modal">
+<div id="imgModal" class="modal" onclick="if(event.target===this) closeImg()">
   <div class="modal-box">
     <img id="modalImg">
-    <div class="close" onclick="closeImg()">&times;</div>
   </div>
 </div>
 
 <!-- MODAL GROUP -->
-<div id="groupModal" class="modal">
-  <div class="modal-box" style="flex-direction:column; background:#fff; padding:20px; border-radius:22px;">
+<div id="groupModal" class="modal" onclick="if(event.target===this) closeGroup()">
+  <div class="modal-box">
+    <div class="modal-title">Pilih Platform / Grup</div>
     <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa" target="_blank">Komunitas</a>
     <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-grup" target="_blank">Grup Jual Beli</a>
-    <div class="close" onclick="closeGroup()">Tutup</div>
   </div>
 </div>
 
@@ -173,4 +173,4 @@ function pesan(btn){
 </script>
 
 </body>
-</html>
+  </html>
