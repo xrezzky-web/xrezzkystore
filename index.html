@@ -26,14 +26,21 @@ body{
 .fade-up{
   opacity:0;
   transform:translateY(40px);
-  transition:all 1.4s ease;
+  transition:all 1.6s ease;
 }
 .fade-up.show{opacity:1;transform:translateY(0)}
+
+.scale-in{
+  opacity:0;
+  transform:scale(.9);
+  transition:all 1.6s ease;
+}
+.scale-in.show{opacity:1;transform:scale(1)}
 
 .slide-left{
   opacity:0;
   transform:translateX(-40px);
-  transition:all 1.4s ease;
+  transition:all 1.6s ease;
 }
 .slide-left.show{opacity:1;transform:translateX(0)}
 
@@ -45,21 +52,21 @@ body{
 /* ===== STICKY BAR ===== */
 .sticky-bar{
   position:fixed;
-  top:12px;
+  top:14px;
   left:50%;
   transform:translateX(-50%);
   width:92%;
   max-width:460px;
   background:#fff;
-  border-radius:16px;
+  border-radius:18px;
   padding:10px 14px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  box-shadow:0 10px 30px rgba(0,0,0,.14);
   opacity:0;
   pointer-events:none;
-  transition:.6s ease;
+  transition:.8s ease;
   z-index:999;
 }
 
@@ -96,8 +103,8 @@ body{
   max-width:480px;
   margin:auto;
   background:#fff;
-  border-radius:26px;
-  padding:26px;
+  border-radius:28px;
+  padding:28px;
   box-shadow:0 20px 50px rgba(0,0,0,.12);
 }
 
@@ -105,15 +112,15 @@ body{
 .logo{
   display:flex;
   justify-content:center;
-  margin-bottom:12px;
+  margin-bottom:18px;
 }
 .logo img{
-  width:70px;
-  border-radius:14px;
+  width:120px;
+  border-radius:20px;
 }
 
-h1{text-align:center;margin-bottom:6px}
-.desc{text-align:center;font-size:14px;color:#555;margin-bottom:20px}
+h1{text-align:center;margin-bottom:8px}
+.desc{text-align:center;font-size:14px;color:#555;margin-bottom:22px}
 
 .info-board{
   background:var(--soft);
@@ -134,7 +141,7 @@ h1{text-align:center;margin-bottom:6px}
   text-decoration:none;
   color:#fff;
   font-weight:600;
-  margin-top:10px;
+  margin-top:12px;
 }
 
 .btn-wa{background:#111}
@@ -142,7 +149,7 @@ h1{text-align:center;margin-bottom:6px}
 
 /* ===== GRID ===== */
 .section-title{
-  margin:30px 0 12px;
+  margin:32px 0 12px;
   font-size:15px;
   color:#444;
 }
@@ -192,17 +199,15 @@ h1{text-align:center;margin-bottom:6px}
 }
 
 /* ruang kosong bawah */
-.space{
-  height:400px;
-}
+.space{height:420px}
 </style>
 </head>
 
 <body>
 
-<!-- STICKY -->
+<!-- STICKY BAR -->
 <div class="sticky-bar" id="sticky">
-  <div class="sticky-title slide-left">XREZZKY</div>
+  <div class="sticky-title slide-left">XREZZKY STORE</div>
   <div class="sticky-btns">
     <a href="https://wa.me/6288293064112" class="sticky-btn s-wa slide-left delay-1">Kontak</a>
     <a href="javascript:void(0)" onclick="openGroup()" class="sticky-btn s-grup slide-left delay-2">Grup</a>
@@ -212,11 +217,11 @@ h1{text-align:center;margin-bottom:6px}
 
 <div class="container">
 
-<div class="logo fade-up">
-  <img src="https://i.imgur.com/LAK56NG.jpeg">
+<div class="logo scale-in">
+  <img src="https://i.imgur.com/fKt8LYa.jpeg">
 </div>
 
-<h1 class="fade-up delay-1">XREZZKY STORE</h1>
+<h1 class="fade-up delay-1" id="title">XREZZKY STORE</h1>
 <p class="desc fade-up delay-2">Layanan digital game aman & terpercaya</p>
 
 <div class="info-board fade-up delay-3">
@@ -233,9 +238,8 @@ h1{text-align:center;margin-bottom:6px}
 <i class="fas fa-bullhorn"></i> Info & Update
 </a>
 
-<div id="platform" class="fade-up">
-<div class="section-title">Platform & Komunitas</div>
-<div class="grid">
+<div class="section-title fade-up">Platform & Komunitas</div>
+<div class="grid fade-up delay-1">
   <div class="grid-item" onclick="openGroup()">
     <i class="fab fa-whatsapp" style="color:#25D366"></i><br>Komunitas & Grup
   </div>
@@ -248,14 +252,6 @@ h1{text-align:center;margin-bottom:6px}
   <a href="https://discord.gg/xDfZJHb2yK" class="grid-item" target="_blank">
     <i class="fab fa-discord" style="color:#5865F2"></i><br>Discord
   </a>
-</div>
-</div>
-
-<div class="section-title fade-up">Layanan Kami</div>
-<div class="service fade-up delay-1">
-  <img src="https://i.imgur.com/2LvDMJt.jpeg">
-  <h3>Jasa joki & gift Dead Rails</h3>
-  <button>Pesan Sekarang</button>
 </div>
 
 <div class="space"></div>
@@ -276,13 +272,13 @@ const obs=new IntersectionObserver(e=>{
   e.forEach(x=>{if(x.isIntersecting)x.target.classList.add("show")});
 },{threshold:.15});
 
-document.querySelectorAll(".fade-up,.slide-left").forEach(el=>obs.observe(el));
+document.querySelectorAll(".fade-up,.slide-left,.scale-in").forEach(el=>obs.observe(el));
 
-const platform=document.getElementById("platform");
 const sticky=document.getElementById("sticky");
+const title=document.getElementById("title");
 
 window.addEventListener("scroll",()=>{
-  if(window.scrollY > platform.offsetTop + 100){
+  if(window.scrollY > title.offsetTop + 40){
     sticky.classList.add("show");
   }else{
     sticky.classList.remove("show");
