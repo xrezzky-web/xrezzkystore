@@ -22,21 +22,22 @@ body{
   padding:20px;
 }
 
-/* ===== ANIMASI ===== */
+/* ================= ANIMASI ================= */
 .fade-up{opacity:0;transform:translateY(40px);transition:1.4s ease}
 .fade-up.show{opacity:1;transform:none}
 
-.scale-in{opacity:0;transform:scale(.9);transition:1.4s ease}
+.scale-in{opacity:0;transform:scale(.92);transition:1.4s ease}
 .scale-in.show{opacity:1;transform:scale(1)}
 
-.slide-left{opacity:0;transform:translateX(-40px);transition:1.4s ease}
+.slide-left{opacity:0;transform:translateX(-50px);transition:1.6s ease}
 .slide-left.show{opacity:1;transform:none}
 
 .delay-1{transition-delay:.2s}
 .delay-2{transition-delay:.4s}
 .delay-3{transition-delay:.6s}
+.delay-4{transition-delay:.8s}
 
-/* ===== STICKY BAR ===== */
+/* ================= STICKY BAR ================= */
 .sticky-bar{
   position:fixed;
   top:14px;
@@ -45,36 +46,41 @@ body{
   width:92%;
   max-width:480px;
   background:#fff;
-  border-radius:18px;
-  padding:10px 14px;
+  border-radius:20px;
+  padding:12px 16px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
+  box-shadow:0 12px 35px rgba(0,0,0,.18);
   z-index:999;
-  animation:fadeSticky 1s ease;
 }
 
-@keyframes fadeSticky{
-  from{opacity:0;transform:translate(-50%,-20px)}
-  to{opacity:1;transform:translate(-50%,0)}
+.sticky-title{
+  font-weight:800;
+  font-size:13px;
 }
 
-.sticky-title{font-weight:700;font-size:13px}
-.sticky-btns{display:flex;gap:6px}
+.sticky-btns{display:flex;gap:8px}
+
 .sticky-btn{
-  padding:6px 10px;
-  border-radius:10px;
+  padding:7px 12px;
+  border-radius:12px;
   font-size:12px;
   font-weight:600;
   color:#fff;
   text-decoration:none;
+  opacity:0;
+  transform:scale(.9);
+  transition:all 1.2s ease;
 }
+
+.sticky-btn.show{opacity:1;transform:scale(1)}
+
 .s-wa{background:#25D366}
 .s-grup{background:var(--primary)}
 .s-info{background:#111}
 
-/* ===== CONTAINER ===== */
+/* ================= CONTAINER ================= */
 .container{
   max-width:480px;
   margin:auto;
@@ -84,21 +90,21 @@ body{
   box-shadow:0 20px 50px rgba(0,0,0,.12);
 }
 
-/* ===== HEADER ===== */
+/* ================= HEADER ================= */
 .logo{
   display:flex;
   justify-content:center;
   margin-bottom:22px;
 }
 .logo img{
-  width:160px;
-  border-radius:24px;
+  width:180px;
+  border-radius:26px;
 }
 
 h1{text-align:center;margin-bottom:8px}
 .desc{text-align:center;font-size:14px;color:#555;margin-bottom:22px}
 
-/* ===== INFO ===== */
+/* ================= INFO ================= */
 .info-board{
   background:var(--soft);
   border-left:5px solid var(--primary);
@@ -107,7 +113,7 @@ h1{text-align:center;margin-bottom:8px}
   font-size:13px;
 }
 
-/* ===== BUTTON ===== */
+/* ================= BUTTON ================= */
 .btn{
   display:flex;
   justify-content:center;
@@ -123,15 +129,35 @@ h1{text-align:center;margin-bottom:8px}
 .btn-wa{background:#111}
 .btn-info{background:var(--gradient)}
 
-/* ===== LAYANAN ===== */
+/* ================= PLATFORM ================= */
 .section-title{margin:34px 0 12px;font-size:15px;color:#444}
 
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+.grid-item{
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:18px;
+  padding:14px;
+  text-align:center;
+  font-size:13px;
+  font-weight:600;
+  color:#000;
+  text-decoration:none;
+  transition:.3s;
+}
+.grid-item i{font-size:22px;margin-bottom:6px}
+.grid-item:hover{transform:translateY(-4px)}
+
+/* ================= LAYANAN ================= */
 .service{
   border:1px solid #eee;
   border-radius:20px;
   padding:14px;
 }
-
 .service h3{margin:10px 0 6px}
 .service p{font-size:13px;color:#555}
 
@@ -147,7 +173,19 @@ h1{text-align:center;margin-bottom:8px}
   cursor:pointer;
 }
 
-/* ===== MODAL FOTO ===== */
+.service button{
+  width:100%;
+  margin-top:12px;
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  padding:14px;
+  border-radius:14px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* ================= MODAL FOTO ================= */
 .modal{
   display:none;
   position:fixed;
@@ -162,14 +200,11 @@ h1{text-align:center;margin-bottom:8px}
   border-radius:18px;
   padding:16px;
   max-width:95%;
-  max-height:95%;
 }
 .modal-box img{
   max-width:100%;
   max-height:70vh;
   border-radius:12px;
-  display:block;
-  margin:auto;
 }
 .modal-info{
   font-size:12px;
@@ -178,7 +213,7 @@ h1{text-align:center;margin-bottom:8px}
   text-align:center;
 }
 
-/* ===== GROUP MODAL ===== */
+/* ================= GROUP MODAL ================= */
 .choice{
   display:block;
   padding:12px;
@@ -197,7 +232,7 @@ h1{text-align:center;margin-bottom:8px}
 
 <!-- STICKY -->
 <div class="sticky-bar">
-  <div class="sticky-title slide-left show">XREZZKY STORE</div>
+  <div class="sticky-title slide-left">XREZZKY STORE</div>
   <div class="sticky-btns">
     <a href="https://wa.me/6288293064112" class="sticky-btn s-wa">Kontak</a>
     <a href="javascript:void(0)" onclick="openGroup()" class="sticky-btn s-grup">Grup</a>
@@ -207,38 +242,53 @@ h1{text-align:center;margin-bottom:8px}
 
 <div class="container">
 
-<div class="logo scale-in show">
+<div class="logo scale-in">
   <img src="https://i.imgur.com/fKt8LYa.jpeg">
 </div>
 
-<h1 class="fade-up show">XREZZKY STORE</h1>
-<p class="desc fade-up show delay-1">Layanan digital game aman & terpercaya</p>
+<h1 class="fade-up">XREZZKY STORE</h1>
+<p class="desc fade-up delay-1">Layanan digital game aman & terpercaya</p>
 
-<div class="info-board fade-up show delay-2">
+<div class="info-board fade-up delay-2">
 📌 Ready joki & gift all game<br>
 ⚡ Proses cepat & aman<br>
 💬 Fast respon admin
 </div>
 
-<a href="https://wa.me/6288293064112" class="btn btn-wa fade-up show delay-3">
+<a href="https://wa.me/6288293064112" class="btn btn-wa fade-up delay-3">
 <i class="fab fa-whatsapp"></i> Kontak Admin
 </a>
 
-<a href="#" class="btn btn-info fade-up show delay-3">
-<i class="fas fa-bullhorn"></i> Info & Update
-</a>
+<div class="section-title fade-up">Platform & Komunitas</div>
+<div class="grid fade-up delay-1">
+  <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="grid-item">
+    <i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp
+  </a>
+  <a href="https://instagram.com/xrezzkystore" class="grid-item">
+    <i class="fab fa-instagram" style="color:#E1306C"></i> Instagram
+  </a>
+  <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item">
+    <i class="fab fa-tiktok" style="color:#000"></i> TikTok
+  </a>
+  <a href="https://discord.gg/xDfZJHb2yK" class="grid-item">
+    <i class="fab fa-discord" style="color:#5865F2"></i> Discord
+  </a>
+</div>
 
-<div class="section-title fade-up show">Layanan Kami</div>
-
-<div class="service fade-up show delay-1">
+<div class="section-title fade-up">Layanan Kami</div>
+<div class="service fade-up delay-1">
   <h3>Jasa Joki & Gift Dead Rails</h3>
   <p>Status: <b>READY</b></p>
-  <p>Update: 12 Januari 2026 • 19:40 WIB</p>
+  <p>Update: 12 Jan 2026 • 19:40 WIB</p>
 
   <div class="photos">
     <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this,'12 Jan 2026 • 18:20 WIB')">
-    <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this,'12 Jan 2026 • 18:45 WIB')">
   </div>
+
+  <button onclick="pesan(this)"
+    data-pesan="Halo admin, saya mau pesan *Jasa Joki & Gift Dead Rails*. Mohon kirimkan detailnya 🙏">
+    Pesan Sekarang
+  </button>
 </div>
 
 </div>
@@ -255,12 +305,13 @@ h1{text-align:center;margin-bottom:8px}
 <div id="groupModal" class="modal" onclick="if(event.target===this)closeGroup()">
   <div class="modal-box">
     <b>Pilih Grup</b>
-    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa" target="_blank">Komunitas</a>
-    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-grup" target="_blank">Grup Jual Beli</a>
+    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa">Komunitas</a>
+    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-grup">Grup Jual Beli</a>
   </div>
 </div>
 
 <script>
+const WA="6288293064112";
 const imgModal=document.getElementById("imgModal");
 const modalImg=document.getElementById("modalImg");
 const modalInfo=document.getElementById("modalInfo");
@@ -275,6 +326,19 @@ function closeImg(){imgModal.style.display="none"}
 
 function openGroup(){groupModal.style.display="flex"}
 function closeGroup(){groupModal.style.display="none"}
+
+function pesan(btn){
+  const t=encodeURIComponent(btn.dataset.pesan);
+  window.open(`https://wa.me/${WA}?text=${t}`,"_blank");
+}
+
+/* animasi sticky */
+window.addEventListener("load",()=>{
+  document.querySelector(".slide-left").classList.add("show");
+  document.querySelectorAll(".sticky-btn").forEach((b,i)=>{
+    setTimeout(()=>b.classList.add("show"),300+(i*200));
+  });
+});
 </script>
 
 </body>
