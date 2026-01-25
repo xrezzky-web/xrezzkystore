@@ -1,230 +1,107 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XrezzkyStore</title>
-
-<!-- SEO -->
-<meta name="description" content="XrezzkyStore - Jasa Game Dead Rails Terpercaya, Fast Respon & Aman">
-
-<!-- ICON -->
-<link rel="icon" href="https://i.imgur.com/fKt8LYa.jpeg">
-
+<title>XREZZKY STORE | Digital Game Services</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-body{
-  background:#0b0b0b;
-  color:#fff;
-  scroll-behavior:smooth;
+:root{
+  --primary:#007bff;
+  --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
+  --dark1:#1f1f1f;
+  --dark2:#3a3a3a;
+  --soft:#f9fafb;
 }
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;}
+body{background:linear-gradient(135deg,#e0eafc,#cfdef3);min-height:100vh;padding-top:120px;}/* Sticky Header / Kotak Panjang */ .sticky-box{ position:fixed; top:0; left:50%; transform:translateX(-50%); width:95%; max-width:480px; background:#fff; border-radius:20px; padding:12px 20px; box-shadow:0 8px 30px rgba(0,0,0,.15); display:flex; justify-content:space-between; align-items:center; opacity:0; transform:translateX(-60px); transition:all 1s ease; z-index:1000; } .sticky-box.show{opacity:1; transform:translateX(-50%);} .sticky-title{font-weight:800; font-size:16px; color:#000;} .sticky-btns{display:flex; gap:10px;} .sticky-btn{padding:8px 12px; border-radius:12px; color:#fff; font-weight:600; font-size:13px; text-decoration:none; transition:.3s;} .sticky-btn-wa{background:#25D366;} .sticky-btn-group{background:var(--primary);} .sticky-btn-info{background:#555;} .sticky-btn:hover{opacity:.9; transform:translateY(-2px);}
 
-/* ===== HEADER ===== */
-header{
-  text-align:center;
-  padding:80px 20px 120px;
-}
-.logo{
-  width:140px;
-  height:140px;
-  border-radius:16px;
-  object-fit:cover;
-  margin-bottom:20px;
-  animation:fadeUp 1.6s ease forwards;
-}
-h1{
-  font-size:42px;
-  letter-spacing:2px;
-  animation:fadeUp 2s ease forwards;
-}
-.sub{
-  margin-top:10px;
-  color:#aaa;
-  animation:fadeUp 2.4s ease forwards;
-}
+.container{ max-width:480px; width:100%; background:#fff; border-radius:26px; padding:26px; box-shadow:0 20px 50px rgba(0,0,0,.12); }
 
-/* ===== PLATFORM BUTTON ===== */
-.platforms{
-  margin-top:35px;
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  flex-wrap:wrap;
-}
-.platforms a{
-  padding:12px 22px;
-  border-radius:10px;
-  font-weight:bold;
-  text-decoration:none;
-  color:#000;
-  transform:translateY(30px);
-  opacity:0;
-  animation:fadeUp 2.8s ease forwards;
-}
-.platforms a:nth-child(1){background:#25D366}
-.platforms a:nth-child(2){background:#5865F2}
-.platforms a:nth-child(3){background:#229ED9}
+h1{text-align:center;margin-bottom:10px;} .logo-img{display:block;margin:10px auto;width:120px;border-radius:12px;opacity:0; transform:scale(0.8); transition:all .8s ease;} .logo-img.show{opacity:1; transform:scale(1);}
 
-/* ===== STICKY BAR ===== */
-.sticky-bar{
-  position:fixed;
-  top:12px;
-  left:50%;
-  transform:translateX(-50%) translateY(-120px);
-  background:#121212;
-  border:1px solid #222;
-  border-radius:14px;
-  padding:10px 18px;
-  display:flex;
-  gap:14px;
-  z-index:999;
-  transition:all .8s ease;
-}
-.sticky-bar.show{
-  transform:translateX(-50%) translateY(0);
-}
-.sticky-bar button{
-  background:#1e1e1e;
-  color:#fff;
-  border:none;
-  padding:10px 16px;
-  border-radius:10px;
-  cursor:pointer;
-  animation:slideLeft 1.2s ease forwards;
-}
+.desc{text-align:center;font-size:14px;color:#555;margin-bottom:20px;opacity:0; transition:all .8s ease .5s;} .desc.show{opacity:1;}
 
-/* ===== LAYANAN ===== */
-section{
-  padding:60px 20px;
-  max-width:1100px;
-  margin:auto;
-}
-h2{
-  margin-bottom:25px;
-  font-size:26px;
-}
-.services{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-  gap:20px;
-}
-.service{
-  background:#111;
-  border-radius:14px;
-  overflow:hidden;
-  cursor:pointer;
-  transition:.3s;
-}
-.service:hover{transform:translateY(-6px)}
-.service img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-}
-.service .info{
-  padding:14px;
-}
-.service .info small{color:#aaa}
+.info-board{background:var(--soft); border-left:5px solid var(--primary); padding:14px; border-radius:14px; font-size:13px; opacity:0; transition:all .8s ease .6s;} .info-board.show{opacity:1;}
 
-/* ===== MODAL IMAGE ===== */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.85);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:1000;
-}
-.modal img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:14px;
-}
+.section-title{margin:26px 0 12px;font-size:15px;color:#444;opacity:0; transition:all .8s ease;} .section-title.show{opacity:1;}
 
-/* ===== ANIMATION ===== */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes slideLeft{
-  from{opacity:0;transform:translateX(-40px)}
-  to{opacity:1;transform:translateX(0)}
-}
-</style>
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;} .grid-item{background:#fff;border:1px solid #eee;border-radius:18px;padding:14px;text-align:center;font-size:13px;font-weight:600;color:#000;cursor:pointer;transition:.25s;opacity:0; transform:translateY(20px);} .grid-item i{font-size:22px;margin-bottom:6px;display:block;} .grid-item.show{opacity:1; transform:translateY(0);} .grid-item:hover{transform:translateY(-3px);}
+
+.services{display:grid;gap:18px;} .service{border:1px solid #eee;border-radius:20px;padding:12px;opacity:0; transform:translateY(20px); transition:.8s ease;} .service.show{opacity:1; transform:translateY(0);} .photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:8px;} .photos img{width:100%;height:auto;border-radius:12px;cursor:pointer;display:block;} .service button{width:100%;margin-top:10px;background:var(--primary);color:#fff;border:none;padding:12px;border-radius:12px;font-weight:600;cursor:pointer;transition:.3s;} .service button:hover{opacity:.9;}
+
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);justify-content:center;align-items:center;z-index:999;} .modal-box{max-width:95%;max-height:95%;padding:20px;background:#fff;border-radius:16px;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;} .modal-box img{width:auto;max-width:100%;height:auto;max-height:100%;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.3);display:block;} .modal-title{text-align:center;font-weight:600;margin-bottom:10px; opacity:0; transform:translateX(-30px); transition:all .8s ease;} .modal-title.show{opacity:1; transform:translateX(0);} .choice{display:block;margin:10px 0;padding:12px;border-radius:12px;color:#fff;text-decoration:none;text-align:center;font-weight:600;opacity:0; transform:translateY(20px); transition:all .6s ease;} .choice.show{opacity:1; transform:translateY(0);} </style>
+
 </head>
-
-<body>
-
-<!-- STICKY -->
-<div class="sticky-bar" id="stickyBar">
-  <button>Kontak</button>
-  <button>Platform</button>
-  <button>Info Stok & Testi</button>
-</div>
-
-<header id="top">
-  <img src="https://i.imgur.com/fKt8LYa.jpeg" class="logo">
-  <h1>XREZZKYSTORE</h1>
-  <div class="sub">Jasa Game • Aman • Fast Respon</div>
-
-  <div class="platforms">
-    <a href="#">WhatsApp</a>
-    <a href="#">Discord</a>
-    <a href="#">Telegram</a>
+<body><!-- STICKY HEADER --><div class="sticky-box" id="stickyBox">
+  <div class="sticky-title">XREZZKY STORE</div>
+  <div class="sticky-btns">
+    <a href="https://wa.me/6288293064112" class="sticky-btn sticky-btn-wa" target="_blank">Kontak</a>
+    <a href="javascript:void(0)" class="sticky-btn sticky-btn-group" onclick="openGroup()">Komunitas</a>
+    <a href="#info" class="sticky-btn sticky-btn-info">Info Stok</a>
+    <a href="#testi" class="sticky-btn sticky-btn-info">Testi</a>
   </div>
-</header>
-
-<section>
-  <h2>Layanan</h2>
-  <div class="services">
-
-    <!-- SERVICE ITEM -->
-    <div class="service" onclick="openModal(this)">
-      <img src="https://i.imgur.com/LAK56NG.jpeg">
-      <div class="info">
-        <b>Joki Dead Rails</b><br>
-        <small>Upload: 24 Jan 2026 • 20:45 WIB</small>
-      </div>
+</div><div class="container"><!-- Logo & Judul --><img src="https://i.imgur.com/fKt8LYa.jpeg" class="logo-img" id="logoImg">
+<h1 id="mainTitle">XREZZKY STORE</h1>
+<p class="desc" id="descText">Layanan digital game aman & terpercaya</p>
+<div class="info-board" id="infoBoard">📌 Ready joki & gift all game<br>⚡ Proses cepat & aman<br>💬 Fast respon admin</div><div class="section-title" id="platformTitle">Platform & Komunitas</div>
+<div class="grid" id="platformGrid">
+  <div class="grid-item" onclick="openGroup()"><i class="fab fa-whatsapp" style="color:#25D366"></i> Komunitas & Grup</div>
+  <a href="https://instagram.com/xrezzkystore" class="grid-item" target="_blank"><i class="fab fa-instagram" style="color:#E1306C"></i> Instagram</a>
+  <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item" target="_blank"><i class="fab fa-tiktok" style="color:#000"></i> TikTok</a>
+  <a href="https://discord.gg/xDfZJHb2yK" class="grid-item" target="_blank"><i class="fab fa-discord" style="color:#5865F2"></i> Discord</a>
+</div><div class="section-title" id="servicesTitle">Layanan Kami</div>
+<div class="services" id="servicesList">
+  <div class="service">
+    <div class="photos">
+      <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src)">
     </div>
-
-    <!-- COPY ITEM UNTUK TAMBAH -->
-    <div class="service" onclick="openModal(this)">
-      <img src="https://i.imgur.com/LAK56NG.jpeg">
-      <div class="info">
-        <b>Gift Class</b><br>
-        <small>Upload: 25 Jan 2026 • 11:30 WIB</small>
-      </div>
-    </div>
-
+    <h3>Jasa joki & gift Dead Rails</h3>
+    <button onclick="pesan(this)" data-pesan="Halo admin, saya mau pesan *Jasa Joki & gift*. Mohon kirimkan listnya 🙏">Pesan Sekarang</button>
   </div>
-</section>
+</div></div><!-- MODAL FOTO --><div id="imgModal" class="modal" onclick="if(event.target===this) closeImg()">
+  <div class="modal-box">
+    <img id="modalImg">
+  </div>
+</div><!-- MODAL GROUP --><div id="groupModal" class="modal" onclick="if(event.target===this) closeGroup()">
+  <div class="modal-box">
+    <div class="modal-title" id="modalTitle">Pilih Platform / Grup</div>
+    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice" target="_blank">Komunitas</a>
+    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice" target="_blank">Grup Jual Beli</a>
+  </div>
+</div><script>
+const WA = "6288293064112";
+const imgModal = document.getElementById("imgModal");
+const modalImg = document.getElementById("modalImg");
+const groupModal = document.getElementById("groupModal");
+const stickyBox = document.getElementById("stickyBox");
+const logoImg = document.getElementById("logoImg");
+const mainTitle = document.getElementById("mainTitle");
+const descText = document.getElementById("descText");
+const infoBoard = document.getElementById("infoBoard");
+const platformTitle = document.getElementById("platformTitle");
+const platformGrid = document.getElementById("platformGrid");
+const servicesList = document.getElementById("servicesList");
+const modalTitle = document.getElementById("modalTitle");
 
-<!-- MODAL -->
-<div class="modal" id="modal" onclick="closeModal()">
-  <img id="modalImg">
-</div>
+function openImg(src){ modalImg.src=src; imgModal.style.display="flex"; }
+function closeImg(){ imgModal.style.display="none"; }
+function openGroup(){ groupModal.style.display="flex"; animateModal(); }
+function closeGroup(){ groupModal.style.display="none"; }
+function pesan(btn){ const text = encodeURIComponent(btn.dataset.pesan); window.open(`https://wa.me/${WA}?text=${text}`,"_blank"); }
 
-<script>
-const sticky = document.getElementById("stickyBar");
-const trigger = document.getElementById("top").offsetHeight;
-
-window.addEventListener("scroll",()=>{
-  if(window.scrollY > trigger){
-    sticky.classList.add("show");
-  }else{
-    sticky.classList.remove("show");
-  }
+// Animasi bertahap
+window.addEventListener('scroll',()=>{
+  const scrollY = window.scrollY;
+  if(scrollY>50){ stickyBox.classList.add('show'); }
+  if(scrollY>100){ logoImg.classList.add('show'); descText.classList.add('show'); infoBoard.classList.add('show'); }
+  if(scrollY>300){ platformTitle.classList.add('show'); platformGrid.querySelectorAll('.grid-item').forEach((el,i)=>{ setTimeout(()=>{el.classList.add('show');},i*200); }); }
+  if(scrollY>500){ servicesList.querySelectorAll('.service').forEach((el,i)=>{ setTimeout(()=>{el.classList.add('show');},i*250); }); }
 });
 
-function openModal(el){
-  document.getElementById("modalImg").src = el.querySelector("img").src;
-  document.getElementById("modal").style.display="flex";
+// Animasi modal kotak panjang
+function animateModal(){ modalTitle.classList.add('show');
+  const choices = groupModal.querySelectorAll('.choice');
+  choices.forEach((el,i)=>{ setTimeout(()=>{el.classList.add('show');},i*200); });
 }
-function closeModal(){
-  document.getElementById("modal").style.display="none";
-}
-</script>
-
-</body>
-</html>
+</script></body>
+  </html>
