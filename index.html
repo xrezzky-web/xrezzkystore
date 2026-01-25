@@ -5,39 +5,114 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XREZZKY STORE | Digital Game Services</title>
 
-<meta name="description" content="XREZZKY STORE - Jasa joki & gift Dead Rails terpercaya, cepat, aman, profesional.">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 :root{
   --primary:#007bff;
   --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
-  --dark1:#1f1f1f;
-  --dark2:#3a3a3a;
   --soft:#f9fafb;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto}
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto}
 
 body{
   background:linear-gradient(135deg,#e0eafc,#cfdef3);
   min-height:100vh;
-  display:flex;
-  justify-content:center;
   padding:20px;
 }
 
+/* ===== ANIMASI ===== */
+.fade-up{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1.4s ease;
+}
+.fade-up.show{opacity:1;transform:translateY(0)}
+
+.slide-left{
+  opacity:0;
+  transform:translateX(-40px);
+  transition:all 1.4s ease;
+}
+.slide-left.show{opacity:1;transform:translateX(0)}
+
+.delay-1{transition-delay:.2s}
+.delay-2{transition-delay:.4s}
+.delay-3{transition-delay:.6s}
+.delay-4{transition-delay:.8s}
+
+/* ===== STICKY BAR ===== */
+.sticky-bar{
+  position:fixed;
+  top:12px;
+  left:50%;
+  transform:translateX(-50%);
+  width:92%;
+  max-width:460px;
+  background:#fff;
+  border-radius:16px;
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  opacity:0;
+  pointer-events:none;
+  transition:.6s ease;
+  z-index:999;
+}
+
+.sticky-bar.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.sticky-title{
+  font-weight:700;
+  font-size:13px;
+}
+
+.sticky-btns{
+  display:flex;
+  gap:6px;
+}
+
+.sticky-btn{
+  padding:6px 10px;
+  font-size:12px;
+  border-radius:10px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:600;
+}
+
+.s-wa{background:#25D366}
+.s-grup{background:var(--primary)}
+.s-info{background:#111}
+
+/* ===== CONTAINER ===== */
 .container{
   max-width:480px;
-  width:100%;
+  margin:auto;
   background:#fff;
   border-radius:26px;
   padding:26px;
   box-shadow:0 20px 50px rgba(0,0,0,.12);
 }
 
-h1{text-align:center;margin-bottom:10px}
+/* ===== HEADER ===== */
+.logo{
+  display:flex;
+  justify-content:center;
+  margin-bottom:12px;
+}
+.logo img{
+  width:70px;
+  border-radius:14px;
+}
+
+h1{text-align:center;margin-bottom:6px}
 .desc{text-align:center;font-size:14px;color:#555;margin-bottom:20px}
 
 .info-board{
@@ -48,6 +123,7 @@ h1{text-align:center;margin-bottom:10px}
   font-size:13px;
 }
 
+/* ===== BUTTON ===== */
 .btn{
   display:flex;
   align-items:center;
@@ -61,11 +137,12 @@ h1{text-align:center;margin-bottom:10px}
   margin-top:10px;
 }
 
-.btn-wa{background:linear-gradient(135deg,var(--dark1),var(--dark2))}
+.btn-wa{background:#111}
 .btn-info{background:var(--gradient)}
 
+/* ===== GRID ===== */
 .section-title{
-  margin:26px 0 12px;
+  margin:30px 0 12px;
   font-size:15px;
   color:#444;
 }
@@ -84,25 +161,25 @@ h1{text-align:center;margin-bottom:10px}
   text-align:center;
   font-size:13px;
   font-weight:600;
-  color:#000;
   cursor:pointer;
+  color:#000;
 }
 
 .grid-item i{font-size:22px;margin-bottom:6px}
 
+/* ===== SERVICE ===== */
 .service{
   border:1px solid #eee;
   border-radius:20px;
   padding:12px;
 }
 
-.photos img{
+.service img{
   width:100%;
-  border-radius:12px;
-  cursor:pointer;
+  border-radius:14px;
 }
 
-.service h3{font-size:15px;margin:10px 0}
+.service h3{margin:10px 0;font-size:15px}
 
 .service button{
   width:100%;
@@ -112,50 +189,51 @@ h1{text-align:center;margin-bottom:10px}
   padding:12px;
   border-radius:12px;
   font-weight:600;
-  cursor:pointer;
 }
 
-/* ===== FOOTER INFO (AMAN) ===== */
-.footer{
-  margin-top:40px;
-  padding-top:20px;
-  border-top:1px solid #eee;
-  text-align:center;
-  font-size:13px;
-  color:#555;
-}
-
-.footer strong{color:#000}
-.footer a{color:var(--primary);text-decoration:none}
-.footer .social i{
-  margin:0 6px;
-  font-size:18px;
-  color:#555;
+/* ruang kosong bawah */
+.space{
+  height:400px;
 }
 </style>
 </head>
 
 <body>
 
+<!-- STICKY -->
+<div class="sticky-bar" id="sticky">
+  <div class="sticky-title slide-left">XREZZKY</div>
+  <div class="sticky-btns">
+    <a href="https://wa.me/6288293064112" class="sticky-btn s-wa slide-left delay-1">Kontak</a>
+    <a href="javascript:void(0)" onclick="openGroup()" class="sticky-btn s-grup slide-left delay-2">Grup</a>
+    <a href="https://link-info-update.com" class="sticky-btn s-info slide-left delay-3">Info</a>
+  </div>
+</div>
+
 <div class="container">
 
-<h1>XREZZKY STORE</h1>
-<p class="desc">Layanan digital game aman & terpercaya</p>
+<div class="logo fade-up">
+  <img src="https://i.imgur.com/LAK56NG.jpeg">
+</div>
 
-<div class="info-board">
+<h1 class="fade-up delay-1">XREZZKY STORE</h1>
+<p class="desc fade-up delay-2">Layanan digital game aman & terpercaya</p>
+
+<div class="info-board fade-up delay-3">
 📌 Ready joki & gift all game<br>
 ⚡ Proses cepat & aman<br>
 💬 Fast respon admin
 </div>
 
-<a href="https://wa.me/6288293064112" class="btn btn-wa" target="_blank">
+<a href="https://wa.me/6288293064112" class="btn btn-wa fade-up delay-4">
 <i class="fab fa-whatsapp"></i> Kontak Admin
 </a>
 
-<a href="https://link-info-update.com" class="btn btn-info" target="_blank">
+<a href="https://link-info-update.com" class="btn btn-info fade-up delay-4">
 <i class="fas fa-bullhorn"></i> Info & Update
 </a>
 
+<div id="platform" class="fade-up">
 <div class="section-title">Platform & Komunitas</div>
 <div class="grid">
   <div class="grid-item" onclick="openGroup()">
@@ -171,42 +249,22 @@ h1{text-align:center;margin-bottom:10px}
     <i class="fab fa-discord" style="color:#5865F2"></i><br>Discord
   </a>
 </div>
+</div>
 
-<div class="section-title">Layanan Kami</div>
-<div class="service">
-  <div class="photos">
-    <img src="https://i.imgur.com/2LvDMJt.jpeg">
-  </div>
+<div class="section-title fade-up">Layanan Kami</div>
+<div class="service fade-up delay-1">
+  <img src="https://i.imgur.com/2LvDMJt.jpeg">
   <h3>Jasa joki & gift Dead Rails</h3>
-  <button onclick="window.open('https://wa.me/6288293064112','_blank')">
-    Pesan Sekarang
-  </button>
+  <button>Pesan Sekarang</button>
 </div>
 
-<!-- FOOTER -->
-<div class="footer">
-  <strong>XREZZKY STORE</strong><br>
-  Jasa joki & gift game terpercaya<br><br>
-
-  📧 Email:  
-  <a href="mailto:xrezzkystore.id@gmail.com">
-    xrezzkystore.id@gmail.com
-  </a><br><br>
-
-  <div class="social">
-    <a href="https://instagram.com/xrezzkystore"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.tiktok.com/@xrezzky.store"><i class="fab fa-tiktok"></i></a>
-    <a href="https://discord.gg/xDfZJHb2yK"><i class="fab fa-discord"></i></a>
-  </div>
-
-  <br>© 2026 XREZZKY STORE
-</div>
+<div class="space"></div>
 
 </div>
 
 <!-- MODAL GROUP -->
-<div id="groupModal" class="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);justify-content:center;align-items:center" onclick="if(event.target===this)closeGroup()">
-  <div style="background:#fff;padding:20px;border-radius:14px;width:300px">
+<div id="groupModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);justify-content:center;align-items:center" onclick="if(event.target===this)closeGroup()">
+  <div style="background:#fff;padding:20px;border-radius:16px;width:300px">
     <b>Pilih Grup</b><br><br>
     <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" target="_blank">Komunitas</a><br><br>
     <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" target="_blank">Grup Jual Beli</a>
@@ -214,12 +272,25 @@ h1{text-align:center;margin-bottom:10px}
 </div>
 
 <script>
-function openGroup(){
-  document.getElementById("groupModal").style.display="flex";
-}
-function closeGroup(){
-  document.getElementById("groupModal").style.display="none";
-}
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting)x.target.classList.add("show")});
+},{threshold:.15});
+
+document.querySelectorAll(".fade-up,.slide-left").forEach(el=>obs.observe(el));
+
+const platform=document.getElementById("platform");
+const sticky=document.getElementById("sticky");
+
+window.addEventListener("scroll",()=>{
+  if(window.scrollY > platform.offsetTop + 100){
+    sticky.classList.add("show");
+  }else{
+    sticky.classList.remove("show");
+  }
+});
+
+function openGroup(){document.getElementById("groupModal").style.display="flex"}
+function closeGroup(){document.getElementById("groupModal").style.display="none"}
 </script>
 
 </body>
