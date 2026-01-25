@@ -23,31 +23,18 @@ body{
 }
 
 /* ===== ANIMASI ===== */
-.fade-up{
-  opacity:0;
-  transform:translateY(40px);
-  transition:all 1.6s ease;
-}
-.fade-up.show{opacity:1;transform:translateY(0)}
+.fade-up{opacity:0;transform:translateY(40px);transition:1.4s ease}
+.fade-up.show{opacity:1;transform:none}
 
-.scale-in{
-  opacity:0;
-  transform:scale(.9);
-  transition:all 1.6s ease;
-}
+.scale-in{opacity:0;transform:scale(.9);transition:1.4s ease}
 .scale-in.show{opacity:1;transform:scale(1)}
 
-.slide-left{
-  opacity:0;
-  transform:translateX(-40px);
-  transition:all 1.6s ease;
-}
-.slide-left.show{opacity:1;transform:translateX(0)}
+.slide-left{opacity:0;transform:translateX(-40px);transition:1.4s ease}
+.slide-left.show{opacity:1;transform:none}
 
 .delay-1{transition-delay:.2s}
 .delay-2{transition-delay:.4s}
 .delay-3{transition-delay:.6s}
-.delay-4{transition-delay:.8s}
 
 /* ===== STICKY BAR ===== */
 .sticky-bar{
@@ -56,44 +43,33 @@ body{
   left:50%;
   transform:translateX(-50%);
   width:92%;
-  max-width:460px;
+  max-width:480px;
   background:#fff;
   border-radius:18px;
   padding:10px 14px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  box-shadow:0 10px 30px rgba(0,0,0,.14);
-  opacity:0;
-  pointer-events:none;
-  transition:.8s ease;
+  align-items:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
   z-index:999;
+  animation:fadeSticky 1s ease;
 }
 
-.sticky-bar.show{
-  opacity:1;
-  pointer-events:auto;
+@keyframes fadeSticky{
+  from{opacity:0;transform:translate(-50%,-20px)}
+  to{opacity:1;transform:translate(-50%,0)}
 }
 
-.sticky-title{
-  font-weight:700;
-  font-size:13px;
-}
-
-.sticky-btns{
-  display:flex;
-  gap:6px;
-}
-
+.sticky-title{font-weight:700;font-size:13px}
+.sticky-btns{display:flex;gap:6px}
 .sticky-btn{
   padding:6px 10px;
-  font-size:12px;
   border-radius:10px;
-  text-decoration:none;
-  color:#fff;
+  font-size:12px;
   font-weight:600;
+  color:#fff;
+  text-decoration:none;
 }
-
 .s-wa{background:#25D366}
 .s-grup{background:var(--primary)}
 .s-info{background:#111}
@@ -112,16 +88,17 @@ body{
 .logo{
   display:flex;
   justify-content:center;
-  margin-bottom:18px;
+  margin-bottom:22px;
 }
 .logo img{
-  width:120px;
-  border-radius:20px;
+  width:160px;
+  border-radius:24px;
 }
 
 h1{text-align:center;margin-bottom:8px}
 .desc{text-align:center;font-size:14px;color:#555;margin-bottom:22px}
 
+/* ===== INFO ===== */
 .info-board{
   background:var(--soft);
   border-left:5px solid var(--primary);
@@ -133,8 +110,8 @@ h1{text-align:center;margin-bottom:8px}
 /* ===== BUTTON ===== */
 .btn{
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   gap:8px;
   padding:14px;
   border-radius:14px;
@@ -143,150 +120,161 @@ h1{text-align:center;margin-bottom:8px}
   font-weight:600;
   margin-top:12px;
 }
-
 .btn-wa{background:#111}
 .btn-info{background:var(--gradient)}
 
-/* ===== GRID ===== */
-.section-title{
-  margin:32px 0 12px;
-  font-size:15px;
-  color:#444;
-}
+/* ===== LAYANAN ===== */
+.section-title{margin:34px 0 12px;font-size:15px;color:#444}
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-}
-
-.grid-item{
-  background:#fff;
-  border:1px solid #eee;
-  border-radius:18px;
-  padding:14px;
-  text-align:center;
-  font-size:13px;
-  font-weight:600;
-  cursor:pointer;
-  color:#000;
-}
-
-.grid-item i{font-size:22px;margin-bottom:6px}
-
-/* ===== SERVICE ===== */
 .service{
   border:1px solid #eee;
   border-radius:20px;
-  padding:12px;
+  padding:14px;
 }
 
-.service img{
+.service h3{margin:10px 0 6px}
+.service p{font-size:13px;color:#555}
+
+.photos{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(100px,1fr));
+  gap:8px;
+  margin-top:12px;
+}
+.photos img{
   width:100%;
-  border-radius:14px;
+  border-radius:12px;
+  cursor:pointer;
 }
 
-.service h3{margin:10px 0;font-size:15px}
+/* ===== MODAL FOTO ===== */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+.modal-box{
+  background:#fff;
+  border-radius:18px;
+  padding:16px;
+  max-width:95%;
+  max-height:95%;
+}
+.modal-box img{
+  max-width:100%;
+  max-height:70vh;
+  border-radius:12px;
+  display:block;
+  margin:auto;
+}
+.modal-info{
+  font-size:12px;
+  color:#555;
+  margin-top:10px;
+  text-align:center;
+}
 
-.service button{
-  width:100%;
-  background:var(--primary);
-  color:#fff;
-  border:none;
+/* ===== GROUP MODAL ===== */
+.choice{
+  display:block;
   padding:12px;
   border-radius:12px;
+  color:#fff;
+  text-decoration:none;
   font-weight:600;
+  margin-top:10px;
 }
-
-/* ruang kosong bawah */
-.space{height:420px}
+.bg-wa{background:#25D366}
+.bg-grup{background:var(--primary)}
 </style>
 </head>
 
 <body>
 
-<!-- STICKY BAR -->
-<div class="sticky-bar" id="sticky">
-  <div class="sticky-title slide-left">XREZZKY STORE</div>
+<!-- STICKY -->
+<div class="sticky-bar">
+  <div class="sticky-title slide-left show">XREZZKY STORE</div>
   <div class="sticky-btns">
-    <a href="https://wa.me/6288293064112" class="sticky-btn s-wa slide-left delay-1">Kontak</a>
-    <a href="javascript:void(0)" onclick="openGroup()" class="sticky-btn s-grup slide-left delay-2">Grup</a>
-    <a href="https://link-info-update.com" class="sticky-btn s-info slide-left delay-3">Info</a>
+    <a href="https://wa.me/6288293064112" class="sticky-btn s-wa">Kontak</a>
+    <a href="javascript:void(0)" onclick="openGroup()" class="sticky-btn s-grup">Grup</a>
+    <a href="#" class="sticky-btn s-info">Info</a>
   </div>
 </div>
 
 <div class="container">
 
-<div class="logo scale-in">
+<div class="logo scale-in show">
   <img src="https://i.imgur.com/fKt8LYa.jpeg">
 </div>
 
-<h1 class="fade-up delay-1" id="title">XREZZKY STORE</h1>
-<p class="desc fade-up delay-2">Layanan digital game aman & terpercaya</p>
+<h1 class="fade-up show">XREZZKY STORE</h1>
+<p class="desc fade-up show delay-1">Layanan digital game aman & terpercaya</p>
 
-<div class="info-board fade-up delay-3">
+<div class="info-board fade-up show delay-2">
 📌 Ready joki & gift all game<br>
 ⚡ Proses cepat & aman<br>
 💬 Fast respon admin
 </div>
 
-<a href="https://wa.me/6288293064112" class="btn btn-wa fade-up delay-4">
+<a href="https://wa.me/6288293064112" class="btn btn-wa fade-up show delay-3">
 <i class="fab fa-whatsapp"></i> Kontak Admin
 </a>
 
-<a href="https://link-info-update.com" class="btn btn-info fade-up delay-4">
+<a href="#" class="btn btn-info fade-up show delay-3">
 <i class="fas fa-bullhorn"></i> Info & Update
 </a>
 
-<div class="section-title fade-up">Platform & Komunitas</div>
-<div class="grid fade-up delay-1">
-  <div class="grid-item" onclick="openGroup()">
-    <i class="fab fa-whatsapp" style="color:#25D366"></i><br>Komunitas & Grup
+<div class="section-title fade-up show">Layanan Kami</div>
+
+<div class="service fade-up show delay-1">
+  <h3>Jasa Joki & Gift Dead Rails</h3>
+  <p>Status: <b>READY</b></p>
+  <p>Update: 12 Januari 2026 • 19:40 WIB</p>
+
+  <div class="photos">
+    <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this,'12 Jan 2026 • 18:20 WIB')">
+    <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this,'12 Jan 2026 • 18:45 WIB')">
   </div>
-  <a href="https://instagram.com/xrezzkystore" class="grid-item" target="_blank">
-    <i class="fab fa-instagram" style="color:#E1306C"></i><br>Instagram
-  </a>
-  <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item" target="_blank">
-    <i class="fab fa-tiktok"></i><br>TikTok
-  </a>
-  <a href="https://discord.gg/xDfZJHb2yK" class="grid-item" target="_blank">
-    <i class="fab fa-discord" style="color:#5865F2"></i><br>Discord
-  </a>
 </div>
 
-<div class="space"></div>
+</div>
 
+<!-- MODAL FOTO -->
+<div id="imgModal" class="modal" onclick="if(event.target===this)closeImg()">
+  <div class="modal-box">
+    <img id="modalImg">
+    <div id="modalInfo" class="modal-info"></div>
+  </div>
 </div>
 
 <!-- MODAL GROUP -->
-<div id="groupModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);justify-content:center;align-items:center" onclick="if(event.target===this)closeGroup()">
-  <div style="background:#fff;padding:20px;border-radius:16px;width:300px">
-    <b>Pilih Grup</b><br><br>
-    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" target="_blank">Komunitas</a><br><br>
-    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" target="_blank">Grup Jual Beli</a>
+<div id="groupModal" class="modal" onclick="if(event.target===this)closeGroup()">
+  <div class="modal-box">
+    <b>Pilih Grup</b>
+    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa" target="_blank">Komunitas</a>
+    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-grup" target="_blank">Grup Jual Beli</a>
   </div>
 </div>
 
 <script>
-const obs=new IntersectionObserver(e=>{
-  e.forEach(x=>{if(x.isIntersecting)x.target.classList.add("show")});
-},{threshold:.15});
+const imgModal=document.getElementById("imgModal");
+const modalImg=document.getElementById("modalImg");
+const modalInfo=document.getElementById("modalInfo");
+const groupModal=document.getElementById("groupModal");
 
-document.querySelectorAll(".fade-up,.slide-left,.scale-in").forEach(el=>obs.observe(el));
+function openImg(el,info){
+  modalImg.src=el.src;
+  modalInfo.innerText="📸 Upload: "+info;
+  imgModal.style.display="flex";
+}
+function closeImg(){imgModal.style.display="none"}
 
-const sticky=document.getElementById("sticky");
-const title=document.getElementById("title");
-
-window.addEventListener("scroll",()=>{
-  if(window.scrollY > title.offsetTop + 40){
-    sticky.classList.add("show");
-  }else{
-    sticky.classList.remove("show");
-  }
-});
-
-function openGroup(){document.getElementById("groupModal").style.display="flex"}
-function closeGroup(){document.getElementById("groupModal").style.display="none"}
+function openGroup(){groupModal.style.display="flex"}
+function closeGroup(){groupModal.style.display="none"}
 </script>
 
 </body>
