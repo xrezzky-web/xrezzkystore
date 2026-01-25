@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XREZZKY STORE | Digital Game Services</title>
 
-<meta name="description" content="XREZZKY STORE - Jasa joki & gift game terpercaya, cepat, aman, dan profesional.">
+<meta name="description" content="XREZZKY STORE - Jasa joki & gift game terpercaya, cepat, aman, profesional.">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -22,27 +22,73 @@
 body{
   background:linear-gradient(135deg,#e0eafc,#cfdef3);
   min-height:100vh;
-  display:flex;
-  justify-content:center;
-  padding:20px;
+  padding-top:90px;
 }
 
+/* ===== STICKY HEADER ===== */
+.header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  background:#fff;
+  z-index:1000;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.header-inner{
+  max-width:480px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.header h2{
+  font-size:18px;
+}
+
+.header-btns{
+  display:flex;
+  gap:10px;
+}
+
+.header-btn{
+  padding:8px 12px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:600;
+  text-decoration:none;
+  color:#fff;
+}
+
+.h-wa{background:#25D366}
+.h-grup{background:var(--primary)}
+
+/* ===== CONTAINER ===== */
 .container{
   max-width:480px;
-  width:100%;
+  margin:auto;
   background:#fff;
   border-radius:26px;
   padding:26px;
   box-shadow:0 20px 50px rgba(0,0,0,.12);
-  animation:fade .5s ease;
 }
 
-@keyframes fade{
-  from{opacity:0;transform:translateY(10px)}
-  to{opacity:1}
+/* ===== ANIMASI ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .8s ease;
 }
 
-h1{text-align:center}
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ===== KONTEN ===== */
 .desc{text-align:center;font-size:14px;color:#555;margin:10px 0 20px}
 
 .info-board{
@@ -99,8 +145,6 @@ h1{text-align:center}
 .grid-item i{font-size:22px;margin-bottom:6px}
 .grid-item:hover{transform:translateY(-3px)}
 
-.services{display:grid;gap:18px}
-
 .service{
   border:1px solid #eee;
   border-radius:20px;
@@ -111,7 +155,6 @@ h1{text-align:center}
   width:100%;
   border-radius:14px;
   cursor:pointer;
-  display:block;
 }
 
 .service h3{font-size:15px;margin:10px 0}
@@ -128,7 +171,7 @@ h1{text-align:center}
   cursor:pointer;
 }
 
-/* MODAL */
+/* ===== MODAL ===== */
 .modal{
   display:none;
   position:fixed;
@@ -143,33 +186,13 @@ h1{text-align:center}
   background:#fff;
   border-radius:20px;
   padding:20px;
-  max-width:90%;
   width:340px;
-  animation:fade .25s ease;
 }
 
-.modal-img{
-  max-width:95%;
-  max-height:95%;
-}
-
-.modal-img img{
-  width:auto;
-  max-width:100%;
-  height:auto;
-  border-radius:14px;
-  display:block;
-}
-
-.modal-title{
-  text-align:center;
-  font-weight:600;
-  margin-bottom:12px;
-}
+.modal-title{text-align:center;font-weight:600;margin-bottom:12px}
 
 .choice{
   display:block;
-  width:100%;
   margin:10px 0;
   padding:14px;
   border-radius:14px;
@@ -186,8 +209,20 @@ h1{text-align:center}
 
 <body>
 
+<!-- STICKY HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <h2>XREZZKY STORE</h2>
+    <div class="header-btns">
+      <a href="https://wa.me/6288293064112" class="header-btn h-wa" target="_blank">Kontak</a>
+      <a href="javascript:void(0)" class="header-btn h-grup" onclick="openGroup()">Komunitas</a>
+    </div>
+  </div>
+</div>
+
 <div class="container">
-<h1>XREZZKY STORE</h1>
+
+<div class="reveal">
 <p class="desc">Layanan digital game aman & terpercaya</p>
 
 <div class="info-board">
@@ -203,12 +238,13 @@ h1{text-align:center}
 <a href="https://link-info-update.com" class="btn btn-info" target="_blank">
 <i class="fas fa-bullhorn"></i> Info & Update
 </a>
+</div>
 
+<div class="reveal">
 <div class="section-title">Platform & Komunitas</div>
 <div class="grid">
   <div class="grid-item" onclick="openGroup()">
-    <i class="fab fa-whatsapp" style="color:#25D366"></i>
-    Komunitas & Grup
+    <i class="fab fa-whatsapp" style="color:#25D366"></i> Komunitas & Grup
   </div>
   <a href="https://instagram.com/xrezzkystore" class="grid-item" target="_blank">
     <i class="fab fa-instagram" style="color:#E1306C"></i> Instagram
@@ -220,77 +256,56 @@ h1{text-align:center}
     <i class="fab fa-discord" style="color:#5865F2"></i> Discord
   </a>
 </div>
+</div>
 
+<div class="reveal">
 <div class="section-title">Layanan Kami</div>
-<div class="services">
-  <div class="service">
-    <div class="photos">
-      <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src)">
-    </div>
-    <h3>Jasa joki & gift Dead Rails</h3>
-    <button onclick="pesan(this)"
-      data-pesan="Halo admin, saya mau pesan *Jasa Joki & gift Dead Rails*. Mohon kirimkan listnya 🙏">
-      Pesan Sekarang
-    </button>
+<div class="service">
+  <div class="photos">
+    <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src)">
   </div>
+  <h3>Jasa joki & gift Dead Rails</h3>
+  <button onclick="pesan(this)"
+    data-pesan="Halo admin, saya mau pesan *Jasa Joki & gift Dead Rails*. Mohon kirimkan listnya 🙏">
+    Pesan Sekarang
+  </button>
 </div>
 </div>
 
-<!-- MODAL FOTO -->
-<div id="imgModal" class="modal" onclick="if(event.target===this)closeImg()">
-  <div class="modal-img">
-    <img id="modalImg">
-  </div>
 </div>
 
 <!-- MODAL GRUP -->
 <div id="groupModal" class="modal" onclick="if(event.target===this)closeGroup()">
   <div class="modal-box">
     <div class="modal-title">Pilih Platform / Grup</div>
-    <div id="groupList"></div>
+    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa" target="_blank">Komunitas</a>
+    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-grup" target="_blank">Grup Jual Beli</a>
+    <a href="https://chat.whatsapp.com/IUrM5APBZ9rDvct0wN6Eih?mode=gi_t" class="choice bg-grup" target="_blank">Grup Dead Rails</a>
   </div>
 </div>
 
 <script>
-const WA = "6288293064112";
+const WA="6288293064112";
+const groupModal=document.getElementById("groupModal");
 
-/* ===== GRUP AUTO ===== */
-const groups = [
-  { name:"Komunitas", link:"https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt", class:"bg-wa" },
-  { name:"Grup Jual Beli", link:"https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J", class:"bg-grup" },
-  { name:"Grup Dead Rails", link:"https://chat.whatsapp.com/IUrM5APBZ9rDvct0wN6Eih?mode=gi_t", class:"bg-grup" }
-];
-
-const imgModal = document.getElementById("imgModal");
-const modalImg = document.getElementById("modalImg");
-const groupModal = document.getElementById("groupModal");
-const groupList = document.getElementById("groupList");
-
-function openImg(src){
-  modalImg.src = src;
-  imgModal.style.display = "flex";
-}
-function closeImg(){ imgModal.style.display="none"; }
-
-function openGroup(){
-  groupList.innerHTML = "";
-  groups.forEach(g=>{
-    const a = document.createElement("a");
-    a.href = g.link;
-    a.target = "_blank";
-    a.className = "choice "+g.class;
-    a.textContent = g.name;
-    groupList.appendChild(a);
+/* REVEAL ANIMATION */
+const revealEls=document.querySelectorAll(".reveal");
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add("show");
   });
-  groupModal.style.display="flex";
-}
-function closeGroup(){ groupModal.style.display="none"; }
+},{threshold:.15});
+
+revealEls.forEach(el=>observer.observe(el));
+
+function openGroup(){groupModal.style.display="flex"}
+function closeGroup(){groupModal.style.display="none"}
 
 function pesan(btn){
-  const text = encodeURIComponent(btn.dataset.pesan);
+  const text=encodeURIComponent(btn.dataset.pesan);
   window.open(`https://wa.me/${WA}?text=${text}`,"_blank");
 }
 </script>
 
 </body>
-        </html>
+</html>
