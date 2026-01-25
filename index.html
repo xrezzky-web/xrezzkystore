@@ -3,343 +3,228 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XREZZKY STORE | Digital Game Services</title>
+<title>XrezzkyStore</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- SEO -->
+<meta name="description" content="XrezzkyStore - Jasa Game Dead Rails Terpercaya, Fast Respon & Aman">
+
+<!-- ICON -->
+<link rel="icon" href="https://i.imgur.com/fKt8LYa.jpeg">
 
 <style>
-:root{
-  --primary:#007bff;
-  --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
-  --soft:#f9fafb;
-}
-
-*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 body{
-  background:linear-gradient(135deg,#e0eafc,#cfdef3);
-  min-height:100vh;
-  padding:20px;
+  background:#0b0b0b;
+  color:#fff;
+  scroll-behavior:smooth;
 }
 
-/* ================= ANIMASI ================= */
-.fade-up{opacity:0;transform:translateY(40px);transition:1.4s ease}
-.fade-up.show{opacity:1;transform:none}
+/* ===== HEADER ===== */
+header{
+  text-align:center;
+  padding:80px 20px 120px;
+}
+.logo{
+  width:140px;
+  height:140px;
+  border-radius:16px;
+  object-fit:cover;
+  margin-bottom:20px;
+  animation:fadeUp 1.6s ease forwards;
+}
+h1{
+  font-size:42px;
+  letter-spacing:2px;
+  animation:fadeUp 2s ease forwards;
+}
+.sub{
+  margin-top:10px;
+  color:#aaa;
+  animation:fadeUp 2.4s ease forwards;
+}
 
-.scale-in{opacity:0;transform:scale(.92);transition:1.4s ease}
-.scale-in.show{opacity:1;transform:scale(1)}
+/* ===== PLATFORM BUTTON ===== */
+.platforms{
+  margin-top:35px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+.platforms a{
+  padding:12px 22px;
+  border-radius:10px;
+  font-weight:bold;
+  text-decoration:none;
+  color:#000;
+  transform:translateY(30px);
+  opacity:0;
+  animation:fadeUp 2.8s ease forwards;
+}
+.platforms a:nth-child(1){background:#25D366}
+.platforms a:nth-child(2){background:#5865F2}
+.platforms a:nth-child(3){background:#229ED9}
 
-.slide-left{opacity:0;transform:translateX(-50px);transition:1.6s ease}
-.slide-left.show{opacity:1;transform:none}
-
-.delay-1{transition-delay:.2s}
-.delay-2{transition-delay:.4s}
-.delay-3{transition-delay:.6s}
-.delay-4{transition-delay:.8s}
-
-/* ================= STICKY BAR ================= */
+/* ===== STICKY BAR ===== */
 .sticky-bar{
   position:fixed;
-  top:14px;
+  top:12px;
   left:50%;
-  transform:translateX(-50%);
-  width:92%;
-  max-width:480px;
-  background:#fff;
-  border-radius:20px;
-  padding:12px 16px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 12px 35px rgba(0,0,0,.18);
-  z-index:999;
-}
-
-.sticky-title{
-  font-weight:800;
-  font-size:13px;
-}
-
-.sticky-btns{display:flex;gap:8px}
-
-.sticky-btn{
-  padding:7px 12px;
-  border-radius:12px;
-  font-size:12px;
-  font-weight:600;
-  color:#fff;
-  text-decoration:none;
-  opacity:0;
-  transform:scale(.9);
-  transition:all 1.2s ease;
-}
-
-.sticky-btn.show{opacity:1;transform:scale(1)}
-
-.s-wa{background:#25D366}
-.s-grup{background:var(--primary)}
-.s-info{background:#111}
-
-/* ================= CONTAINER ================= */
-.container{
-  max-width:480px;
-  margin:auto;
-  background:#fff;
-  border-radius:28px;
-  padding:28px;
-  box-shadow:0 20px 50px rgba(0,0,0,.12);
-}
-
-/* ================= HEADER ================= */
-.logo{
-  display:flex;
-  justify-content:center;
-  margin-bottom:22px;
-}
-.logo img{
-  width:180px;
-  border-radius:26px;
-}
-
-h1{text-align:center;margin-bottom:8px}
-.desc{text-align:center;font-size:14px;color:#555;margin-bottom:22px}
-
-/* ================= INFO ================= */
-.info-board{
-  background:var(--soft);
-  border-left:5px solid var(--primary);
-  padding:14px;
+  transform:translateX(-50%) translateY(-120px);
+  background:#121212;
+  border:1px solid #222;
   border-radius:14px;
-  font-size:13px;
-}
-
-/* ================= BUTTON ================= */
-.btn{
+  padding:10px 18px;
   display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  padding:14px;
-  border-radius:14px;
-  text-decoration:none;
-  color:#fff;
-  font-weight:600;
-  margin-top:12px;
-}
-.btn-wa{background:#111}
-.btn-info{background:var(--gradient)}
-
-/* ================= PLATFORM ================= */
-.section-title{margin:34px 0 12px;font-size:15px;color:#444}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
   gap:14px;
+  z-index:999;
+  transition:all .8s ease;
 }
-.grid-item{
-  background:#fff;
-  border:1px solid #eee;
-  border-radius:18px;
-  padding:14px;
-  text-align:center;
-  font-size:13px;
-  font-weight:600;
-  color:#000;
-  text-decoration:none;
-  transition:.3s;
+.sticky-bar.show{
+  transform:translateX(-50%) translateY(0);
 }
-.grid-item i{font-size:22px;margin-bottom:6px}
-.grid-item:hover{transform:translateY(-4px)}
-
-/* ================= LAYANAN ================= */
-.service{
-  border:1px solid #eee;
-  border-radius:20px;
-  padding:14px;
-}
-.service h3{margin:10px 0 6px}
-.service p{font-size:13px;color:#555}
-
-.photos{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(100px,1fr));
-  gap:8px;
-  margin-top:12px;
-}
-.photos img{
-  width:100%;
-  border-radius:12px;
-  cursor:pointer;
-}
-
-.service button{
-  width:100%;
-  margin-top:12px;
-  background:var(--primary);
+.sticky-bar button{
+  background:#1e1e1e;
   color:#fff;
   border:none;
-  padding:14px;
-  border-radius:14px;
-  font-weight:700;
+  padding:10px 16px;
+  border-radius:10px;
   cursor:pointer;
+  animation:slideLeft 1.2s ease forwards;
 }
 
-/* ================= MODAL FOTO ================= */
+/* ===== LAYANAN ===== */
+section{
+  padding:60px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+h2{
+  margin-bottom:25px;
+  font-size:26px;
+}
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:20px;
+}
+.service{
+  background:#111;
+  border-radius:14px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:.3s;
+}
+.service:hover{transform:translateY(-6px)}
+.service img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+.service .info{
+  padding:14px;
+}
+.service .info small{color:#aaa}
+
+/* ===== MODAL IMAGE ===== */
 .modal{
-  display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.7);
-  justify-content:center;
+  background:rgba(0,0,0,.85);
+  display:none;
   align-items:center;
+  justify-content:center;
   z-index:1000;
 }
-.modal-box{
-  background:#fff;
-  border-radius:18px;
-  padding:16px;
-  max-width:95%;
-}
-.modal-box img{
-  max-width:100%;
-  max-height:70vh;
-  border-radius:12px;
-}
-.modal-info{
-  font-size:12px;
-  color:#555;
-  margin-top:10px;
-  text-align:center;
+.modal img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:14px;
 }
 
-/* ================= GROUP MODAL ================= */
-.choice{
-  display:block;
-  padding:12px;
-  border-radius:12px;
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-  margin-top:10px;
+/* ===== ANIMATION ===== */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
 }
-.bg-wa{background:#25D366}
-.bg-grup{background:var(--primary)}
+@keyframes slideLeft{
+  from{opacity:0;transform:translateX(-40px)}
+  to{opacity:1;transform:translateX(0)}
+}
 </style>
 </head>
 
 <body>
 
 <!-- STICKY -->
-<div class="sticky-bar">
-  <div class="sticky-title slide-left">XREZZKY STORE</div>
-  <div class="sticky-btns">
-    <a href="https://wa.me/6288293064112" class="sticky-btn s-wa">Kontak</a>
-    <a href="javascript:void(0)" onclick="openGroup()" class="sticky-btn s-grup">Grup</a>
-    <a href="#" class="sticky-btn s-info">Info</a>
+<div class="sticky-bar" id="stickyBar">
+  <button>Kontak</button>
+  <button>Platform</button>
+  <button>Info Stok & Testi</button>
+</div>
+
+<header id="top">
+  <img src="https://i.imgur.com/fKt8LYa.jpeg" class="logo">
+  <h1>XREZZKYSTORE</h1>
+  <div class="sub">Jasa Game • Aman • Fast Respon</div>
+
+  <div class="platforms">
+    <a href="#">WhatsApp</a>
+    <a href="#">Discord</a>
+    <a href="#">Telegram</a>
   </div>
-</div>
+</header>
 
-<div class="container">
+<section>
+  <h2>Layanan</h2>
+  <div class="services">
 
-<div class="logo scale-in">
-  <img src="https://i.imgur.com/fKt8LYa.jpeg">
-</div>
+    <!-- SERVICE ITEM -->
+    <div class="service" onclick="openModal(this)">
+      <img src="https://i.imgur.com/LAK56NG.jpeg">
+      <div class="info">
+        <b>Joki Dead Rails</b><br>
+        <small>Upload: 24 Jan 2026 • 20:45 WIB</small>
+      </div>
+    </div>
 
-<h1 class="fade-up">XREZZKY STORE</h1>
-<p class="desc fade-up delay-1">Layanan digital game aman & terpercaya</p>
+    <!-- COPY ITEM UNTUK TAMBAH -->
+    <div class="service" onclick="openModal(this)">
+      <img src="https://i.imgur.com/LAK56NG.jpeg">
+      <div class="info">
+        <b>Gift Class</b><br>
+        <small>Upload: 25 Jan 2026 • 11:30 WIB</small>
+      </div>
+    </div>
 
-<div class="info-board fade-up delay-2">
-📌 Ready joki & gift all game<br>
-⚡ Proses cepat & aman<br>
-💬 Fast respon admin
-</div>
-
-<a href="https://wa.me/6288293064112" class="btn btn-wa fade-up delay-3">
-<i class="fab fa-whatsapp"></i> Kontak Admin
-</a>
-
-<div class="section-title fade-up">Platform & Komunitas</div>
-<div class="grid fade-up delay-1">
-  <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="grid-item">
-    <i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp
-  </a>
-  <a href="https://instagram.com/xrezzkystore" class="grid-item">
-    <i class="fab fa-instagram" style="color:#E1306C"></i> Instagram
-  </a>
-  <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item">
-    <i class="fab fa-tiktok" style="color:#000"></i> TikTok
-  </a>
-  <a href="https://discord.gg/xDfZJHb2yK" class="grid-item">
-    <i class="fab fa-discord" style="color:#5865F2"></i> Discord
-  </a>
-</div>
-
-<div class="section-title fade-up">Layanan Kami</div>
-<div class="service fade-up delay-1">
-  <h3>Jasa Joki & Gift Dead Rails</h3>
-  <p>Status: <b>READY</b></p>
-  <p>Update: 12 Jan 2026 • 19:40 WIB</p>
-
-  <div class="photos">
-    <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this,'12 Jan 2026 • 18:20 WIB')">
   </div>
+</section>
 
-  <button onclick="pesan(this)"
-    data-pesan="Halo admin, saya mau pesan *Jasa Joki & Gift Dead Rails*. Mohon kirimkan detailnya 🙏">
-    Pesan Sekarang
-  </button>
-</div>
-
-</div>
-
-<!-- MODAL FOTO -->
-<div id="imgModal" class="modal" onclick="if(event.target===this)closeImg()">
-  <div class="modal-box">
-    <img id="modalImg">
-    <div id="modalInfo" class="modal-info"></div>
-  </div>
-</div>
-
-<!-- MODAL GROUP -->
-<div id="groupModal" class="modal" onclick="if(event.target===this)closeGroup()">
-  <div class="modal-box">
-    <b>Pilih Grup</b>
-    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa">Komunitas</a>
-    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-grup">Grup Jual Beli</a>
-  </div>
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeModal()">
+  <img id="modalImg">
 </div>
 
 <script>
-const WA="6288293064112";
-const imgModal=document.getElementById("imgModal");
-const modalImg=document.getElementById("modalImg");
-const modalInfo=document.getElementById("modalInfo");
-const groupModal=document.getElementById("groupModal");
+const sticky = document.getElementById("stickyBar");
+const trigger = document.getElementById("top").offsetHeight;
 
-function openImg(el,info){
-  modalImg.src=el.src;
-  modalInfo.innerText="📸 Upload: "+info;
-  imgModal.style.display="flex";
-}
-function closeImg(){imgModal.style.display="none"}
-
-function openGroup(){groupModal.style.display="flex"}
-function closeGroup(){groupModal.style.display="none"}
-
-function pesan(btn){
-  const t=encodeURIComponent(btn.dataset.pesan);
-  window.open(`https://wa.me/${WA}?text=${t}`,"_blank");
-}
-
-/* animasi sticky */
-window.addEventListener("load",()=>{
-  document.querySelector(".slide-left").classList.add("show");
-  document.querySelectorAll(".sticky-btn").forEach((b,i)=>{
-    setTimeout(()=>b.classList.add("show"),300+(i*200));
-  });
+window.addEventListener("scroll",()=>{
+  if(window.scrollY > trigger){
+    sticky.classList.add("show");
+  }else{
+    sticky.classList.remove("show");
+  }
 });
+
+function openModal(el){
+  document.getElementById("modalImg").src = el.querySelector("img").src;
+  document.getElementById("modal").style.display="flex";
+}
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+}
 </script>
 
 </body>
-  </html>
+</html>
