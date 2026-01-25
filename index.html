@@ -22,42 +22,46 @@ body{
   padding:20px;
 }
 
-/* ================= ANIMASI ================= */
-.fade-up{opacity:0;transform:translateY(40px);transition:1.4s ease}
-.fade-up.show{opacity:1;transform:none}
-
-.scale-in{opacity:0;transform:scale(.92);transition:1.4s ease}
-.scale-in.show{opacity:1;transform:scale(1)}
-
-.slide-left{opacity:0;transform:translateX(-50px);transition:1.6s ease}
-.slide-left.show{opacity:1;transform:none}
-
-.delay-1{transition-delay:.2s}
-.delay-2{transition-delay:.4s}
-.delay-3{transition-delay:.6s}
-.delay-4{transition-delay:.8s}
+/* ================= SAFE ANIMATION ================= */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 1.4s ease, transform 1.4s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
 
 /* ================= STICKY BAR ================= */
 .sticky-bar{
   position:fixed;
-  top:14px;
+  top:16px;
   left:50%;
   transform:translateX(-50%);
   width:92%;
   max-width:480px;
   background:#fff;
-  border-radius:20px;
+  border-radius:22px;
   padding:12px 16px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  box-shadow:0 12px 35px rgba(0,0,0,.18);
+  box-shadow:0 14px 40px rgba(0,0,0,.18);
   z-index:999;
 }
 
+/* judul muter + geser */
 .sticky-title{
   font-weight:800;
   font-size:13px;
+  opacity:0;
+  transform:translateX(-30px) rotate(-6deg);
+  transition:all 1.6s ease;
+}
+.sticky-title.show{
+  opacity:1;
+  transform:none;
 }
 
 .sticky-btns{display:flex;gap:8px}
@@ -73,8 +77,10 @@ body{
   transform:scale(.9);
   transition:all 1.2s ease;
 }
-
-.sticky-btn.show{opacity:1;transform:scale(1)}
+.sticky-btn.show{
+  opacity:1;
+  transform:scale(1);
+}
 
 .s-wa{background:#25D366}
 .s-grup{background:var(--primary)}
@@ -83,7 +89,7 @@ body{
 /* ================= CONTAINER ================= */
 .container{
   max-width:480px;
-  margin:auto;
+  margin:120px auto 40px;
   background:#fff;
   border-radius:28px;
   padding:28px;
@@ -94,10 +100,10 @@ body{
 .logo{
   display:flex;
   justify-content:center;
-  margin-bottom:22px;
+  margin-bottom:24px;
 }
 .logo img{
-  width:180px;
+  width:200px;
   border-radius:26px;
 }
 
@@ -127,7 +133,6 @@ h1{text-align:center;margin-bottom:8px}
   margin-top:12px;
 }
 .btn-wa{background:#111}
-.btn-info{background:var(--gradient)}
 
 /* ================= PLATFORM ================= */
 .section-title{margin:34px 0 12px;font-size:15px;color:#444}
@@ -152,7 +157,7 @@ h1{text-align:center;margin-bottom:8px}
 .grid-item i{font-size:22px;margin-bottom:6px}
 .grid-item:hover{transform:translateY(-4px)}
 
-/* ================= LAYANAN ================= */
+/* ================= SERVICE ================= */
 .service{
   border:1px solid #eee;
   border-radius:20px;
@@ -161,12 +166,6 @@ h1{text-align:center;margin-bottom:8px}
 .service h3{margin:10px 0 6px}
 .service p{font-size:13px;color:#555}
 
-.photos{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(100px,1fr));
-  gap:8px;
-  margin-top:12px;
-}
 .photos img{
   width:100%;
   border-radius:12px;
@@ -185,7 +184,7 @@ h1{text-align:center;margin-bottom:8px}
   cursor:pointer;
 }
 
-/* ================= MODAL FOTO ================= */
+/* ================= MODAL ================= */
 .modal{
   display:none;
   position:fixed;
@@ -206,25 +205,6 @@ h1{text-align:center;margin-bottom:8px}
   max-height:70vh;
   border-radius:12px;
 }
-.modal-info{
-  font-size:12px;
-  color:#555;
-  margin-top:10px;
-  text-align:center;
-}
-
-/* ================= GROUP MODAL ================= */
-.choice{
-  display:block;
-  padding:12px;
-  border-radius:12px;
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-  margin-top:10px;
-}
-.bg-wa{background:#25D366}
-.bg-grup{background:var(--primary)}
 </style>
 </head>
 
@@ -232,7 +212,7 @@ h1{text-align:center;margin-bottom:8px}
 
 <!-- STICKY -->
 <div class="sticky-bar">
-  <div class="sticky-title slide-left">XREZZKY STORE</div>
+  <div class="sticky-title">XREZZKY STORE</div>
   <div class="sticky-btns">
     <a href="https://wa.me/6288293064112" class="sticky-btn s-wa">Kontak</a>
     <a href="javascript:void(0)" onclick="openGroup()" class="sticky-btn s-grup">Grup</a>
@@ -240,103 +220,53 @@ h1{text-align:center;margin-bottom:8px}
   </div>
 </div>
 
-<div class="container">
+<div class="container reveal">
 
-<div class="logo scale-in">
+<div class="logo">
   <img src="https://i.imgur.com/fKt8LYa.jpeg">
 </div>
 
-<h1 class="fade-up">XREZZKY STORE</h1>
-<p class="desc fade-up delay-1">Layanan digital game aman & terpercaya</p>
+<h1>XREZZKY STORE</h1>
+<p class="desc">Layanan digital game aman & terpercaya</p>
 
-<div class="info-board fade-up delay-2">
+<div class="info-board">
 📌 Ready joki & gift all game<br>
 ⚡ Proses cepat & aman<br>
 💬 Fast respon admin
 </div>
 
-<a href="https://wa.me/6288293064112" class="btn btn-wa fade-up delay-3">
+<a href="https://wa.me/6288293064112" class="btn btn-wa">
 <i class="fab fa-whatsapp"></i> Kontak Admin
 </a>
 
-<div class="section-title fade-up">Platform & Komunitas</div>
-<div class="grid fade-up delay-1">
-  <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="grid-item">
-    <i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp
-  </a>
+<div class="section-title">Platform & Komunitas</div>
+<div class="grid">
   <a href="https://instagram.com/xrezzkystore" class="grid-item">
     <i class="fab fa-instagram" style="color:#E1306C"></i> Instagram
   </a>
   <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item">
     <i class="fab fa-tiktok" style="color:#000"></i> TikTok
   </a>
-  <a href="https://discord.gg/xDfZJHb2yK" class="grid-item">
-    <i class="fab fa-discord" style="color:#5865F2"></i> Discord
-  </a>
 </div>
 
-<div class="section-title fade-up">Layanan Kami</div>
-<div class="service fade-up delay-1">
+<div class="section-title">Layanan Kami</div>
+<div class="service">
+  <img src="https://i.imgur.com/2LvDMJt.jpeg">
   <h3>Jasa Joki & Gift Dead Rails</h3>
-  <p>Status: <b>READY</b></p>
-  <p>Update: 12 Jan 2026 • 19:40 WIB</p>
-
-  <div class="photos">
-    <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this,'12 Jan 2026 • 18:20 WIB')">
-  </div>
-
-  <button onclick="pesan(this)"
-    data-pesan="Halo admin, saya mau pesan *Jasa Joki & Gift Dead Rails*. Mohon kirimkan detailnya 🙏">
-    Pesan Sekarang
-  </button>
+  <button>Pesan Sekarang</button>
 </div>
 
-</div>
-
-<!-- MODAL FOTO -->
-<div id="imgModal" class="modal" onclick="if(event.target===this)closeImg()">
-  <div class="modal-box">
-    <img id="modalImg">
-    <div id="modalInfo" class="modal-info"></div>
-  </div>
-</div>
-
-<!-- MODAL GROUP -->
-<div id="groupModal" class="modal" onclick="if(event.target===this)closeGroup()">
-  <div class="modal-box">
-    <b>Pilih Grup</b>
-    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa">Komunitas</a>
-    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-grup">Grup Jual Beli</a>
-  </div>
 </div>
 
 <script>
-const WA="6288293064112";
-const imgModal=document.getElementById("imgModal");
-const modalImg=document.getElementById("modalImg");
-const modalInfo=document.getElementById("modalInfo");
-const groupModal=document.getElementById("groupModal");
+document.addEventListener("DOMContentLoaded",()=>{
+  // show konten
+  document.querySelector(".reveal").classList.add("show");
 
-function openImg(el,info){
-  modalImg.src=el.src;
-  modalInfo.innerText="📸 Upload: "+info;
-  imgModal.style.display="flex";
-}
-function closeImg(){imgModal.style.display="none"}
-
-function openGroup(){groupModal.style.display="flex"}
-function closeGroup(){groupModal.style.display="none"}
-
-function pesan(btn){
-  const t=encodeURIComponent(btn.dataset.pesan);
-  window.open(`https://wa.me/${WA}?text=${t}`,"_blank");
-}
-
-/* animasi sticky */
-window.addEventListener("load",()=>{
-  document.querySelector(".slide-left").classList.add("show");
+  // animasi sticky
+  document.querySelector(".sticky-title").classList.add("show");
   document.querySelectorAll(".sticky-btn").forEach((b,i)=>{
-    setTimeout(()=>b.classList.add("show"),300+(i*200));
+    setTimeout(()=>b.classList.add("show"),400+(i*220));
   });
 });
 </script>
