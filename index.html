@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XREZZKY STORE | Digital Game Services</title>
 
-<meta name="description" content="Jasa Joki Dead Rails terpercaya, cepat, aman, dan profesional.">
+<meta name="description" content="XREZZKY STORE - Jasa joki & gift Dead Rails terpercaya, cepat, aman, dan profesional.">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -28,63 +28,46 @@ body{
   padding:20px;
 }
 
-/* ================= STICKY SCROLL BAR ================= */
-.scroll-bar{
+/* ===== STICKY TOP BAR (MUNCUL SAAT SCROLL) ===== */
+#topInfoBar{
   position:fixed;
-  top:-100px;
-  left:0;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  z-index:1000;
-  transition:.6s ease;
-}
-
-.scroll-bar.show{top:10px}
-
-.scroll-inner{
+  top:-80px;
+  left:50%;
+  transform:translateX(-50%);
+  width:calc(100% - 40px);
+  max-width:480px;
   background:#fff;
-  width:95%;
-  max-width:520px;
+  border-radius:14px;
   padding:10px 14px;
-  border-radius:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
   display:flex;
+  justify-content:space-between;
   align-items:center;
-  gap:10px;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+  transition:.4s ease;
+  z-index:1000;
 }
 
-.scroll-left{
-  font-size:12px;
+#topInfoBar.show{top:14px}
+
+#topInfoBar .brand{
   font-weight:700;
+  font-size:13px;
 }
 
-.scroll-center{
-  flex:1;
-  text-align:center;
-  font-weight:800;
-  font-size:14px;
-}
-
-.scroll-btns{
-  display:flex;
-  gap:6px;
-}
-
-.scroll-btn{
+#topInfoBar .actions a{
+  margin-left:6px;
+  font-size:12px;
   padding:6px 10px;
-  font-size:11px;
   border-radius:10px;
   text-decoration:none;
   color:#fff;
-  font-weight:600;
 }
 
-.sb-wa{background:#25D366}
-.sb-grup{background:var(--primary)}
-.sb-info{background:#444}
+.t-wa{background:#25D366}
+.t-grup{background:var(--primary)}
+.t-info{background:#333}
 
-/* ================= CONTAINER ================= */
+/* ===== CONTAINER ===== */
 .container{
   max-width:480px;
   width:100%;
@@ -92,15 +75,10 @@ body{
   border-radius:26px;
   padding:26px;
   box-shadow:0 20px 50px rgba(0,0,0,.12);
-  animation:fade .8s ease;
 }
 
-@keyframes fade{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1}
-}
-
-h1{text-align:center;margin-bottom:8px}
+/* ===== CONTENT ===== */
+h1{text-align:center;margin-bottom:10px}
 .desc{text-align:center;font-size:14px;color:#555;margin-bottom:20px}
 
 .info-board{
@@ -111,7 +89,6 @@ h1{text-align:center;margin-bottom:8px}
   font-size:13px;
 }
 
-/* BUTTON */
 .btn{
   display:flex;
   align-items:center;
@@ -122,21 +99,26 @@ h1{text-align:center;margin-bottom:8px}
   text-decoration:none;
   color:#fff;
   font-weight:600;
-  margin-top:12px;
-  transition:.3s;
+  margin-top:10px;
+  transition:.25s;
 }
+
 .btn-wa{background:linear-gradient(135deg,var(--dark1),var(--dark2))}
 .btn-info{background:var(--gradient)}
-.btn:hover{transform:translateY(-3px)}
+.btn:hover{transform:translateY(-2px)}
 
-.section-title{margin:26px 0 12px;font-size:15px;color:#444}
+.section-title{
+  margin:26px 0 12px;
+  font-size:15px;
+  color:#444;
+}
 
-/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:14px;
 }
+
 .grid-item{
   background:#fff;
   border:1px solid #eee;
@@ -145,78 +127,64 @@ h1{text-align:center;margin-bottom:8px}
   text-align:center;
   font-size:13px;
   font-weight:600;
+  color:#000;
   cursor:pointer;
-  transition:.3s;
+  transition:.25s;
 }
-.grid-item i{font-size:22px;margin-bottom:6px}
-.grid-item:hover{transform:translateY(-4px)}
 
-/* SERVICE */
+.grid-item i{font-size:22px;margin-bottom:6px}
+.grid-item:hover{transform:translateY(-3px)}
+
 .service{
   border:1px solid #eee;
   border-radius:20px;
   padding:12px;
 }
+
 .photos img{
   width:100%;
-  border-radius:14px;
+  border-radius:12px;
   cursor:pointer;
 }
+
 .service h3{font-size:15px;margin:10px 0}
+
 .service button{
   width:100%;
-  margin-top:12px;
   background:var(--primary);
   color:#fff;
   border:none;
-  padding:14px;
-  border-radius:14px;
+  padding:12px;
+  border-radius:12px;
   font-weight:600;
+  cursor:pointer;
 }
 
-/* MODAL */
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  justify-content:center;
-  align-items:center;
-  z-index:999;
-}
-.modal-box{
-  background:#fff;
-  padding:18px;
-  border-radius:18px;
-}
-.modal-box img{max-width:100%;border-radius:14px}
-.choice{
-  display:block;
-  margin:10px 0;
-  padding:14px;
-  border-radius:14px;
-  color:#fff;
-  text-decoration:none;
+/* ===== FOOTER INFO ===== */
+.footer{
+  margin-top:40px;
+  padding-top:20px;
+  border-top:1px solid #eee;
   text-align:center;
-  font-weight:600;
+  font-size:13px;
+  color:#555;
 }
-.bg-wa{background:#25D366}
-.bg-grup{background:var(--primary)}
+
+.footer strong{color:#000}
+.footer a{color:var(--primary);text-decoration:none}
+.footer .social i{margin:0 6px;font-size:18px}
 </style>
 </head>
 
 <body>
 
 <!-- STICKY BAR -->
-<div class="scroll-bar" id="scrollBar">
-  <div class="scroll-inner">
-    <div class="scroll-left">XREZZKY</div>
-    <div class="scroll-center">XREZZKY STORE</div>
-    <div class="scroll-btns">
-      <a href="https://wa.me/6288293064112" class="scroll-btn sb-wa" target="_blank">Kontak</a>
-      <a href="javascript:void(0)" onclick="openGroup()" class="scroll-btn sb-grup">Grup</a>
-      <a href="https://link-info-update.com" class="scroll-btn sb-info" target="_blank">Info</a>
-    </div>
+<div id="topInfoBar">
+  <span class="brand">XREZZKY STORE</span>
+  <div class="actions">
+    <a class="t-wa" href="https://wa.me/6288293064112" target="_blank">Kontak</a>
+    <a class="t-grup" href="javascript:void(0)" onclick="openGroup()">Grup</a>
+    <a class="t-info" href="https://link-info-update.com" target="_blank">Info</a>
   </div>
 </div>
 
@@ -239,49 +207,74 @@ h1{text-align:center;margin-bottom:8px}
 <i class="fas fa-bullhorn"></i> Info & Update
 </a>
 
+<div class="section-title">Platform & Komunitas</div>
+<div class="grid">
+  <div class="grid-item" onclick="openGroup()">
+    <i class="fab fa-whatsapp" style="color:#25D366"></i> Komunitas & Grup
+  </div>
+  <a href="https://instagram.com/xrezzkystore" class="grid-item" target="_blank">
+    <i class="fab fa-instagram" style="color:#E1306C"></i> Instagram
+  </a>
+  <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item" target="_blank">
+    <i class="fab fa-tiktok"></i> TikTok
+  </a>
+  <a href="https://discord.gg/xDfZJHb2yK" class="grid-item" target="_blank">
+    <i class="fab fa-discord" style="color:#5865F2"></i> Discord
+  </a>
+</div>
+
 <div class="section-title">Layanan Kami</div>
 <div class="service">
   <div class="photos">
-    <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src)">
+    <img src="https://i.imgur.com/2LvDMJt.jpeg">
   </div>
-  <h3>Jasa Joki & Gift Dead Rails</h3>
-  <button onclick="pesan()">Pesan Sekarang</button>
+  <h3>Jasa joki & gift Dead Rails</h3>
+  <button onclick="window.open('https://wa.me/6288293064112','_blank')">
+    Pesan Sekarang
+  </button>
 </div>
 
+<!-- FOOTER -->
+<div class="footer">
+  <strong>XREZZKY STORE</strong><br>
+  Jasa joki & gift game terpercaya<br><br>
+
+  📧 Email: <a href="mailto:xrezzkystore.id@gmail.com">xrezzkystore.id@gmail.com</a><br><br>
+
+  <div class="social">
+    <a href="https://instagram.com/xrezzkystore"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@xrezzky.store"><i class="fab fa-tiktok"></i></a>
+    <a href="https://discord.gg/xDfZJHb2yK"><i class="fab fa-discord"></i></a>
+  </div>
+
+  <br>© 2026 XREZZKY STORE
 </div>
 
-<!-- MODAL FOTO -->
-<div id="imgModal" class="modal" onclick="if(event.target===this)closeImg()">
-  <div class="modal-box">
-    <img id="modalImg">
-  </div>
 </div>
 
 <!-- MODAL GROUP -->
 <div id="groupModal" class="modal" onclick="if(event.target===this)closeGroup()">
   <div class="modal-box">
+    <div class="modal-title">Pilih Grup</div>
     <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa" target="_blank">Komunitas</a>
-    <a href="https://chat.whatsapp.com/IUrM5APBZ9rDvct0wN6Eih" class="choice bg-grup" target="_blank">Grup Dead Rails</a>
+    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-grup" target="_blank">Grup Jual Beli</a>
   </div>
 </div>
 
 <script>
-const scrollBar=document.getElementById("scrollBar");
+const topBar = document.getElementById("topInfoBar");
+const groupModal = document.getElementById("groupModal");
+
 window.addEventListener("scroll",()=>{
-  scrollBar.classList.toggle("show",window.scrollY>120);
+  if(window.scrollY > 220){
+    topBar.classList.add("show");
+  } else {
+    topBar.classList.remove("show");
+  }
 });
 
-const imgModal=document.getElementById("imgModal");
-const modalImg=document.getElementById("modalImg");
-const groupModal=document.getElementById("groupModal");
-
-function openImg(src){modalImg.src=src;imgModal.style.display="flex"}
-function closeImg(){imgModal.style.display="none"}
 function openGroup(){groupModal.style.display="flex"}
 function closeGroup(){groupModal.style.display="none"}
-function pesan(){
-  window.open("https://wa.me/6288293064112","_blank");
-}
 </script>
 
 </body>
