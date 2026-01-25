@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XREZZKY STORE | Digital Game Services</title>
 
-<meta name="description" content="XREZZKY STORE - Jasa joki & gift game terpercaya, cepat, aman, profesional.">
+<meta name="description" content="XREZZKY STORE - Jasa joki & gift game terpercaya. Proses cepat, aman, dan profesional.">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -13,7 +13,9 @@
 :root{
   --primary:#007bff;
   --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
-  --soft:#f5f7fa;
+  --dark1:#1f1f1f;
+  --dark2:#3a3a3a;
+  --soft:#f9fafb;
 }
 
 *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto}
@@ -21,82 +23,89 @@
 body{
   background:linear-gradient(135deg,#e0eafc,#cfdef3);
   min-height:100vh;
-  padding-top:96px;
+  display:flex;
+  justify-content:center;
+  padding:100px 20px 20px;
 }
 
-/* ===== ANIMASI ===== */
-.fade-up{
-  opacity:0;
-  transform:translateY(50px);
-  transition:all 1.2s ease;
-}
-.fade-up.show{opacity:1;transform:translateY(0)}
-
-.slide-left{
-  opacity:0;
-  transform:translateX(-40px);
-  transition:all 1.2s ease;
-}
-.slide-left.show{opacity:1;transform:translateX(0)}
-
-.delay-1{transition-delay:.2s}
-.delay-2{transition-delay:.4s}
-.delay-3{transition-delay:.6s}
-.delay-4{transition-delay:.8s}
-
-/* ===== STICKY HEADER ===== */
+/* ================= HEADER STICKY ================= */
 .header{
   position:fixed;
-  top:0;left:0;
-  width:100%;
+  top:0;
+  left:0;
+  right:0;
   background:#fff;
-  z-index:1000;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  box-shadow:0 8px 30px rgba(0,0,0,.1);
+  z-index:999;
+  padding:12px 20px;
 }
 
 .header-inner{
   max-width:480px;
   margin:auto;
-  padding:14px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
 }
 
-.header h2{font-size:18px}
+.header-title{
+  font-weight:800;
+  font-size:16px;
+  animation:slideLeft .10s ease forwards;
+}
 
 .header-btns{
   display:flex;
-  gap:8px;
+  gap:10px;
+  margin-top:8px;
 }
 
 .header-btn{
-  padding:8px 10px;
-  border-radius:10px;
-  font-size:12px;
-  font-weight:600;
+  flex:1;
+  padding:10px;
+  border-radius:12px;
+  font-size:13px;
+  text-align:center;
   text-decoration:none;
   color:#fff;
+  font-weight:600;
+  opacity:0;
+  animation:slideUp 2.1s ease forwards;
 }
 
-.h-wa{background:#25D366}
-.h-grup{background:var(--primary)}
-.h-info{background:#555}
-.h-testi{background:#111}
+.h-wa{background:linear-gradient(135deg,var(--dark1),var(--dark2));animation-delay:.3s}
+.h-grup{background:#25D366;animation-delay:.5s}
+.h-info{background:var(--gradient);animation-delay:.7s}
 
-/* ===== CONTAINER ===== */
+/* ================= CONTAINER ================= */
 .container{
   max-width:480px;
-  margin:auto;
+  width:100%;
   background:#fff;
   border-radius:26px;
   padding:26px;
   box-shadow:0 20px 50px rgba(0,0,0,.12);
+  animation:fadeUp 2.2s ease;
 }
 
-h1{text-align:center;margin-bottom:6px}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1}
+}
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:none}
+}
+@keyframes slideLeft{
+  from{opacity:0;transform:translateX(-30px)}
+  to{opacity:1;transform:none}
+}
+@keyframes zoom{
+  from{transform:scale(.9);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+h1{text-align:center;margin-bottom:10px}
 .desc{text-align:center;font-size:14px;color:#555;margin-bottom:20px}
 
+/* INFO */
 .info-board{
   background:var(--soft);
   border-left:5px solid var(--primary);
@@ -105,35 +114,19 @@ h1{text-align:center;margin-bottom:6px}
   font-size:13px;
 }
 
-.btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  padding:14px;
-  border-radius:14px;
-  text-decoration:none;
-  color:#fff;
-  font-weight:600;
-  margin-top:10px;
-  transition:.3s;
-}
-.btn:hover{transform:translateY(-3px)}
-.btn-wa{background:linear-gradient(135deg,#111,#333)}
-.btn-info{background:var(--gradient)}
-
+/* SECTION */
 .section-title{
-  margin:26px 0 12px;
+  margin:28px 0 12px;
   font-size:15px;
   color:#444;
 }
 
+/* GRID PLATFORM */
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:14px;
 }
-
 .grid-item{
   background:#fff;
   border:1px solid #eee;
@@ -142,27 +135,31 @@ h1{text-align:center;margin-bottom:6px}
   text-align:center;
   font-size:13px;
   font-weight:600;
+  color:#000;
   cursor:pointer;
-  transition:.3s;
-  color:#000; /* teks hitam */
+  transition:.25s;
 }
+.grid-item i{
+  font-size:22px;
+  margin-bottom:6px;
+}
+.grid-item:hover{transform:translateY(-3px)}
 
-.grid-item i{font-size:22px;margin-bottom:6px}
-.grid-item:hover{transform:translateY(-4px)}
-
+/* LAYANAN */
+.services{display:grid;gap:18px}
 .service{
   border:1px solid #eee;
   border-radius:20px;
   padding:12px;
 }
+.service h3{font-size:15px;margin:10px 0}
 
 .photos img{
   width:100%;
   border-radius:14px;
   cursor:pointer;
+  display:block;
 }
-
-.service h3{font-size:15px;margin:10px 0}
 
 .service button{
   width:100%;
@@ -176,7 +173,7 @@ h1{text-align:center;margin-bottom:6px}
   cursor:pointer;
 }
 
-/* ===== MODAL ===== */
+/* MODAL */
 .modal{
   display:none;
   position:fixed;
@@ -184,29 +181,35 @@ h1{text-align:center;margin-bottom:6px}
   background:rgba(0,0,0,.6);
   justify-content:center;
   align-items:center;
-  z-index:999;
+  z-index:9999;
 }
-
 .modal-box{
   background:#fff;
+  width:90%;
+  max-width:360px;
+  padding:18px;
   border-radius:22px;
-  padding:22px;
-  width:340px;
+  animation:zoom .4s ease;
 }
-
-.modal-title{text-align:center;font-weight:600;margin-bottom:12px}
-
+.modal-box img{
+  width:100%;
+  border-radius:14px;
+}
+.modal-title{
+  text-align:center;
+  font-weight:700;
+  margin-bottom:10px;
+}
 .choice{
   display:block;
   margin:10px 0;
-  padding:14px;
-  border-radius:14px;
+  padding:12px;
+  border-radius:12px;
   color:#fff;
   text-decoration:none;
   text-align:center;
   font-weight:600;
 }
-
 .bg-wa{background:#25D366}
 .bg-grup{background:var(--primary)}
 </style>
@@ -217,19 +220,18 @@ h1{text-align:center;margin-bottom:6px}
 <!-- HEADER -->
 <div class="header">
   <div class="header-inner">
-    <h2 class="slide-left">XREZZKY STORE</h2>
+    <div class="header-title">XREZZKY STORE</div>
     <div class="header-btns">
-      <a class="header-btn h-wa slide-left delay-1" href="https://wa.me/6288293064112" target="_blank">Kontak</a>
-      <a class="header-btn h-grup slide-left delay-2" href="javascript:void(0)" onclick="openGroup()">Komunitas</a>
-      <a class="header-btn h-info slide-left delay-3" href="#stok">Info Stok</a>
-      <a class="header-btn h-testi slide-left delay-4" href="#testi">Testi</a>
+      <a href="https://wa.me/6288293064112" class="header-btn h-wa" target="_blank">Kontak</a>
+      <a href="javascript:void(0)" class="header-btn h-grup" onclick="openGroup()">Komunitas</a>
+      <a href="javascript:void(0)" class="header-btn h-info" onclick="openInfo()">Info</a>
     </div>
   </div>
 </div>
 
+<!-- CONTENT -->
 <div class="container">
 
-<div class="fade-up">
 <h1>XREZZKY STORE</h1>
 <p class="desc">Layanan digital game aman & terpercaya</p>
 
@@ -239,76 +241,84 @@ h1{text-align:center;margin-bottom:6px}
 💬 Fast respon admin
 </div>
 
-<a href="https://wa.me/6288293064112" class="btn btn-wa" target="_blank">
-<i class="fab fa-whatsapp"></i> Kontak Admin
-</a>
-
-<a href="https://link-info-update.com" class="btn btn-info" target="_blank">
-<i class="fas fa-bullhorn"></i> Info & Update
-</a>
-</div>
-
-<div class="fade-up">
 <div class="section-title">Platform & Komunitas</div>
 <div class="grid">
   <div class="grid-item" onclick="openGroup()">
-    <i class="fab fa-whatsapp" style="color:#25D366"></i> Komunitas & Grup
+    <i class="fab fa-whatsapp" style="color:#25D366"></i>
+    Komunitas & Grup
   </div>
   <a href="https://instagram.com/xrezzkystore" class="grid-item" target="_blank">
-    <i class="fab fa-instagram"></i> Instagram
+    <i class="fab fa-instagram" style="color:#E1306C"></i>
+    Instagram
   </a>
   <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item" target="_blank">
-    <i class="fab fa-tiktok"></i> TikTok
+    <i class="fab fa-tiktok" style="color:#000"></i>
+    TikTok
   </a>
   <a href="https://discord.gg/xDfZJHb2yK" class="grid-item" target="_blank">
-    <i class="fab fa-discord"></i> Discord
+    <i class="fab fa-discord" style="color:#5865F2"></i>
+    Discord
   </a>
 </div>
-</div>
 
-<div class="fade-up">
 <div class="section-title">Layanan Kami</div>
-<div class="service">
-  <div class="photos">
-    <img src="https://i.imgur.com/2LvDMJt.jpeg">
+<div class="services">
+  <div class="service">
+    <div class="photos">
+      <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src)">
+    </div>
+    <h3>Jasa Joki & Gift Dead Rails</h3>
+    <button onclick="pesan()">Pesan Sekarang</button>
   </div>
-  <h3>Jasa joki & gift Dead Rails</h3>
-  <button onclick="pesan(this)"
-    data-pesan="Halo admin, saya mau pesan *Jasa Joki & gift Dead Rails*. Mohon kirimkan listnya 🙏">
-    Pesan Sekarang
-  </button>
-</div>
 </div>
 
 </div>
 
-<!-- MODAL -->
+<!-- MODAL FOTO -->
+<div id="imgModal" class="modal" onclick="if(event.target===this)closeImg()">
+  <div class="modal-box">
+    <img id="modalImg">
+  </div>
+</div>
+
+<!-- MODAL KOMUNITAS -->
 <div id="groupModal" class="modal" onclick="if(event.target===this)closeGroup()">
   <div class="modal-box">
-    <div class="modal-title">Pilih Grup</div>
+    <div class="modal-title">Komunitas & Grup</div>
     <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa" target="_blank">Komunitas</a>
     <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-grup" target="_blank">Grup Jual Beli</a>
-    <a href="https://chat.whatsapp.com/IUrM5APBZ9rDvct0wN6Eih?mode=gi_t" class="choice bg-grup" target="_blank">Grup Dead Rails</a>
+    <a href="https://chat.whatsapp.com/IUrM5APBZ9rDvct0wN6Eih" class="choice bg-grup" target="_blank">Grup Tambahan</a>
+  </div>
+</div>
+
+<!-- MODAL INFO -->
+<div id="infoModal" class="modal" onclick="if(event.target===this)closeInfo()">
+  <div class="modal-box">
+    <div class="modal-title">Info Stok & Testimoni</div>
+    <a href="#" class="choice bg-grup">📦 Info Stok</a>
+    <a href="#" class="choice bg-wa">⭐ Testimoni</a>
   </div>
 </div>
 
 <script>
 const WA="6288293064112";
+const imgModal=document.getElementById("imgModal");
+const modalImg=document.getElementById("modalImg");
 const groupModal=document.getElementById("groupModal");
+const infoModal=document.getElementById("infoModal");
 
-/* animasi reveal */
-const obs=new IntersectionObserver(e=>{
-  e.forEach(x=>{if(x.isIntersecting)x.target.classList.add("show")});
-},{threshold:.15});
-
-document.querySelectorAll(".fade-up,.slide-left").forEach(el=>obs.observe(el));
+function openImg(src){modalImg.src=src;imgModal.style.display="flex"}
+function closeImg(){imgModal.style.display="none"}
 
 function openGroup(){groupModal.style.display="flex"}
 function closeGroup(){groupModal.style.display="none"}
 
-function pesan(btn){
-  const t=encodeURIComponent(btn.dataset.pesan);
-  window.open(`https://wa.me/${WA}?text=${t}`,"_blank");
+function openInfo(){infoModal.style.display="flex"}
+function closeInfo(){infoModal.style.display="none"}
+
+function pesan(){
+  const text=encodeURIComponent("Halo admin, saya mau pesan *Jasa Joki & Gift Dead Rails*. Mohon info detail 🙏");
+  window.open(`https://wa.me/${WA}?text=${text}`,"_blank");
 }
 </script>
 
