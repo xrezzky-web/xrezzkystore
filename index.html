@@ -13,7 +13,6 @@
 :root{
   --primary:#007bff;
   --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
-  --dark:#111;
   --soft:#f5f7fa;
 }
 
@@ -22,14 +21,33 @@
 body{
   background:linear-gradient(135deg,#e0eafc,#cfdef3);
   min-height:100vh;
-  padding-top:90px;
+  padding-top:96px;
 }
+
+/* ===== ANIMASI ===== */
+.fade-up{
+  opacity:0;
+  transform:translateY(50px);
+  transition:all 1.2s ease;
+}
+.fade-up.show{opacity:1;transform:translateY(0)}
+
+.slide-left{
+  opacity:0;
+  transform:translateX(-40px);
+  transition:all 1.2s ease;
+}
+.slide-left.show{opacity:1;transform:translateX(0)}
+
+.delay-1{transition-delay:.2s}
+.delay-2{transition-delay:.4s}
+.delay-3{transition-delay:.6s}
+.delay-4{transition-delay:.8s}
 
 /* ===== STICKY HEADER ===== */
 .header{
   position:fixed;
-  top:0;
-  left:0;
+  top:0;left:0;
   width:100%;
   background:#fff;
   z-index:1000;
@@ -45,19 +63,17 @@ body{
   justify-content:space-between;
 }
 
-.header h2{
-  font-size:18px;
-}
+.header h2{font-size:18px}
 
 .header-btns{
   display:flex;
-  gap:10px;
+  gap:8px;
 }
 
 .header-btn{
-  padding:8px 12px;
+  padding:8px 10px;
   border-radius:10px;
-  font-size:13px;
+  font-size:12px;
   font-weight:600;
   text-decoration:none;
   color:#fff;
@@ -65,6 +81,8 @@ body{
 
 .h-wa{background:#25D366}
 .h-grup{background:var(--primary)}
+.h-info{background:#555}
+.h-testi{background:#111}
 
 /* ===== CONTAINER ===== */
 .container{
@@ -76,20 +94,8 @@ body{
   box-shadow:0 20px 50px rgba(0,0,0,.12);
 }
 
-/* ===== ANIMASI ===== */
-.reveal{
-  opacity:0;
-  transform:translateY(40px);
-  transition:all .8s ease;
-}
-
-.reveal.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* ===== KONTEN ===== */
-.desc{text-align:center;font-size:14px;color:#555;margin:10px 0 20px}
+h1{text-align:center;margin-bottom:6px}
+.desc{text-align:center;font-size:14px;color:#555;margin-bottom:20px}
 
 .info-board{
   background:var(--soft);
@@ -110,13 +116,11 @@ body{
   color:#fff;
   font-weight:600;
   margin-top:10px;
-  transition:.25s;
+  transition:.3s;
 }
-
+.btn:hover{transform:translateY(-3px)}
 .btn-wa{background:linear-gradient(135deg,#111,#333)}
 .btn-info{background:var(--gradient)}
-
-.btn:hover{transform:translateY(-2px)}
 
 .section-title{
   margin:26px 0 12px;
@@ -139,11 +143,12 @@ body{
   font-size:13px;
   font-weight:600;
   cursor:pointer;
-  transition:.25s;
+  transition:.3s;
+  color:#000; /* teks hitam */
 }
 
 .grid-item i{font-size:22px;margin-bottom:6px}
-.grid-item:hover{transform:translateY(-3px)}
+.grid-item:hover{transform:translateY(-4px)}
 
 .service{
   border:1px solid #eee;
@@ -184,8 +189,8 @@ body{
 
 .modal-box{
   background:#fff;
-  border-radius:20px;
-  padding:20px;
+  border-radius:22px;
+  padding:22px;
   width:340px;
 }
 
@@ -209,20 +214,23 @@ body{
 
 <body>
 
-<!-- STICKY HEADER -->
+<!-- HEADER -->
 <div class="header">
   <div class="header-inner">
-    <h2>XREZZKY STORE</h2>
+    <h2 class="slide-left">XREZZKY STORE</h2>
     <div class="header-btns">
-      <a href="https://wa.me/6288293064112" class="header-btn h-wa" target="_blank">Kontak</a>
-      <a href="javascript:void(0)" class="header-btn h-grup" onclick="openGroup()">Komunitas</a>
+      <a class="header-btn h-wa slide-left delay-1" href="https://wa.me/6288293064112" target="_blank">Kontak</a>
+      <a class="header-btn h-grup slide-left delay-2" href="javascript:void(0)" onclick="openGroup()">Komunitas</a>
+      <a class="header-btn h-info slide-left delay-3" href="#stok">Info Stok</a>
+      <a class="header-btn h-testi slide-left delay-4" href="#testi">Testi</a>
     </div>
   </div>
 </div>
 
 <div class="container">
 
-<div class="reveal">
+<div class="fade-up">
+<h1>XREZZKY STORE</h1>
 <p class="desc">Layanan digital game aman & terpercaya</p>
 
 <div class="info-board">
@@ -240,29 +248,29 @@ body{
 </a>
 </div>
 
-<div class="reveal">
+<div class="fade-up">
 <div class="section-title">Platform & Komunitas</div>
 <div class="grid">
   <div class="grid-item" onclick="openGroup()">
     <i class="fab fa-whatsapp" style="color:#25D366"></i> Komunitas & Grup
   </div>
   <a href="https://instagram.com/xrezzkystore" class="grid-item" target="_blank">
-    <i class="fab fa-instagram" style="color:#E1306C"></i> Instagram
+    <i class="fab fa-instagram"></i> Instagram
   </a>
   <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item" target="_blank">
     <i class="fab fa-tiktok"></i> TikTok
   </a>
   <a href="https://discord.gg/xDfZJHb2yK" class="grid-item" target="_blank">
-    <i class="fab fa-discord" style="color:#5865F2"></i> Discord
+    <i class="fab fa-discord"></i> Discord
   </a>
 </div>
 </div>
 
-<div class="reveal">
+<div class="fade-up">
 <div class="section-title">Layanan Kami</div>
 <div class="service">
   <div class="photos">
-    <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src)">
+    <img src="https://i.imgur.com/2LvDMJt.jpeg">
   </div>
   <h3>Jasa joki & gift Dead Rails</h3>
   <button onclick="pesan(this)"
@@ -274,10 +282,10 @@ body{
 
 </div>
 
-<!-- MODAL GRUP -->
+<!-- MODAL -->
 <div id="groupModal" class="modal" onclick="if(event.target===this)closeGroup()">
   <div class="modal-box">
-    <div class="modal-title">Pilih Platform / Grup</div>
+    <div class="modal-title">Pilih Grup</div>
     <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa" target="_blank">Komunitas</a>
     <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-grup" target="_blank">Grup Jual Beli</a>
     <a href="https://chat.whatsapp.com/IUrM5APBZ9rDvct0wN6Eih?mode=gi_t" class="choice bg-grup" target="_blank">Grup Dead Rails</a>
@@ -288,22 +296,19 @@ body{
 const WA="6288293064112";
 const groupModal=document.getElementById("groupModal");
 
-/* REVEAL ANIMATION */
-const revealEls=document.querySelectorAll(".reveal");
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting)e.target.classList.add("show");
-  });
+/* animasi reveal */
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting)x.target.classList.add("show")});
 },{threshold:.15});
 
-revealEls.forEach(el=>observer.observe(el));
+document.querySelectorAll(".fade-up,.slide-left").forEach(el=>obs.observe(el));
 
 function openGroup(){groupModal.style.display="flex"}
 function closeGroup(){groupModal.style.display="none"}
 
 function pesan(btn){
-  const text=encodeURIComponent(btn.dataset.pesan);
-  window.open(`https://wa.me/${WA}?text=${text}`,"_blank");
+  const t=encodeURIComponent(btn.dataset.pesan);
+  window.open(`https://wa.me/${WA}?text=${t}`,"_blank");
 }
 </script>
 
