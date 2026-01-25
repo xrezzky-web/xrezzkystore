@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XREZZKY STORE | Digital Game Services</title>
 
-<meta name="description" content="XREZZKY STORE - Jasa joki & gift Dead Rails terpercaya, cepat, aman, dan profesional.">
+<meta name="description" content="XREZZKY STORE - Jasa joki & gift Dead Rails terpercaya, cepat, aman, profesional.">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -28,46 +28,6 @@ body{
   padding:20px;
 }
 
-/* ===== STICKY TOP BAR (MUNCUL SAAT SCROLL) ===== */
-#topInfoBar{
-  position:fixed;
-  top:-80px;
-  left:50%;
-  transform:translateX(-50%);
-  width:calc(100% - 40px);
-  max-width:480px;
-  background:#fff;
-  border-radius:14px;
-  padding:10px 14px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
-  transition:.4s ease;
-  z-index:1000;
-}
-
-#topInfoBar.show{top:14px}
-
-#topInfoBar .brand{
-  font-weight:700;
-  font-size:13px;
-}
-
-#topInfoBar .actions a{
-  margin-left:6px;
-  font-size:12px;
-  padding:6px 10px;
-  border-radius:10px;
-  text-decoration:none;
-  color:#fff;
-}
-
-.t-wa{background:#25D366}
-.t-grup{background:var(--primary)}
-.t-info{background:#333}
-
-/* ===== CONTAINER ===== */
 .container{
   max-width:480px;
   width:100%;
@@ -77,7 +37,6 @@ body{
   box-shadow:0 20px 50px rgba(0,0,0,.12);
 }
 
-/* ===== CONTENT ===== */
 h1{text-align:center;margin-bottom:10px}
 .desc{text-align:center;font-size:14px;color:#555;margin-bottom:20px}
 
@@ -100,12 +59,10 @@ h1{text-align:center;margin-bottom:10px}
   color:#fff;
   font-weight:600;
   margin-top:10px;
-  transition:.25s;
 }
 
 .btn-wa{background:linear-gradient(135deg,var(--dark1),var(--dark2))}
 .btn-info{background:var(--gradient)}
-.btn:hover{transform:translateY(-2px)}
 
 .section-title{
   margin:26px 0 12px;
@@ -129,11 +86,9 @@ h1{text-align:center;margin-bottom:10px}
   font-weight:600;
   color:#000;
   cursor:pointer;
-  transition:.25s;
 }
 
 .grid-item i{font-size:22px;margin-bottom:6px}
-.grid-item:hover{transform:translateY(-3px)}
 
 .service{
   border:1px solid #eee;
@@ -160,7 +115,7 @@ h1{text-align:center;margin-bottom:10px}
   cursor:pointer;
 }
 
-/* ===== FOOTER INFO ===== */
+/* ===== FOOTER INFO (AMAN) ===== */
 .footer{
   margin-top:40px;
   padding-top:20px;
@@ -172,21 +127,15 @@ h1{text-align:center;margin-bottom:10px}
 
 .footer strong{color:#000}
 .footer a{color:var(--primary);text-decoration:none}
-.footer .social i{margin:0 6px;font-size:18px}
+.footer .social i{
+  margin:0 6px;
+  font-size:18px;
+  color:#555;
+}
 </style>
 </head>
 
 <body>
-
-<!-- STICKY BAR -->
-<div id="topInfoBar">
-  <span class="brand">XREZZKY STORE</span>
-  <div class="actions">
-    <a class="t-wa" href="https://wa.me/6288293064112" target="_blank">Kontak</a>
-    <a class="t-grup" href="javascript:void(0)" onclick="openGroup()">Grup</a>
-    <a class="t-info" href="https://link-info-update.com" target="_blank">Info</a>
-  </div>
-</div>
 
 <div class="container">
 
@@ -210,16 +159,16 @@ h1{text-align:center;margin-bottom:10px}
 <div class="section-title">Platform & Komunitas</div>
 <div class="grid">
   <div class="grid-item" onclick="openGroup()">
-    <i class="fab fa-whatsapp" style="color:#25D366"></i> Komunitas & Grup
+    <i class="fab fa-whatsapp" style="color:#25D366"></i><br>Komunitas & Grup
   </div>
   <a href="https://instagram.com/xrezzkystore" class="grid-item" target="_blank">
-    <i class="fab fa-instagram" style="color:#E1306C"></i> Instagram
+    <i class="fab fa-instagram" style="color:#E1306C"></i><br>Instagram
   </a>
   <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item" target="_blank">
-    <i class="fab fa-tiktok"></i> TikTok
+    <i class="fab fa-tiktok"></i><br>TikTok
   </a>
   <a href="https://discord.gg/xDfZJHb2yK" class="grid-item" target="_blank">
-    <i class="fab fa-discord" style="color:#5865F2"></i> Discord
+    <i class="fab fa-discord" style="color:#5865F2"></i><br>Discord
   </a>
 </div>
 
@@ -239,7 +188,10 @@ h1{text-align:center;margin-bottom:10px}
   <strong>XREZZKY STORE</strong><br>
   Jasa joki & gift game terpercaya<br><br>
 
-  📧 Email: <a href="mailto:xrezzkystore.id@gmail.com">xrezzkystore.id@gmail.com</a><br><br>
+  📧 Email:  
+  <a href="mailto:xrezzkystore.id@gmail.com">
+    xrezzkystore.id@gmail.com
+  </a><br><br>
 
   <div class="social">
     <a href="https://instagram.com/xrezzkystore"><i class="fab fa-instagram"></i></a>
@@ -253,28 +205,21 @@ h1{text-align:center;margin-bottom:10px}
 </div>
 
 <!-- MODAL GROUP -->
-<div id="groupModal" class="modal" onclick="if(event.target===this)closeGroup()">
-  <div class="modal-box">
-    <div class="modal-title">Pilih Grup</div>
-    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa" target="_blank">Komunitas</a>
-    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-grup" target="_blank">Grup Jual Beli</a>
+<div id="groupModal" class="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);justify-content:center;align-items:center" onclick="if(event.target===this)closeGroup()">
+  <div style="background:#fff;padding:20px;border-radius:14px;width:300px">
+    <b>Pilih Grup</b><br><br>
+    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" target="_blank">Komunitas</a><br><br>
+    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" target="_blank">Grup Jual Beli</a>
   </div>
 </div>
 
 <script>
-const topBar = document.getElementById("topInfoBar");
-const groupModal = document.getElementById("groupModal");
-
-window.addEventListener("scroll",()=>{
-  if(window.scrollY > 220){
-    topBar.classList.add("show");
-  } else {
-    topBar.classList.remove("show");
-  }
-});
-
-function openGroup(){groupModal.style.display="flex"}
-function closeGroup(){groupModal.style.display="none"}
+function openGroup(){
+  document.getElementById("groupModal").style.display="flex";
+}
+function closeGroup(){
+  document.getElementById("groupModal").style.display="none";
+}
 </script>
 
 </body>
