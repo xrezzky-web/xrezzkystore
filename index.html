@@ -4,19 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XREZZKY STORE | Digital Game Services</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;}
 body{background:linear-gradient(135deg,#e0eafc,#cfdef3);padding:12px;}
 .container{max-width:520px;width:100%;margin:auto;background:#fff;border-radius:26px;padding:22px;box-shadow:0 20px 45px rgba(0,0,0,.12);}
 
 /* TOP BOX */
-.top-box{position:sticky;top:10px;background:#0072ff;padding:14px;border-radius:18px;box-shadow:0 10px 25px rgba(0,0,0,.15);z-index:100;display:flex;justify-content:space-between;align-items:center;opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 0.5s ease;}
+.top-box{position:sticky;top:10px;background:#0072ff;padding:14px;border-radius:18px;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 10px 25px rgba(0,0,0,.15);z-index:100;opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 0.5s ease;}
 .top-title{font-weight:700;font-size:15px;color:#fff;}
 .top-btns{display:flex;gap:10px;}
-.top-btns a{flex:1;padding:12px;border-radius:14px;text-align:center;text-decoration:none;font-weight:600;color:#fff;background:#555;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease, transform 0.5s ease;}
+.top-btns a{padding:12px;border-radius:14px;text-align:center;text-decoration:none;font-weight:600;color:#fff;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease, transform 0.5s ease;}
+.btn-dark{background:#0072ff;}
+.btn-blue{background:#0072ff;}
+.btn-gray{background:#555;}
 
 /* HEADER */
 .logo{width:160px;height:160px;border-radius:26px;object-fit:cover;display:block;margin:24px auto 12px;opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 0.5s ease;}
@@ -29,8 +30,8 @@ h1{opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 
 /* BUTTONS */
 .btn{display:flex;justify-content:center;align-items:center;gap:8px;padding:15px;border-radius:16px;text-decoration:none;color:#fff;font-weight:700;margin-top:12px;opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 0.5s ease;}
 .btn:active{transform:scale(.96);}
-.btn-wa{background:#111;}
-.btn-info{background:linear-gradient(135deg,#00c6ff,#0072ff);}
+.btn-wa{background:#0072ff;}
+.btn-info{background:#0072ff;}
 
 /* SECTION TITLE */
 .section-title{margin:28px 0 14px;font-size:16px;color:#444;font-weight:700;opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 0.5s ease;}
@@ -48,14 +49,14 @@ h1{opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 
 .photo-box img{width:100%;height:160px;border-radius:16px;object-fit:cover;cursor:pointer;}
 .photo-date{font-size:12px;color:#666;margin-top:6px;}
 .release{font-size:13px;color:#555;margin:12px 0 10px;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease, transform 0.5s ease;}
-.service button{width:100%;padding:15px;border:none;border-radius:16px;background:#007bff;color:#fff;font-weight:700;font-size:15px;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease, transform 0.5s ease;}
+.service button{width:100%;padding:15px;border:none;border-radius:16px;background:#0072ff;color:#fff;font-weight:700;font-size:15px;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease, transform 0.5s ease;}
 .service button:active{transform:scale(.96);}
 
 /* MODAL */
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);justify-content:center;align-items:center;z-index:999;}
-.modal-box{background:#0072ff;border-radius:22px;padding:20px;max-width:92vw;position:relative;color:#fff;}
+.modal-box{background:#fff;border-radius:22px;padding:20px;max-width:92vw;}
 .modal-box img{width:100%;border-radius:16px;}
-.modal-info{font-size:13px;text-align:center;margin-top:10px;}
+.modal-info{font-size:13px;color:#555;text-align:center;margin-top:10px;}
 
 /* GROUP MODAL */
 .group-box{max-width:460px;padding:24px;}
@@ -63,7 +64,7 @@ h1{opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 
 .choice{display:block;padding:18px;margin-top:14px;border-radius:18px;text-align:center;color:#fff;font-weight:700;text-decoration:none;font-size:16px;}
 .choice:active{transform:scale(.96);}
 .bg-wa{background:#25D366;}
-.bg-grup{background:#555;}
+.bg-grup{background:#007bff;}
 </style>
 </head>
 <body>
@@ -73,7 +74,7 @@ h1{opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 
   <div class="top-box">
     <div class="top-title">XREZZKY STORE</div>
     <div class="top-btns">
-      <a href="https://wa.me/6288293064112" class="btn-wa">Kontak</a>
+      <a href="https://wa.me/6288293064112" class="btn-blue">Kontak</a>
       <a href="javascript:void(0)" class="btn-blue" onclick="openGroup()">Komunitas</a>
       <a href="javascript:void(0)" class="btn-gray" onclick="openInfo()">Saluran</a>
     </div>
@@ -143,7 +144,7 @@ h1{opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 
 
 <script>
 const INFO_CHANNEL="https://whatsapp.com/channel/0029Vb6wSkq05MUaGz8NkL26";
-const animSpeed=400; // ubah kecepatan animasi di sini
+const animSpeed=400; // ubah kecepatan animasi di sini saja
 
 function openImg(src,date){
   modalImg.src=src;
@@ -154,10 +155,10 @@ function openGroup(){ groupModal.style.display="flex"; }
 function openInfo(){ window.open(INFO_CHANNEL,"_blank"); }
 function openLink(url){ window.open(url,"_blank"); }
 function pesanDeadRails(){
-  window.open("https://wa.me/6288293064112?text=Halo admin, saya mau pesan Joki & Gift Dead Rails, tolong kirimkan list nya","_blank");
+  window.open("https://wa.me/6288293064112?text=Halo%20admin,%20saya%20ingin%20pesan%20jasa%20joki%20%26%20gift%20Dead%20Rails,%20tolong%20kirimkan%20list%20nya","_blank");
 }
 
-// Semua animasi berurutan
+// Animasi berurutan semua container
 window.addEventListener("load",()=>{
   const items=document.querySelectorAll(
     ".top-box, .top-box .top-title, .top-box .top-btns a, .logo, h1, .desc, .info-board, .btn, .section-title, .grid-item, .service, .service h3, .photo-box, .service .release, .service button"
@@ -177,4 +178,4 @@ window.addEventListener("load",()=>{
 </script>
 
 </body>
-    </html>
+</html>
