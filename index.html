@@ -9,30 +9,27 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto}
+
 body{
   background:linear-gradient(135deg,#e0eafc,#cfdef3);
-  padding:10px;
+  padding:12px;
 }
 
-/* ===== ANIMASI ===== */
-.reveal{
-  opacity:0;
-  transform:translateY(28px);
-  transition:1.1s cubic-bezier(.22,1,.36,1);
-}
-.reveal.show{opacity:1;transform:none}
-
-/* ===== CONTAINER ===== */
+/* CONTAINER */
 .container{
-  max-width:95vw;
+  max-width:520px;
   margin:auto;
   background:#fff;
-  border-radius:24px;
+  border-radius:26px;
   padding:22px;
   box-shadow:0 20px 45px rgba(0,0,0,.12);
 }
 
-/* ===== TOP BOX ===== */
+/* ANIMASI GLOBAL */
+.reveal{opacity:0;transform:translateY(24px);transition:2.2s ease}
+.reveal.show{opacity:1;transform:none}
+
+/* TOP BOX */
 .top-box{
   position:sticky;
   top:10px;
@@ -41,58 +38,91 @@ body{
   border-radius:18px;
   box-shadow:0 10px 25px rgba(0,0,0,.15);
   z-index:100;
-  animation:topIn 1s cubic-bezier(.22,1,.36,1);
 }
-@keyframes topIn{from{opacity:0;transform:translateY(-20px)}to{opacity:1}}
-
-.top-title{font-weight:700;font-size:15px;margin-bottom:10px}
-.top-btns{display:flex;gap:10px}
+.top-title{
+  font-weight:700;
+  font-size:15px;
+  margin-bottom:10px;
+  opacity:0;
+  transform:translateX(-40px);
+  animation:slideTitle 1.2s ease forwards;
+}
+@keyframes slideTitle{
+  to{opacity:1;transform:none}
+}
+.top-btns{
+  display:flex;
+  gap:10px;
+}
 .top-btns a{
   flex:1;
   padding:12px;
   border-radius:14px;
-  font-weight:600;
   text-align:center;
   text-decoration:none;
+  font-weight:600;
   color:#fff;
+  opacity:0;
+  animation:fadeBtn 1.2s ease forwards;
 }
+.top-btns a:nth-child(1){animation-delay:.3s}
+.top-btns a:nth-child(2){animation-delay:.5s}
+.top-btns a:nth-child(3){animation-delay:.7s}
+
+@keyframes fadeBtn{
+  to{opacity:1}
+}
+
 .btn-dark{background:#111}
 .btn-blue{background:linear-gradient(135deg,#00c6ff,#0072ff)}
-.btn-gray{background:#444}
+.btn-gray{background:#555}
 
-/* ===== HEADER ===== */
+/* HEADER */
 .logo{
-  width:150px;height:150px;
+  width:160px;
+  height:160px;
   border-radius:26px;
   object-fit:cover;
   display:block;
-  margin:22px auto 12px;
+  margin:24px auto 12px;
 }
 h1{text-align:center;font-size:24px}
-.desc{text-align:center;color:#555;margin-bottom:20px}
+.desc{text-align:center;font-size:15px;color:#555;margin-bottom:18px}
 
-/* ===== INFO ===== */
+/* INFO */
 .info-board{
   background:#f3f6fb;
   border-left:5px solid #007bff;
   padding:16px;
   border-radius:16px;
+  font-size:14px;
   margin-bottom:18px;
 }
 
-/* ===== BUTTON ===== */
+/* BUTTON */
 .btn{
-  display:flex;align-items:center;justify-content:center;
-  gap:8px;padding:15px;border-radius:16px;
-  text-decoration:none;color:#fff;
-  font-weight:600;margin-top:12px
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  padding:15px;
+  border-radius:16px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:700;
+  margin-top:12px;
 }
 .btn-wa{background:#111}
 .btn-info{background:linear-gradient(135deg,#00c6ff,#0072ff)}
 
-.section-title{margin:28px 0 14px;font-size:16px;font-weight:700;color:#444}
+.section-title{
+  margin:28px 0 14px;
+  font-size:16px;
+  color:#444;
+  font-weight:700;
+}
 
-/* ===== PLATFORM ===== */
+/* PLATFORM */
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -103,29 +133,35 @@ h1{text-align:center;font-size:24px}
   border-radius:18px;
   padding:16px;
   text-align:center;
+  font-size:14px;
   font-weight:600;
-  cursor:pointer;
-  text-decoration:none;
   color:#000;
+  cursor:pointer;
   opacity:0;
   transform:translateY(20px);
-  transition:.9s cubic-bezier(.22,1,.36,1);
+  transition:1s ease;
 }
 .grid-item.show{opacity:1;transform:none}
 .grid-item i{font-size:22px;margin-bottom:6px}
 
-/* ===== SERVICE ===== */
+/* SERVICE */
 .service{
   border:1px solid #eee;
   border-radius:22px;
   padding:16px;
 }
+.service h3{font-size:16px;margin-bottom:8px}
+
 .photo-scroll{
   display:flex;
   gap:14px;
   overflow-x:auto;
+  padding-bottom:10px;
 }
-.photo-box{min-width:180px;text-align:center}
+.photo-box{
+  min-width:180px;
+  text-align:center;
+}
 .photo-box img{
   width:100%;
   height:160px;
@@ -133,14 +169,35 @@ h1{text-align:center;font-size:24px}
   object-fit:cover;
   cursor:pointer;
 }
-.photo-date{font-size:12px;color:#666;margin-top:6px}
+.photo-date{
+  font-size:12px;
+  color:#666;
+  margin-top:6px;
+}
 
-/* ===== MODAL ===== */
+.release{
+  font-size:13px;
+  color:#555;
+  margin:12px 0 10px;
+}
+
+.service button{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:16px;
+  background:#007bff;
+  color:#fff;
+  font-weight:700;
+  font-size:15px;
+}
+
+/* MODAL */
 .modal{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.65);
+  background:rgba(0,0,0,.7);
   justify-content:center;
   align-items:center;
   z-index:999;
@@ -149,25 +206,40 @@ h1{text-align:center;font-size:24px}
   background:#fff;
   border-radius:22px;
   padding:20px;
-  max-width:420px;
-  animation:modalIn .4s ease;
+  max-width:92vw;
 }
-@keyframes modalIn{
-  from{opacity:0;transform:scale(.92)}
-  to{opacity:1}
+.modal-box img{
+  width:100%;
+  border-radius:16px;
+}
+.modal-info{
+  font-size:13px;
+  color:#555;
+  text-align:center;
+  margin-top:10px;
+}
+
+/* GROUP MODAL */
+.group-box{max-width:420px}
+.group-title{
+  font-weight:700;
+  font-size:17px;
+  text-align:center;
+  margin-bottom:14px;
 }
 .choice{
   display:block;
-  padding:16px;
-  border-radius:16px;
+  padding:18px;
   margin-top:12px;
+  border-radius:18px;
+  text-align:center;
   color:#fff;
   font-weight:700;
-  text-align:center;
   text-decoration:none;
+  font-size:16px;
 }
 .bg-wa{background:#25D366}
-.bg-blue{background:#007bff}
+.bg-grup{background:#007bff}
 </style>
 </head>
 
@@ -180,8 +252,8 @@ h1{text-align:center;font-size:24px}
   <div class="top-title">XREZZKY STORE</div>
   <div class="top-btns">
     <a href="https://wa.me/6288293064112" class="btn-dark">Kontak</a>
-    <a onclick="openGroup()" class="btn-blue">Komunitas</a>
-    <a onclick="openInfo()" class="btn-gray">Info</a>
+    <a href="javascript:void(0)" class="btn-blue" onclick="openGroup()">Komunitas</a>
+    <a href="javascript:void(0)" class="btn-gray" onclick="openInfo()">Info</a>
   </div>
 </div>
 
@@ -195,61 +267,94 @@ h1{text-align:center;font-size:24px}
 💬 Fast respon admin
 </div>
 
-<a class="btn btn-wa reveal" href="https://wa.me/6288293064112">
+<a href="https://wa.me/6288293064112" class="btn btn-wa reveal">
 <i class="fab fa-whatsapp"></i> Kontak Admin
 </a>
 
-<a class="btn btn-info reveal" onclick="openInfo()">
+<a href="javascript:void(0)" class="btn btn-info reveal" onclick="openInfo()">
 <i class="fas fa-bullhorn"></i> Info & Update
 </a>
 
 <div class="section-title reveal">Platform & Komunitas</div>
 <div class="grid">
-  <div class="grid-item" onclick="openGroup()"><i class="fab fa-whatsapp" style="color:#25D366"></i><br>Komunitas & Grup</div>
-  <a class="grid-item" href="https://instagram.com/xrezzkystore" target="_blank"><i class="fab fa-instagram" style="color:#E1306C"></i><br>Instagram</a>
-  <a class="grid-item" href="#" target="_blank"><i class="fab fa-tiktok"></i><br>TikTok</a>
-  <a class="grid-item" href="#" target="_blank"><i class="fab fa-discord" style="color:#5865F2"></i><br>Discord</a>
+  <div class="grid-item"><i class="fab fa-whatsapp" style="color:#25D366"></i><br>Komunitas & Grup</div>
+  <div class="grid-item"><i class="fab fa-instagram" style="color:#E1306C"></i><br>Instagram</div>
+  <div class="grid-item"><i class="fab fa-tiktok"></i><br>TikTok</div>
+  <div class="grid-item"><i class="fab fa-discord" style="color:#5865F2"></i><br>Discord</div>
+</div>
+
+<div class="section-title reveal">Layanan Kami</div>
+
+<div class="service reveal">
+  <h3>Joki & Gift Dead Rails</h3>
+
+  <div class="photo-scroll">
+    <div class="photo-box">
+      <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src,'12 Februari 2026')">
+      <div class="photo-date">Upload: 12 Februari 2026</div>
+    </div>
+    <div class="photo-box">
+      <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src,'12 Februari 2026')">
+      <div class="photo-date">Upload: 12 Februari 2026</div>
+    </div>
+  </div>
+
+  <div class="release">📅 Rilis layanan: 10 Februari 2026</div>
+  <button onclick="pesan()">Pesan Sekarang</button>
 </div>
 
 </div>
 
-<!-- MODAL INFO -->
-<div id="infoModal" class="modal" onclick="this.style.display='none'">
+<!-- MODAL FOTO -->
+<div id="imgModal" class="modal" onclick="this.style.display='none'">
   <div class="modal-box">
-    <b>📢 Info & Update</b>
-    <p style="margin-top:10px;font-size:14px;color:#555">
-      • Update layanan terbaru<br>
-      • Promo & info joki<br>
-      • Pengumuman resmi store
-    </p>
+    <img id="modalImg">
+    <div id="modalInfo" class="modal-info"></div>
   </div>
 </div>
 
 <!-- MODAL GROUP -->
 <div id="groupModal" class="modal" onclick="this.style.display='none'">
-  <div class="modal-box">
-    <b>Komunitas & Grup</b>
+  <div class="modal-box group-box">
+    <div class="group-title">Komunitas & Grup Resmi</div>
     <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa" target="_blank">Komunitas</a>
-    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-blue" target="_blank">Grup Jual Beli</a>
+    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-grup" target="_blank">Grup Jual Beli</a>
   </div>
 </div>
 
 <script>
-function openGroup(){groupModal.style.display='flex'}
-function openInfo(){infoModal.style.display='flex'}
+const INFO_CHANNEL="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt";
+
+function openImg(src,date){
+  modalImg.src=src;
+  modalInfo.innerText="📸 Upload: "+date;
+  imgModal.style.display="flex";
+}
+function openGroup(){
+  groupModal.style.display="flex";
+}
+function openInfo(){
+  window.open(INFO_CHANNEL,"_blank");
+}
+function pesan(){
+  window.open("https://wa.me/6288293064112?text=Halo admin, saya mau pesan layanan","_blank");
+}
 
 /* REVEAL */
 const obs=new IntersectionObserver(e=>{
- e.forEach(x=>{
-  if(x.isIntersecting){
-   x.target.classList.add('show');
-   obs.unobserve(x.target);
-  }
- })
+  e.forEach(x=>{
+    if(x.isIntersecting){
+      x.target.classList.add("show");
+      obs.unobserve(x.target);
+    }
+  })
 },{threshold:.15});
-document.querySelectorAll('.reveal,.grid-item').forEach((el,i)=>{
-  el.style.transitionDelay=i*.12+'s';
-  obs.observe(el);
+
+document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+
+/* PLATFORM STAGGER */
+document.querySelectorAll(".grid-item").forEach((el,i)=>{
+  setTimeout(()=>el.classList.add("show"),300+(i*200));
 });
 </script>
 
