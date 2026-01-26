@@ -349,38 +349,54 @@ const obs=new IntersectionObserver(e=>{
 },{threshold:.15});
 document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
 
-/* Animasi tombol atas + grid berurutan */
-function animateTopAndGrid(){
+/* ANIMASI SEMUA DARI KOSONG */
+function animateAllSequential(){
   const topButtons = document.querySelectorAll(".top-btns a");
+  const lowerButtons = document.querySelectorAll(".btn.btn-wa, .btn.btn-info");
   const gridItems = document.querySelectorAll(".grid-item");
 
-  // Animasi tombol atas satu per satu
-  topButtons.forEach((btn, index) => {
-    btn.style.opacity = 0;
-    btn.style.transform = "translateY(-20px)";
-    btn.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+  let delay = 0;
+
+  // tombol atas
+  topButtons.forEach(btn=>{
+    btn.style.opacity=0;
+    btn.style.transform="translateY(-20px)";
+    btn.style.transition="opacity 0.5s ease, transform 0.5s ease";
     setTimeout(()=>{
-      btn.style.opacity = 1;
-      btn.style.transform = "translateY(0)";
-    }, 500*index);
+      btn.style.opacity=1;
+      btn.style.transform="translateY(0)";
+    }, delay);
+    delay += 400;
   });
 
-  // Animasi grid setelah tombol atas selesai
+  // tombol bawah (kontak admin + info)
+  lowerButtons.forEach(btn=>{
+    btn.style.opacity=0;
+    btn.style.transform="translateY(-20px)";
+    btn.style.transition="opacity 0.5s ease, transform 0.5s ease";
+    setTimeout(()=>{
+      btn.style.opacity=1;
+      btn.style.transform="translateY(0)";
+    }, delay);
+    delay += 400;
+  });
+
+  // grid
   setTimeout(()=>{
-    gridItems.forEach((item, index)=>{
-      item.style.opacity = 0;
-      item.style.transform = "translateY(30px)";
-      item.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+    gridItems.forEach((item,index)=>{
+      item.style.opacity=0;
+      item.style.transform="translateY(30px)";
+      item.style.transition="opacity 0.5s ease, transform 0.5s ease";
       setTimeout(()=>{
-        item.style.opacity = 1;
-        item.style.transform = "translateY(0)";
-      }, 500*index);
+        item.style.opacity=1;
+        item.style.transform="translateY(0)";
+      }, index*400);
     });
-  }, 500*topButtons.length);
+  }, delay);
 }
 
-window.addEventListener("load", animateTopAndGrid);
+window.addEventListener("load", animateAllSequential);
 </script>
 
 </body>
-  </html>
+</html>
