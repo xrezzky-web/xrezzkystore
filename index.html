@@ -55,22 +55,6 @@ body{
   display:flex;
   gap:10px;
 }
-.top-btns a{
-  flex:1;
-  padding:12px;
-  border-radius:14px;
-  text-align:center;
-  text-decoration:none;
-  font-weight:600;
-  color:#fff;
-  opacity:0;
-  animation:fadeBtn 1.2s ease forwards;
-}
-.top-btns a:nth-child(1){animation-delay:.3s}
-.top-btns a:nth-child(2){animation-delay:.5s}
-.top-btns a:nth-child(3){animation-delay:.7s}
-@keyframes fadeBtn{to{opacity:1}}
-
 .btn-dark{background:#111}
 .btn-blue{background:linear-gradient(135deg,#00c6ff,#0072ff)}
 .btn-gray{background:#555}
@@ -139,11 +123,7 @@ h1{text-align:center;font-size:24px}
 
   opacity:0;
   transform:translateY(30px);
-  transition:opacity .7s ease, transform .7s ease, box-shadow .2s ease;
-}
-.grid-item.show{
-  opacity:1;
-  transform:translateY(0);
+  transition:opacity .5s ease, transform .5s ease, box-shadow .2s ease;
 }
 .grid-item:hover{box-shadow:0 8px 20px rgba(0,0,0,.12)}
 .grid-item:active{transform:scale(.95)}
@@ -360,34 +340,52 @@ const obs=new IntersectionObserver(e=>{
 },{threshold:.15});
 document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
 
-function animateGridSequential(){
-  const items = document.querySelectorAll(".grid-item");
+/* ANIMASI TOMBOL ATAS + GRID */
+function animateTopAndGrid(){
+  const topButtons = document.querySelectorAll(".top-btns a");
+  const gridItems = document.querySelectorAll(".grid-item");
 
   // Reset semua
-  items.forEach(item => {
+  topButtons.forEach(btn => {
+    btn.style.opacity = 0;
+    btn.style.transform = "translateY(-20px)";
+    btn.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+  });
+  gridItems.forEach(item => {
     item.style.opacity = 0;
     item.style.transform = "translateY(30px)";
     item.style.transition = "opacity 0.5s ease, transform 0.5s ease";
   });
 
-  // Fungsi muncul satu per satu
+  // Animasi tombol atas
   let idx = 0;
-  function showNext(){
-    if(idx < items.length){
-      items[idx].style.opacity = 1;
-      items[idx].style.transform = "translateY(0)";
+  function showTopNext(){
+    if(idx < topButtons.length){
+      topButtons[idx].style.opacity = 1;
+      topButtons[idx].style.transform = "translateY(0)";
       idx++;
-      setTimeout(showNext, 600); // delay 600ms antar item
+      setTimeout(showTopNext, 500); // delay 500ms antar tombol
+    } else {
+      // Setelah tombol atas selesai, animasi grid
+      let gridIdx = 0;
+      function showGridNext(){
+        if(gridIdx < gridItems.length){
+          gridItems[gridIdx].style.opacity = 1;
+          gridItems[gridIdx].style.transform = "translateY(0)";
+          gridIdx++;
+          setTimeout(showGridNext, 500); // delay 500ms antar grid
+        }
+      }
+      showGridNext();
     }
   }
 
-  showNext(); // mulai animasi
+  showTopNext(); // mulai animasi
 }
 
 // Jalankan saat load
-window.addEventListener("load", animateGridSequential);
-
+window.addEventListener("load", animateTopAndGrid);
 </script>
 
 </body>
-        </html>
+      </html>
