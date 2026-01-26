@@ -55,6 +55,15 @@ body{
   display:flex;
   gap:10px;
 }
+.top-btns a{
+  flex:1;
+  padding:12px;
+  border-radius:14px;
+  text-align:center;
+  text-decoration:none;
+  font-weight:600;
+  color:#fff;
+}
 .btn-dark{background:#111}
 .btn-blue{background:linear-gradient(135deg,#00c6ff,#0072ff)}
 .btn-gray{background:#555}
@@ -340,52 +349,38 @@ const obs=new IntersectionObserver(e=>{
 },{threshold:.15});
 document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
 
-/* ANIMASI TOMBOL ATAS + GRID */
+/* Animasi tombol atas + grid berurutan */
 function animateTopAndGrid(){
   const topButtons = document.querySelectorAll(".top-btns a");
   const gridItems = document.querySelectorAll(".grid-item");
 
-  // Reset semua
-  topButtons.forEach(btn => {
+  // Animasi tombol atas satu per satu
+  topButtons.forEach((btn, index) => {
     btn.style.opacity = 0;
     btn.style.transform = "translateY(-20px)";
     btn.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-  });
-  gridItems.forEach(item => {
-    item.style.opacity = 0;
-    item.style.transform = "translateY(30px)";
-    item.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+    setTimeout(()=>{
+      btn.style.opacity = 1;
+      btn.style.transform = "translateY(0)";
+    }, 500*index);
   });
 
-  // Animasi tombol atas
-  let idx = 0;
-  function showTopNext(){
-    if(idx < topButtons.length){
-      topButtons[idx].style.opacity = 1;
-      topButtons[idx].style.transform = "translateY(0)";
-      idx++;
-      setTimeout(showTopNext, 300); // delay 500ms antar tombol
-    } else {
-      // Setelah tombol atas selesai, animasi grid
-      let gridIdx = 0;
-      function showGridNext(){
-        if(gridIdx < gridItems.length){
-          gridItems[gridIdx].style.opacity = 1;
-          gridItems[gridIdx].style.transform = "translateY(0)";
-          gridIdx++;
-          setTimeout(showGridNext, 500); // delay 500ms antar grid
-        }
-      }
-      showGridNext();
-    }
-  }
-
-  showTopNext(); // mulai animasi
+  // Animasi grid setelah tombol atas selesai
+  setTimeout(()=>{
+    gridItems.forEach((item, index)=>{
+      item.style.opacity = 0;
+      item.style.transform = "translateY(30px)";
+      item.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+      setTimeout(()=>{
+        item.style.opacity = 1;
+        item.style.transform = "translateY(0)";
+      }, 500*index);
+    });
+  }, 500*topButtons.length);
 }
 
-// Jalankan saat load
 window.addEventListener("load", animateTopAndGrid);
 </script>
 
 </body>
-      </html>
+  </html>
