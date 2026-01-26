@@ -18,8 +18,9 @@ body{background:linear-gradient(135deg,#e0eafc,#cfdef3);padding:12px;}
 .top-box{position:sticky;top:10px;background:#fff;padding:14px;border-radius:18px;box-shadow:0 10px 25px rgba(0,0,0,.15);z-index:100;display:flex;justify-content:space-between;align-items:center;opacity:0;transform:translateY(-30px);transition:all .6s ease;}
 .top-title{font-weight:700;font-size:15px;}
 .top-btns a{padding:10px 14px;border-radius:14px;text-decoration:none;font-weight:600;color:#fff;}
-.top-btns a.btn-center{background:linear-gradient(135deg,#00c6ff,#0072ff);}
-.top-btns a.btn-right{background:#555;}
+.top-btns a.btn-left{background:#111;}
+.top-btns a.btn-center{background:#555;}
+.top-btns a.btn-right{background:linear-gradient(135deg,#00c6ff,#0072ff);}
 
 /* HEADER */
 .logo{width:160px;height:160px;border-radius:26px;object-fit:cover;display:block;margin:24px auto 12px;opacity:0;transform:translateY(30px);transition:all .6s ease;}
@@ -45,7 +46,7 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(30px);transit
 .grid-item i{font-size:22px;margin-bottom:6px}
 
 /* SERVICE */
-.service{border:1px solid #eee;border-radius:22px;padding:16px;opacity:0;transform:translateY(30px);transition:all .6s ease;}
+.service{border:1px solid #eee;border-radius:22px;padding:16px;opacity:0;transform:translateY(30px);transition:all .6s ease;margin-bottom:18px;}
 .service h3{font-size:16px;margin-bottom:8px;opacity:0;transform:translateY(30px);transition:all .6s ease;}
 .photo-scroll{display:flex;gap:14px;overflow-x:auto;padding-bottom:10px;}
 .photo-box{min-width:180px;text-align:center;opacity:0;transform:translateY(30px);transition:all .6s ease;}
@@ -76,8 +77,8 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(30px);transit
 <div class="top-box">
   <div class="top-title">XREZZKY STORE</div>
   <div class="top-btns">
-    <a href="https://wa.me/6288293064112" class="btn-center">Kontak</a>
-    <a href="javascript:void(0)" class="btn-right" onclick="openGroup()">Komunitas</a>
+    <a href="https://wa.me/6288293064112?text=Halo admin, saya ingin pesan jasa joki & gift Dead Rails, tolong kirimkan list nya" class="btn-left">Kontak</a>
+    <a href="javascript:void(0)" class="btn-center" onclick="openGroup()">Komunitas</a>
     <a href="javascript:void(0)" class="btn-right" onclick="openInfo()">Info</a>
   </div>
 </div>
@@ -113,9 +114,9 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(30px);transit
 
 <div class="section-title">Layanan Kami</div>
 
+<!-- MULTI LAYANAN -->
 <div class="service">
   <h3>Joki & Gift Dead Rails</h3>
-
   <div class="photo-scroll">
     <div class="photo-box">
       <img src="https://i.imgur.com/LskSGfN.jpeg" onclick="openImg(this.src,'10 Oktober 2025')">
@@ -126,9 +127,20 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(30px);transit
       <div class="photo-date">Upload: 24 Januari 2026</div>
     </div>
   </div>
-
   <div class="release">📅 Rilis layanan: 12 Mei 2025</div>
   <button onclick="pesanDeadRails()">Pesan Sekarang</button>
+</div>
+
+<div class="service">
+  <h3>Joki & Gift Game Lain</h3>
+  <div class="photo-scroll">
+    <div class="photo-box">
+      <img src="https://i.imgur.com/LskSGfN.jpeg" onclick="openImg(this.src,'5 November 2025')">
+      <div class="photo-date">Upload: 5 November 2025</div>
+    </div>
+  </div>
+  <div class="release">📅 Rilis layanan: 1 Desember 2025</div>
+  <button onclick="window.open('https://wa.me/6288293064112?text=Halo admin, saya ingin pesan jasa joki & gift Game Lain, tolong kirimkan list nya','_blank')">Pesan Sekarang</button>
 </div>
 
 </div>
@@ -166,9 +178,9 @@ function pesanDeadRails(){
 }
 
 /* KECEPATAN ANIMASI */
-const animSpeed = 500; // delay per elemen, bisa diubah 100–2000 ms
+const animSpeed = 400; // bisa diubah satu tempat
 
-/* ANIMASI URUT DARI ATAS KE BAWAH */
+/* ANIMASI URUT */
 function sequentialAnim(){
   const elements = [
     document.querySelector(".top-box"),
@@ -180,7 +192,7 @@ function sequentialAnim(){
     document.querySelectorAll(".section-title")[0],
     ...document.querySelectorAll(".grid-item"),
     document.querySelectorAll(".section-title")[1],
-    document.querySelectorAll(".service h3"),
+    ...document.querySelectorAll(".service h3"),
     ...document.querySelectorAll(".photo-box"),
     ...document.querySelectorAll(".photo-date"),
     ...document.querySelectorAll(".release"),
