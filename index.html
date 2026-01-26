@@ -149,7 +149,11 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(-20px);transi
   transform:translateY(30px);
   transition:opacity 0.5s ease, transform 0.5s ease;
 }
-.service h3{font-size:16px;margin-bottom:8px}
+.service h3, .photo-scroll, .release, .service button{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 0.5s ease, transform 0.5s ease;
+}
 
 .photo-scroll{
   display:flex;
@@ -187,7 +191,6 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(-20px);transi
   font-weight:700;
   font-size:15px;
 }
-.service button:active{transform:scale(.96)}
 
 /* MODAL */
 .modal{
@@ -291,7 +294,7 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(-20px);transi
 
 <div class="section-title reveal">Layanan Kami</div>
 
-<!-- Contoh layanan 1 -->
+<!-- Contoh layanan -->
 <div class="service">
   <h3>Joki & Gift Dead Rails</h3>
   <div class="photo-scroll">
@@ -307,8 +310,6 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(-20px);transi
   <div class="release">📅 Rilis layanan: 12 Mei 2025</div>
   <button onclick="pesanDeadRails()">Pesan Sekarang</button>
 </div>
-
-<!-- Tambah layanan baru otomatis bisa ditambahkan di sini -->
 
 </div>
 
@@ -344,7 +345,7 @@ function pesanDeadRails(){
   window.open("https://wa.me/6288293064112?text=Halo admin, saya mau pesan jasa joki & gift, tolong kirimkan list nya","_blank");
 }
 
-/* ANIMASI DARI KOSONG SEMUA */
+/* ANIMASI DARI KOSONG SEMUA, LAYANAN + CHILDREN */
 function animateFullSequential(){
   const elements = [
     document.getElementById('topBox'),
@@ -369,7 +370,7 @@ function animateFullSequential(){
     delay += 400;
   });
 
-  // grid muncul setelah tombol
+  // grid platform
   setTimeout(()=>{
     const gridItems = document.querySelectorAll(".grid-item");
     gridItems.forEach((item,index)=>{
@@ -383,7 +384,7 @@ function animateFullSequential(){
     });
   }, delay);
 
-  // layanan muncul otomatis
+  // layanan
   setTimeout(()=>{
     const services = document.querySelectorAll('.service');
     services.forEach((service,svcIndex)=>{
@@ -393,7 +394,8 @@ function animateFullSequential(){
       setTimeout(()=>{
         service.style.opacity=1;
         service.style.transform="translateY(0)";
-        // animasi anak-anak service
+
+        // anak-anak service
         const children = Array.from(service.children);
         children.forEach((child,childIndex)=>{
           child.style.opacity=0;
@@ -406,7 +408,7 @@ function animateFullSequential(){
         });
       }, svcIndex*600);
     });
-  }, delay+gridItems.length*400);
+  }, delay+document.querySelectorAll(".grid-item").length*400);
 }
 
 window.addEventListener("load", animateFullSequential);
