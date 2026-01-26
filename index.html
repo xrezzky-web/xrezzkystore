@@ -4,34 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XREZZKY STORE | Digital Game Services</title>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto}
+:root{
+  --primary:#007bff;
+  --dark:#1f1f1f;
+  --soft:#f7f8fa;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;}
+
 body{
   background:linear-gradient(135deg,#e0eafc,#cfdef3);
   min-height:100vh;
   display:flex;
   justify-content:center;
-  padding:18px;
-}
-.container{
-  max-width:480px;
-  width:100%;
-  background:#fff;
-  border-radius:24px;
-  padding:22px;
-  box-shadow:0 20px 50px rgba(0,0,0,.12);
+  padding:20px;
 }
 
-/* ===== ANIMASI ===== */
-.fade{opacity:0;transform:translateY(20px);animation:fadeIn 1s forwards}
-.delay1{animation-delay:.2s}
-.delay2{animation-delay:.4s}
-.delay3{animation-delay:.6s}
-.delay4{animation-delay:.8s}
-@keyframes fadeIn{
-  to{opacity:1;transform:none}
+.container{
+  width:100%;
+  max-width:480px;
+  background:#fff;
+  border-radius:26px;
+  padding:22px;
+  box-shadow:0 20px 50px rgba(0,0,0,.12);
 }
 
 /* ===== TOP BOX ===== */
@@ -39,99 +37,126 @@ body{
   position:sticky;
   top:10px;
   background:#fff;
-  padding:10px 14px;
-  border-radius:14px;
-  box-shadow:0 10px 25px rgba(0,0,0,.12);
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  z-index:100;
+  border-radius:16px;
+  padding:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
+  z-index:10;
+  animation:slideTop 1s ease forwards;
 }
+
+@keyframes slideTop{
+  from{opacity:0;transform:translateX(-40px)}
+  to{opacity:1;transform:translateX(0)}
+}
+
 .top-title{
   font-weight:700;
-  font-size:15px;
-  animation:slideLeft 1s forwards;
-  opacity:0;
+  text-align:center;
+  margin-bottom:10px;
 }
-@keyframes slideLeft{
-  from{opacity:0;transform:translateX(-40px)}
-  to{opacity:1;transform:none}
-}
+
 .top-btns{
   display:flex;
-  gap:8px;
-  animation:fadeIn 1.2s forwards;
-  opacity:0;
+  gap:10px;
 }
 
-/* ===== HEADER ===== */
-.logo-main{
-  width:130px;
-  height:130px;
-  border-radius:22px;
-  object-fit:cover;
-  display:block;
-  margin:18px auto 8px;
-}
-h1{text-align:center;font-size:22px}
-.desc{text-align:center;font-size:14px;color:#555;margin-bottom:14px}
-
-/* ===== BUTTON ===== */
-.btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  padding:13px;
-  border-radius:14px;
-  text-decoration:none;
+.top-btns a{
+  flex:1;
+  text-align:center;
+  padding:10px;
+  border-radius:12px;
   color:#fff;
   font-weight:600;
-  margin-top:10px;
+  text-decoration:none;
 }
-.btn-wa{background:linear-gradient(135deg,#1f1f1f,#3a3a3a)}
-.btn-info{background:linear-gradient(135deg,#00c6ff,#0072ff)}
 
-.section-title{margin:22px 0 10px;font-size:15px;color:#444}
+.btn-dark{background:var(--dark);}
+.btn-primary{background:var(--primary);}
+
+/* ===== LOGO & TITLE ===== */
+.logo{
+  width:120px;
+  height:120px;
+  margin:24px auto 12px;
+  border-radius:20px;
+  object-fit:cover;
+  display:block;
+  opacity:0;
+  animation:fadeIn 1.2s ease forwards;
+  animation-delay:.4s;
+}
+
+h1{
+  text-align:center;
+  opacity:0;
+  animation:fadeIn 1.2s ease forwards;
+  animation-delay:.6s;
+}
+
+.desc{
+  text-align:center;
+  color:#555;
+  font-size:14px;
+  margin-bottom:18px;
+  opacity:0;
+  animation:fadeIn 1.2s ease forwards;
+  animation-delay:.8s;
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
 
 /* ===== PLATFORM ===== */
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.section-title{
+  font-size:15px;
+  color:#444;
+  margin:22px 0 12px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
 .grid-item{
   border:1px solid #eee;
-  border-radius:16px;
+  border-radius:14px;
   padding:14px;
   text-align:center;
-  font-size:13px;
   font-weight:600;
   color:#000;
   cursor:pointer;
+  transition:.25s;
 }
 
-/* ===== LAYANAN ===== */
-.services{display:grid;gap:18px}
+.grid-item i{font-size:20px;margin-bottom:6px}
+.grid-item:hover{transform:translateY(-3px)}
+
+/* ===== SERVICES ===== */
 .service{
   border:1px solid #eee;
   border-radius:20px;
   padding:14px;
 }
-.service h3{font-size:15px;margin-bottom:6px}
 
-/* FOTO SCROLL */
-.photo-scroll{
-  display:flex;
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
   gap:10px;
-  overflow-x:auto;
-  padding-bottom:6px;
+  max-height:260px;
+  overflow-y:auto;
+  margin-bottom:8px;
 }
-.photo-box{
-  min-width:120px;
-  text-align:center;
-}
+
+.photo-box{text-align:center}
 .photo-box img{
-  width:120px;
-  height:120px;
-  border-radius:14px;
+  width:100%;
+  height:140px;
   object-fit:cover;
+  border-radius:14px;
   cursor:pointer;
 }
 .photo-date{
@@ -140,20 +165,26 @@ h1{text-align:center;font-size:22px}
   margin-top:4px;
 }
 
+.service h3{
+  font-size:15px;
+  margin:10px 0 4px;
+}
+
 .release{
   font-size:12px;
-  color:#555;
-  margin:10px 0 6px;
+  color:#666;
+  margin-bottom:10px;
 }
 
 .service button{
   width:100%;
   padding:12px;
+  background:var(--primary);
   border:none;
-  border-radius:12px;
-  background:#007bff;
   color:#fff;
+  border-radius:14px;
   font-weight:600;
+  cursor:pointer;
 }
 
 /* ===== MODAL ===== */
@@ -161,69 +192,66 @@ h1{text-align:center;font-size:22px}
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.65);
+  background:rgba(0,0,0,.6);
   justify-content:center;
   align-items:center;
   z-index:999;
 }
-.modal-box{
-  background:#fff;
-  border-radius:18px;
-  padding:18px;
-  max-width:92%;
-}
-.modal-box img{
-  max-width:100%;
-  border-radius:14px;
+.modal img{
+  max-width:95%;
+  max-height:95%;
+  border-radius:16px;
 }
 
-/* MODAL GROUP */
+/* ===== GROUP MODAL ===== */
+.modal-box{
+  background:#fff;
+  padding:20px;
+  border-radius:16px;
+  width:90%;
+  max-width:320px;
+}
 .choice{
   display:block;
-  padding:14px;
+  padding:12px;
   margin-top:10px;
-  border-radius:14px;
-  text-align:center;
+  border-radius:12px;
   color:#fff;
-  font-weight:600;
   text-decoration:none;
+  text-align:center;
+  font-weight:600;
 }
 .bg-wa{background:#25D366}
-.bg-grup{background:#007bff}
+.bg-blue{background:var(--primary)}
 </style>
 </head>
 
 <body>
 <div class="container">
 
-<!-- TOP BOX -->
-<div class="top-box">
-  <div class="top-title">XREZZKY STORE</div>
-  <div class="top-btns">
-    <a class="btn btn-wa" href="https://wa.me/6288293064112">Kontak</a>
-    <a class="btn btn-info" onclick="openGroup()">Komunitas</a>
+  <div class="top-box">
+    <div class="top-title">XREZZKY STORE</div>
+    <div class="top-btns">
+      <a href="https://wa.me/6288293064112" class="btn-dark">Kontak</a>
+      <a href="javascript:void(0)" onclick="openGroup()" class="btn-primary">Komunitas</a>
+    </div>
   </div>
-</div>
 
-<!-- HEADER -->
-<img src="https://i.imgur.com/fKt8LYa.jpeg" class="logo-main fade delay1">
-<h1 class="fade delay2">XREZZKY STORE</h1>
-<p class="desc fade delay3">Layanan digital game aman & terpercaya</p>
+  <img src="https://i.imgur.com/fKt8LYa.jpeg" class="logo">
 
-<!-- PLATFORM -->
-<div class="section-title fade delay4">Platform & Komunitas</div>
-<div class="grid fade delay4">
-  <div class="grid-item" onclick="openGroup()"><i class="fab fa-whatsapp" style="color:#25D366"></i><br>Komunitas</div>
-  <a class="grid-item" href="https://instagram.com/xrezzkystore"><i class="fab fa-instagram" style="color:#E1306C"></i><br>Instagram</a>
-</div>
+  <h1>XREZZKY STORE</h1>
+  <p class="desc">Layanan digital game aman & terpercaya</p>
 
-<!-- LAYANAN -->
-<div class="section-title">Layanan Kami</div>
-<div class="services">
+  <div class="section-title">Platform & Komunitas</div>
+  <div class="grid">
+    <div class="grid-item" onclick="openGroup()"><i class="fab fa-whatsapp" style="color:#25D366"></i><br>Komunitas</div>
+    <a href="https://instagram.com/xrezzkystore" class="grid-item" target="_blank"><i class="fab fa-instagram" style="color:#E1306C"></i><br>Instagram</a>
+  </div>
+
+  <div class="section-title">Layanan Kami</div>
+
   <div class="service">
-    <h3>Joki & Gift Dead Rails</h3>
-
-    <div class="photo-scroll">
+    <div class="photo-grid">
       <div class="photo-box">
         <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src)">
         <div class="photo-date">Upload: 12 Feb 2026</div>
@@ -242,38 +270,37 @@ h1{text-align:center;font-size:22px}
       </div>
     </div>
 
-    <div class="release">📅 Rilis layanan: 10 Feb 2026</div>
+    <h3>Joki & Gift Dead Rails</h3>
+    <div class="release">Rilis layanan: 10 Feb 2026</div>
     <button onclick="pesan()">Pesan Sekarang</button>
   </div>
-</div>
 
 </div>
 
-<!-- MODAL FOTO -->
+<!-- MODALS -->
 <div id="imgModal" class="modal" onclick="this.style.display='none'">
-  <div class="modal-box">
-    <img id="modalImg">
-  </div>
+  <img id="modalImg">
 </div>
 
-<!-- MODAL GROUP -->
-<div id="groupModal" class="modal" onclick="this.style.display='none'">
+<div id="groupModal" class="modal" onclick="if(event.target===this) closeGroup()">
   <div class="modal-box">
-    <a class="choice bg-wa" href="#">Komunitas WhatsApp</a>
-    <a class="choice bg-grup" href="#">Grup Jual Beli</a>
+    <div style="font-weight:600;text-align:center">Komunitas / Grup</div>
+    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa" target="_blank">Komunitas</a>
+    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-blue" target="_blank">Grup Jual Beli</a>
   </div>
 </div>
 
 <script>
+const WA="6288293064112";
+
 function openImg(src){
-  document.getElementById('modalImg').src = src;
-  document.getElementById('imgModal').style.display='flex';
+  document.getElementById("modalImg").src=src;
+  document.getElementById("imgModal").style.display="flex";
 }
-function openGroup(){
-  document.getElementById('groupModal').style.display='flex';
-}
+function openGroup(){document.getElementById("groupModal").style.display="flex"}
+function closeGroup(){document.getElementById("groupModal").style.display="none"}
 function pesan(){
-  window.open("https://wa.me/6288293064112?text=Halo admin, saya mau pesan layanan","_blank");
+  window.open(`https://wa.me/${WA}?text=Halo admin, saya mau pesan layanan Dead Rails`,"_blank");
 }
 </script>
 
