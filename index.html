@@ -276,7 +276,7 @@ h1{text-align:center;font-size:24px}
 </a>
 
 <a href="javascript:void(0)" class="btn btn-info reveal" onclick="openInfo()">
-<i class="fas fa-bullhorn"></i> Info Stok & Testimoni 
+<i class="fas fa-bullhorn"></i> Info Stok & Testimoni
 </a>
 
 <div class="section-title reveal">Platform & Komunitas</div>
@@ -360,22 +360,24 @@ const obs=new IntersectionObserver(e=>{
 },{threshold:.15});
 document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
 
-/* PLATFORM ANIMASI 1 PER 1 (FIX TOTAL) */
-window.addEventListener("load",()=>{
+/* PLATFORM ANIMASI 1 PER 1 (bisa muncul lagi normal) */
+function resetGridAnim(){
   const items = document.querySelectorAll(".grid-item");
-  items.forEach(i=>i.classList.remove("show"));
-
+  items.forEach(i=>i.classList.remove("show")); // reset semua
   let idx = 0;
   function next(){
     if(idx < items.length){
       items[idx].classList.add("show");
       idx++;
-      setTimeout(next, 500); // atur kecepatan di sini
+      setTimeout(next, 500);
     }
   }
-  setTimeout(next, 600);
-});
+  next();
+}
+
+// animasi pertama kali
+window.addEventListener("load", resetGridAnim);
 </script>
 
 </body>
-</html>
+        </html>
