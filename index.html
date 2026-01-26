@@ -26,10 +26,6 @@ body{
   box-shadow:0 20px 45px rgba(0,0,0,.12);
 }
 
-/* ANIMASI GLOBAL */
-.reveal{opacity:0;transform:translateY(24px);transition:1.8s ease}
-.reveal.show{opacity:1;transform:none}
-
 /* TOP BOX */
 .top-box{
   position:sticky;
@@ -61,9 +57,13 @@ body{
   font-weight:600;
   color:#fff;
 }
+
+/* BUTTON COLORS */
 .btn-dark{background:#111}
 .btn-blue{background:linear-gradient(135deg,#00c6ff,#0072ff)}
 .btn-gray{background:#555}
+.btn-wa{background:#111}
+.btn-info{background:linear-gradient(135deg,#00c6ff,#0072ff)}
 
 /* HEADER */
 .logo{
@@ -80,7 +80,7 @@ body{
 h1{text-align:center;font-size:24px;opacity:0;transform:translateY(-20px);transition:opacity 0.5s ease, transform 0.5s ease;}
 .desc{text-align:center;font-size:15px;color:#555;margin-bottom:18px;opacity:0;transform:translateY(-20px);transition:opacity 0.5s ease, transform 0.5s ease;}
 
-/* INFO */
+/* INFO BOARD */
 .info-board{
   background:#f3f6fb;
   border-left:5px solid #007bff;
@@ -93,7 +93,7 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(-20px);transi
   transition:opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* BUTTON */
+/* BUTTONS BOTTOM */
 .btn{
   display:flex;
   justify-content:center;
@@ -109,18 +109,15 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(-20px);transi
   transform:translateY(-20px);
   transition:opacity 0.5s ease, transform 0.5s ease;
 }
-.btn:active{transform:scale(.96)}
-.btn-wa{background:#111}
-.btn-info{background:linear-gradient(135deg,#00c6ff,#0072ff)}
+.btn:active{transform:scale(.96);}
 
+/* PLATFORM */
 .section-title{
   margin:28px 0 14px;
   font-size:16px;
   color:#444;
   font-weight:700;
 }
-
-/* PLATFORM */
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -148,6 +145,9 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(-20px);transi
   border:1px solid #eee;
   border-radius:22px;
   padding:16px;
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity 0.5s ease, transform 0.5s ease;
 }
 .service h3{font-size:16px;margin-bottom:8px}
 
@@ -291,23 +291,24 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(-20px);transi
 
 <div class="section-title reveal">Layanan Kami</div>
 
-<div class="service reveal">
+<!-- Contoh layanan 1 -->
+<div class="service">
   <h3>Joki & Gift Dead Rails</h3>
-
   <div class="photo-scroll">
-  <div class="photo-box">
-    <img src="https://i.imgur.com/LskSGfN.jpeg" onclick="openImg(this.src,'10 Oktober 2025')">
-    <div class="photo-date">Upload: 10 Oktober 2025</div>
+    <div class="photo-box">
+      <img src="https://i.imgur.com/LskSGfN.jpeg" onclick="openImg(this.src,'10 Oktober 2025')">
+      <div class="photo-date">Upload: 10 Oktober 2025</div>
+    </div>
+    <div class="photo-box">
+      <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src,'24 Januari 2026')">
+      <div class="photo-date">Upload: 24 Januari 2026</div>
+    </div>
   </div>
-  <div class="photo-box">
-    <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src,'24 Januari 2026')">
-    <div class="photo-date">Upload: 24 Januari 2026</div>
-  </div>
-  </div>
-
   <div class="release">📅 Rilis layanan: 12 Mei 2025</div>
   <button onclick="pesanDeadRails()">Pesan Sekarang</button>
 </div>
+
+<!-- Tambah layanan baru otomatis bisa ditambahkan di sini -->
 
 </div>
 
@@ -343,18 +344,7 @@ function pesanDeadRails(){
   window.open("https://wa.me/6288293064112?text=Halo admin, saya mau pesan jasa joki & gift, tolong kirimkan list nya","_blank");
 }
 
-/* REVEAL */
-const obs=new IntersectionObserver(e=>{
-  e.forEach(x=>{
-    if(x.isIntersecting){
-      x.target.classList.add("show");
-      obs.unobserve(x.target);
-    }
-  })
-},{threshold:.15});
-document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
-
-/* ANIMASI DARI KOSONG SEMUA TOP-TO-BOTTOM */
+/* ANIMASI DARI KOSONG SEMUA */
 function animateFullSequential(){
   const elements = [
     document.getElementById('topBox'),
@@ -376,10 +366,10 @@ function animateFullSequential(){
       el.style.opacity = 1;
       el.style.transform = "translateY(0)";
     }, delay);
-    delay += 300;
+    delay += 400;
   });
 
-  // grid muncul setelah semua tombol
+  // grid muncul setelah tombol
   setTimeout(()=>{
     const gridItems = document.querySelectorAll(".grid-item");
     gridItems.forEach((item,index)=>{
@@ -389,13 +379,38 @@ function animateFullSequential(){
       setTimeout(()=>{
         item.style.opacity=1;
         item.style.transform="translateY(0)";
-      }, index*300);
+      }, index*400);
     });
   }, delay);
+
+  // layanan muncul otomatis
+  setTimeout(()=>{
+    const services = document.querySelectorAll('.service');
+    services.forEach((service,svcIndex)=>{
+      service.style.opacity=0;
+      service.style.transform="translateY(30px)";
+      service.style.transition="opacity 0.5s ease, transform 0.5s ease";
+      setTimeout(()=>{
+        service.style.opacity=1;
+        service.style.transform="translateY(0)";
+        // animasi anak-anak service
+        const children = Array.from(service.children);
+        children.forEach((child,childIndex)=>{
+          child.style.opacity=0;
+          child.style.transform="translateY(20px)";
+          child.style.transition="opacity 0.5s ease, transform 0.5s ease";
+          setTimeout(()=>{
+            child.style.opacity=1;
+            child.style.transform="translateY(0)";
+          }, childIndex*300);
+        });
+      }, svcIndex*600);
+    });
+  }, delay+gridItems.length*400);
 }
 
 window.addEventListener("load", animateFullSequential);
 </script>
 
 </body>
-  </html>
+</html>
