@@ -360,35 +360,28 @@ const obs=new IntersectionObserver(e=>{
 },{threshold:.15});
 document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
 
-// PLATFORM ANIMASI GRID ITEM
-function animateGrid(){
+// Animasi grid-item muncul satu per satu
+function animateGridSequential(){
   const items = document.querySelectorAll(".grid-item");
-  items.forEach((item, idx) => {
+  
+  // Reset semua dulu
+  items.forEach(item => {
     item.style.opacity = 0;
     item.style.transform = "translateY(30px)";
+    item.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+  });
+
+  // Munculkan satu per satu
+  items.forEach((item, idx) => {
     setTimeout(() => {
-      item.style.transition = "opacity 0.7s ease, transform 0.7s ease";
       item.style.opacity = 1;
       item.style.transform = "translateY(0)";
-    }, idx * 200); // delay per item
+    }, idx * 400); // delay tiap item 400ms, bisa diubah
   });
 }
 
-// Jalankan animasi pertama kali saat halaman load
-window.addEventListener("load", animateGrid);
-
-// Jika mau animasi muncul lagi saat di-scroll, pakai IntersectionObserver
-const gridObserver = new IntersectionObserver((entries, obs) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      animateGrid();
-      obs.unobserve(entry.target); // hanya jalan sekali per scroll
-    }
-  });
-}, {threshold: 0.15});
-
-// Target grid container
-gridObserver.observe(document.querySelector(".grid"));
+// Jalankan animasi saat load
+window.addEventListener("load", animateGridSequential);
 
 </script>
 
