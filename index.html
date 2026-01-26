@@ -25,10 +25,6 @@ body{
   box-shadow:0 20px 45px rgba(0,0,0,.12);
 }
 
-/* ANIMASI GLOBAL */
-.reveal{opacity:0;transform:translateY(24px);transition:2.2s ease}
-.reveal.show{opacity:1;transform:none}
-
 /* TOP BOX */
 .top-box{
   position:sticky;
@@ -68,10 +64,7 @@ body{
 .top-btns a:nth-child(1){animation-delay:.3s}
 .top-btns a:nth-child(2){animation-delay:.5s}
 .top-btns a:nth-child(3){animation-delay:.7s}
-
-@keyframes fadeBtn{
-  to{opacity:1}
-}
+@keyframes fadeBtn{to{opacity:1}}
 
 .btn-dark{background:#111}
 .btn-blue{background:linear-gradient(135deg,#00c6ff,#0072ff)}
@@ -137,11 +130,21 @@ h1{text-align:center;font-size:24px}
   font-weight:600;
   color:#000;
   cursor:pointer;
+
   opacity:0;
-  transform:translateY(20px);
-  transition:1s ease;
+  transform:translateY(25px);
+  transition:opacity .8s ease, transform .8s ease, box-shadow .2s ease;
 }
-.grid-item.show{opacity:1;transform:none}
+.grid-item.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.grid-item:hover{
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+.grid-item:active{
+  transform:scale(.95);
+}
 .grid-item i{font-size:22px;margin-bottom:6px}
 
 /* SERVICE */
@@ -238,6 +241,7 @@ h1{text-align:center;font-size:24px}
   text-decoration:none;
   font-size:16px;
 }
+.choice:active{transform:scale(.96)}
 .bg-wa{background:#25D366}
 .bg-grup{background:#007bff}
 </style>
@@ -257,65 +261,45 @@ h1{text-align:center;font-size:24px}
   </div>
 </div>
 
-<img src="https://i.imgur.com/fKt8LYa.jpeg" class="logo reveal">
-<h1 class="reveal">XREZZKY STORE</h1>
-<p class="desc reveal">Layanan digital game aman & terpercaya</p>
+<img src="https://i.imgur.com/fKt8LYa.jpeg" class="logo">
+<h1>XREZZKY STORE</h1>
+<p class="desc">Layanan digital game aman & terpercaya</p>
 
-<div class="info-board reveal">
+<div class="info-board">
 📌 Ready joki & gift all game<br>
 ⚡ Proses cepat & aman<br>
 💬 Fast respon admin
 </div>
 
-<a href="https://wa.me/6288293064112" class="btn btn-wa reveal">
+<a href="https://wa.me/6288293064112" class="btn btn-wa">
 <i class="fab fa-whatsapp"></i> Kontak Admin
 </a>
 
-<a href="javascript:void(0)" class="btn btn-info reveal" onclick="openInfo()">
+<a href="javascript:void(0)" class="btn btn-info" onclick="openInfo()">
 <i class="fas fa-bullhorn"></i> Info & Update
 </a>
 
-<div class="section-title reveal">Platform & Komunitas</div>
+<div class="section-title">Platform & Komunitas</div>
 <div class="grid">
-  <div class="grid-item"><i class="fab fa-whatsapp" style="color:#25D366"></i><br>Komunitas & Grup</div>
-  <div class="grid-item"><i class="fab fa-instagram" style="color:#E1306C"></i><br>Instagram</div>
-  <div class="grid-item"><i class="fab fa-tiktok"></i><br>TikTok</div>
-  <div class="grid-item"><i class="fab fa-discord" style="color:#5865F2"></i><br>Discord</div>
-</div>
-
-<div class="section-title reveal">Layanan Kami</div>
-
-<div class="service reveal">
-  <h3>Joki & Gift Dead Rails</h3>
-
-  <div class="photo-scroll">
-    <div class="photo-box">
-      <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src,'12 Februari 2026')">
-      <div class="photo-date">Upload: 12 Februari 2026</div>
-    </div>
-    <div class="photo-box">
-      <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src,'12 Februari 2026')">
-      <div class="photo-date">Upload: 12 Februari 2026</div>
-    </div>
+  <div class="grid-item" onclick="openGroup()">
+    <i class="fab fa-whatsapp" style="color:#25D366"></i><br>Komunitas & Grup
   </div>
-
-  <div class="release">📅 Rilis layanan: 10 Februari 2026</div>
-  <button onclick="pesan()">Pesan Sekarang</button>
-</div>
-
-</div>
-
-<!-- MODAL FOTO -->
-<div id="imgModal" class="modal" onclick="this.style.display='none'">
-  <div class="modal-box">
-    <img id="modalImg">
-    <div id="modalInfo" class="modal-info"></div>
+  <div class="grid-item" onclick="window.open('https://instagram.com','_blank')">
+    <i class="fab fa-instagram" style="color:#E1306C"></i><br>Instagram
   </div>
+  <div class="grid-item" onclick="window.open('https://tiktok.com','_blank')">
+    <i class="fab fa-tiktok"></i><br>TikTok
+  </div>
+  <div class="grid-item" onclick="window.open('https://discord.com','_blank')">
+    <i class="fab fa-discord" style="color:#5865F2"></i><br>Discord
+  </div>
+</div>
+
 </div>
 
 <!-- MODAL GROUP -->
 <div id="groupModal" class="modal" onclick="this.style.display='none'">
-  <div class="modal-box group-box">
+  <div class="modal-box group-box" onclick="event.stopPropagation()">
     <div class="group-title">Komunitas & Grup Resmi</div>
     <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa" target="_blank">Komunitas</a>
     <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-grup" target="_blank">Grup Jual Beli</a>
@@ -325,36 +309,19 @@ h1{text-align:center;font-size:24px}
 <script>
 const INFO_CHANNEL="https://whatsapp.com/channel/0029Vb6wSkq05MUaGz8NkL26";
 
-function openImg(src,date){
-  modalImg.src=src;
-  modalInfo.innerText="📸 Upload: "+date;
-  imgModal.style.display="flex";
-}
 function openGroup(){
-  groupModal.style.display="flex";
+  document.getElementById("groupModal").style.display="flex";
 }
 function openInfo(){
   window.open(INFO_CHANNEL,"_blank");
 }
-function pesan(){
-  window.open("https://wa.me/6288293064112?text=Halo admin, saya mau pesan layanan","_blank");
-}
 
-/* REVEAL */
-const obs=new IntersectionObserver(e=>{
-  e.forEach(x=>{
-    if(x.isIntersecting){
-      x.target.classList.add("show");
-      obs.unobserve(x.target);
-    }
-  })
-},{threshold:.15});
-
-document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
-
-/* PLATFORM STAGGER */
-document.querySelectorAll(".grid-item").forEach((el,i)=>{
-  setTimeout(()=>el.classList.add("show"),300+(i*200));
+/* ANIMASI PLATFORM 0 PER 1 */
+window.addEventListener("load",()=>{
+  const items=document.querySelectorAll(".grid-item");
+  items.forEach((item,i)=>{
+    setTimeout(()=>item.classList.add("show"), i*450);
+  });
 });
 </script>
 
