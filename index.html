@@ -29,11 +29,8 @@ body{
   padding:26px;
   box-shadow:0 20px 50px rgba(0,0,0,.12);
 }
-/* ===== Animasi ===== */
-.fade-up{opacity:0;transform:translateY(40px);transition:all 1s ease;}
-.fade-up.show{opacity:1;transform:translateY(0);}
-.slide-left{opacity:0;transform:translateX(-40px);transition:all 1s ease;}
-.slide-left.show{opacity:1;transform:translateX(0);}
+/* ===== Animasi langsung muncul ===== */
+.show{opacity:1!important;transform:translateY(0)!important;transition:all 1s ease!important;}
 h1{text-align:center;margin-bottom:10px;}
 .desc{text-align:center;font-size:14px;color:#555;margin-bottom:20px;}
 .info-board{
@@ -71,7 +68,7 @@ h1{text-align:center;margin-bottom:10px;}
   font-weight:600;
   color:#000;
   cursor:pointer;
-  transition:.25s;
+  transition:.5s;
   opacity:0;
   transform:translateY(20px);
 }
@@ -79,31 +76,35 @@ h1{text-align:center;margin-bottom:10px;}
 .grid-item:hover{transform:translateY(-3px);}
 .services{display:grid;gap:18px;}
 .service{border:1px solid #eee;border-radius:20px;padding:12px;opacity:0;transform:translateY(40px);transition:all .7s ease;}
-.service.show{opacity:1;transform:translateY(0);}
 .photos{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
 .photos img{width:100%;height:auto;border-radius:12px;cursor:pointer;display:block;}
 .service button{width:100%;margin-top:10px;background:var(--primary);color:#fff;border:none;padding:12px;border-radius:12px;font-weight:600;cursor:pointer;}
 .time-info{font-size:11px;color:#888;margin-top:4px;text-align:center;}
+
 /* ===== MODAL ===== */
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);justify-content:center;align-items:center;z-index:999;}
-.modal-box{max-width:95%;max-height:95%;padding:20px;background:#fff;border-radius:16px;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;}
+.modal-box{width:90%;max-height:90%;padding:20px;background:#fff;border-radius:16px;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;}
 .modal-box img{width:auto;max-width:100%;height:auto;max-height:100%;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.3);display:block;}
 .modal-title{text-align:center;font-weight:600;margin-bottom:10px;}
+.modal-info{text-align:center;font-size:12px;color:#555;margin-top:6px;}
 .choice{display:block;margin:10px 0;padding:12px;border-radius:12px;color:#fff;text-decoration:none;text-align:center;font-weight:600;}
 .bg-wa{background:#25D366;}
 .bg-grup{background:var(--primary);}
+
 /* ===== KOTAK ATAS ===== */
 .top-box{
   position:sticky;
   top:10px;
   background:#fff;
-  padding:12px 16px;
+  padding:16px;
   border-radius:14px;
   box-shadow:0 10px 30px rgba(0,0,0,.1);
   z-index:1000;
   display:flex;
   flex-direction:column;
   gap:10px;
+  width:90%; /* Samain ukuran modal utama */
+  margin:auto;
 }
 .top-title{
   font-weight:700;
@@ -112,7 +113,6 @@ h1{text-align:center;margin-bottom:10px;}
   transform:translateX(-40px);
   transition:all 1s ease;
 }
-.top-title.show{opacity:1;transform:translateX(0);}
 .top-btns{
   display:flex;
   gap:8px;
@@ -121,7 +121,8 @@ h1{text-align:center;margin-bottom:10px;}
   transform:translateY(20px);
   transition:all 1s ease;
 }
-.top-btns.show{opacity:1;transform:translateY(0);}
+
+/* LOGO TENGAH */
 .top-logo{
   width:160px;
   height:160px;
@@ -132,7 +133,6 @@ h1{text-align:center;margin-bottom:10px;}
   transform:scale(0.5);
   transition:all 1s ease;
 }
-.top-logo.show{opacity:1;transform:scale(1);}
 </style>
 </head>
 <body>
@@ -158,16 +158,9 @@ h1{text-align:center;margin-bottom:10px;}
     💬 Fast respon admin
   </div>
 
-  <a href="https://wa.me/6288293064112" class="btn btn-wa" target="_blank">
-    <i class="fab fa-whatsapp"></i> Kontak Admin
-  </a>
-  <a href="https://link-info-update.com" class="btn btn-info" target="_blank">
-    <i class="fas fa-bullhorn"></i> Info & Update
-  </a>
-
   <div class="section-title">Platform & Komunitas</div>
   <div class="grid">
-    <div class="grid-item"> <i class="fab fa-whatsapp" style="color:#25D366"></i> Komunitas & Grup </div>
+    <div class="grid-item" onclick="openGroup()"> <i class="fab fa-whatsapp" style="color:#25D366"></i> Komunitas & Grup </div>
     <a href="https://instagram.com/xrezzkystore" class="grid-item" target="_blank"> <i class="fab fa-instagram" style="color:#E1306C"></i> Instagram </a>
     <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item" target="_blank"> <i class="fab fa-tiktok" style="color:#000"></i> TikTok </a>
     <a href="https://discord.gg/xDfZJHb2yK" class="grid-item" target="_blank"> <i class="fab fa-discord" style="color:#5865F2"></i> Discord </a>
@@ -177,11 +170,13 @@ h1{text-align:center;margin-bottom:10px;}
   <div class="services">
     <div class="service">
       <div class="photos">
-        <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src)">
+        <img src="https://i.imgur.com/2LvDMJt.jpeg" 
+             data-upload="25 Januari 2026, 09:05 WIB" 
+             onclick="openImg(this.src,this.dataset.upload)">
+        <div class="time-info">Foto di-upload: 25 Januari 2026, 09:05 WIB</div>
       </div>
       <h3>Jasa joki & gift Dead Rails</h3>
       <div class="time-info">Dirilis: 25 Januari 2026, 09:00 WIB</div>
-      <div class="time-info">Foto di-upload: 25 Januari 2026, 09:05 WIB</div>
       <button onclick="pesan(this)" data-pesan="Halo admin, saya mau pesan *Jasa Joki & gift*. Mohon kirimkan listnya 🙏">Pesan Sekarang</button>
     </div>
   </div>
@@ -191,6 +186,7 @@ h1{text-align:center;margin-bottom:10px;}
 <div id="imgModal" class="modal" onclick="if(event.target===this) closeImg()">
   <div class="modal-box">
     <img id="modalImg">
+    <div class="modal-info" id="modalInfo"></div>
   </div>
 </div>
 
@@ -207,13 +203,18 @@ h1{text-align:center;margin-bottom:10px;}
 const WA = "6288293064112";
 const imgModal = document.getElementById("imgModal");
 const modalImg = document.getElementById("modalImg");
+const modalInfo = document.getElementById("modalInfo");
 const groupModal = document.getElementById("groupModal");
 const topTitle = document.getElementById("topTitle");
 const topBtns = document.getElementById("topBtns");
 const topLogo = document.getElementById("topLogo");
 
-// Fungsi Modal
-function openImg(src){ modalImg.src=src; imgModal.style.display="flex"; }
+// Modal
+function openImg(src,upload){
+  modalImg.src=src; 
+  modalInfo.textContent = "Foto di-upload: " + upload;
+  imgModal.style.display="flex";
+}
 function closeImg(){ imgModal.style.display="none"; }
 function openGroup(){ groupModal.style.display="flex"; }
 function closeGroup(){ groupModal.style.display="none"; }
@@ -222,20 +223,20 @@ function pesan(btn){
   window.open(`https://wa.me/${WA}?text=${text}`,"_blank");
 }
 
-// Animasi muncul langsung saat load
+// Animasi langsung muncul saat load
 window.addEventListener('load',()=>{
   topTitle.classList.add('show');
-  setTimeout(()=>topBtns.classList.add('show'),200);
-  setTimeout(()=>topLogo.classList.add('show'),400);
+  topBtns.classList.add('show');
+  topLogo.classList.add('show');
 
   document.querySelectorAll('.grid-item').forEach((item,i)=>{
-    setTimeout(()=>{item.style.opacity=1;item.style.transform='translateY(0)';}, 600 + i*200);
+    setTimeout(()=>{item.classList.add('show');}, i*150);
   });
 
   document.querySelectorAll('.service').forEach((s,i)=>{
-    setTimeout(()=>s.classList.add('show'), 1200 + i*300);
+    setTimeout(()=>s.classList.add('show'), i*300);
   });
 });
 </script>
 </body>
-                              </html>
+</html>
