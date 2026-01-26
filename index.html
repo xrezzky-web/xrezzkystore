@@ -6,23 +6,23 @@
 <title>XREZZKY STORE | Digital Game Services</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto}
 body{background:linear-gradient(135deg,#e0eafc,#cfdef3);padding:12px;}
 .container{max-width:520px;width:100%;margin:auto;background:#fff;border-radius:26px;padding:22px;box-shadow:0 20px 45px rgba(0,0,0,.12);}
 
 /* TOP BOX */
-.top-box{position:sticky;top:10px;background:#0072ff;padding:14px;border-radius:18px;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 10px 25px rgba(0,0,0,.15);z-index:100;opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 0.5s ease;}
-.top-title{font-weight:700;font-size:15px;color:#fff;}
+.top-box{position:sticky;top:10px;background:#fff;padding:14px;border-radius:18px;box-shadow:0 10px 25px rgba(0,0,0,.15);z-index:100;opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 0.5s ease;}
+.top-title{font-weight:700;font-size:15px;margin-bottom:10px;}
 .top-btns{display:flex;gap:10px;}
-.top-btns a{padding:12px;border-radius:14px;text-align:center;text-decoration:none;font-weight:600;color:#fff;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease, transform 0.5s ease;}
-.btn-dark{background:#0072ff;}
-.btn-blue{background:#0072ff;}
-.btn-gray{background:#555;}
+.top-btns a{flex:1;padding:12px;border-radius:14px;text-align:center;text-decoration:none;font-weight:600;color:#fff;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease, transform 0.5s ease;}
+.btn-dark{background:#111;} /* WA kiri */
+.btn-blue{background:#0072ff;} /* Tengah */
+.btn-gray{background:#555;} /* Kanan */
 
 /* HEADER */
 .logo{width:160px;height:160px;border-radius:26px;object-fit:cover;display:block;margin:24px auto 12px;opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 0.5s ease;}
 h1{opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 0.5s ease;text-align:center;font-size:24px;}
-.desc{opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 0.5s ease;text-align:center;font-size:15px;color:#fff;margin-bottom:18px;}
+.desc{opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 0.5s ease;text-align:center;font-size:15px;color:#555;margin-bottom:18px;}
 
 /* INFO */
 .info-board{background:#f3f6fb;border-left:5px solid #007bff;padding:16px;border-radius:16px;font-size:14px;margin-bottom:18px;opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 0.5s ease;}
@@ -30,8 +30,6 @@ h1{opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 
 /* BUTTONS */
 .btn{display:flex;justify-content:center;align-items:center;gap:8px;padding:15px;border-radius:16px;text-decoration:none;color:#fff;font-weight:700;margin-top:12px;opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 0.5s ease;}
 .btn:active{transform:scale(.96);}
-.btn-wa{background:#0072ff;}
-.btn-info{background:#0072ff;}
 
 /* SECTION TITLE */
 .section-title{margin:28px 0 14px;font-size:16px;color:#444;font-weight:700;opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 0.5s ease;}
@@ -68,13 +66,11 @@ h1{opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 
 </style>
 </head>
 <body>
-
 <div class="container">
-  <!-- TOP BOX -->
   <div class="top-box">
     <div class="top-title">XREZZKY STORE</div>
     <div class="top-btns">
-      <a href="https://wa.me/6288293064112" class="btn-blue">Kontak</a>
+      <a href="https://wa.me/6288293064112" class="btn-dark">Kontak</a>
       <a href="javascript:void(0)" class="btn-blue" onclick="openGroup()">Komunitas</a>
       <a href="javascript:void(0)" class="btn-gray" onclick="openInfo()">Saluran</a>
     </div>
@@ -107,25 +103,9 @@ h1{opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 
   </div>
 
   <div class="section-title">Layanan Kami</div>
-  <div class="service">
-    <h3>Joki & Gift Dead Rails</h3>
-    <div class="photo-scroll">
-      <div class="photo-box">
-        <img src="https://i.imgur.com/LskSGfN.jpeg" onclick="openImg(this.src,'10 Oktober 2025')">
-        <div class="photo-date">Upload: 10 Oktober 2025</div>
-      </div>
-      <div class="photo-box">
-        <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src,'24 Januari 2026')">
-        <div class="photo-date">Upload: 24 Januari 2026</div>
-      </div>
-    </div>
-    <div class="release">📅 Rilis layanan: 12 Mei 2025</div>
-    <button onclick="pesanDeadRails()">Pesan Sekarang</button>
-  </div>
-
+  <div id="services-container"></div>
 </div>
 
-<!-- MODAL FOTO -->
 <div id="imgModal" class="modal" onclick="this.style.display='none'">
   <div class="modal-box">
     <img id="modalImg">
@@ -133,7 +113,6 @@ h1{opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 
   </div>
 </div>
 
-<!-- MODAL GROUP -->
 <div id="groupModal" class="modal" onclick="this.style.display='none'">
   <div class="modal-box group-box" onclick="event.stopPropagation()">
     <div class="group-title">Komunitas & Grup Resmi</div>
@@ -144,38 +123,69 @@ h1{opacity:0;transform:translateY(30px);transition:opacity 0.5s ease, transform 
 
 <script>
 const INFO_CHANNEL="https://whatsapp.com/channel/0029Vb6wSkq05MUaGz8NkL26";
-const animSpeed=400; // ubah kecepatan animasi di sini saja
+const animSpeed=400;
 
-function openImg(src,date){
-  modalImg.src=src;
-  modalInfo.innerText="📸 Upload: "+date;
-  imgModal.style.display="flex";
-}
+function openImg(src,date){modalImg.src=src;modalInfo.innerText="📸 Upload: "+date;imgModal.style.display="flex";}
 function openGroup(){ groupModal.style.display="flex"; }
 function openInfo(){ window.open(INFO_CHANNEL,"_blank"); }
 function openLink(url){ window.open(url,"_blank"); }
-function pesanDeadRails(){
-  window.open("https://wa.me/6288293064112?text=Halo%20admin,%20saya%20ingin%20pesan%20jasa%20joki%20%26%20gift%20Dead%20Rails,%20tolong%20kirimkan%20list%20nya","_blank");
-}
 
-// Animasi berurutan semua container
 window.addEventListener("load",()=>{
-  const items=document.querySelectorAll(
-    ".top-box, .top-box .top-title, .top-box .top-btns a, .logo, h1, .desc, .info-board, .btn, .section-title, .grid-item, .service, .service h3, .photo-box, .service .release, .service button"
-  );
+  const items=document.querySelectorAll(".top-box, .top-box .top-title, .top-box .top-btns a, .logo, h1, .desc, .info-board, .btn, .section-title, .grid-item");
   let idx=0;
-  function showNext(){
-    if(idx<items.length){
-      items[idx].style.opacity=1;
-      items[idx].style.transform="translateY(0)";
-      idx++;
-      setTimeout(showNext, animSpeed);
-    }
-  }
+  function showNext(){if(idx<items.length){items[idx].style.opacity=1;items[idx].style.transform="translateY(0)";idx++;setTimeout(showNext,animSpeed);}}
   items.forEach(i=>{i.style.opacity=0;i.style.transform="translateY(30px)";});
   showNext();
 });
-</script>
 
+// Tambah layanan otomatis
+function addService({title, photos, release, waText}){
+  const container=document.getElementById("services-container");
+  const service=document.createElement("div"); service.className="service";
+  const h3=document.createElement("h3"); h3.innerText=title; service.appendChild(h3);
+
+  const photoScroll=document.createElement("div"); photoScroll.className="photo-scroll";
+  photos.forEach(p=>{
+    const box=document.createElement("div"); box.className="photo-box";
+    const img=document.createElement("img"); img.src=p.src; img.onclick=()=>openImg(p.src,p.date); box.appendChild(img);
+    const dateDiv=document.createElement("div"); dateDiv.className="photo-date"; dateDiv.innerText="Upload: "+p.date; box.appendChild(dateDiv);
+    photoScroll.appendChild(box);
+  });
+  service.appendChild(photoScroll);
+
+  const releaseDiv=document.createElement("div"); releaseDiv.className="release"; releaseDiv.innerText="📅 Rilis layanan: "+release; service.appendChild(releaseDiv);
+
+  const btn=document.createElement("button"); btn.innerText="Pesan Sekarang";
+  btn.onclick=()=>window.open("https://wa.me/6288293064112?text="+encodeURIComponent(waText),"_blank");
+  service.appendChild(btn);
+
+  container.appendChild(service);
+
+  animateService(service);
+}
+
+function animateService(service){
+  const elements=[service, ...Array.from(service.querySelectorAll("h3, .photo-box, .release, button"))];
+  let idx=0;
+  function showNext(){if(idx<elements.length){elements[idx].style.opacity=1;elements[idx].style.transform="translateY(0)";idx++;setTimeout(showNext,animSpeed);}}
+  elements.forEach(e=>{e.style.opacity=0;e.style.transform="translateY(30px)";});
+  showNext();
+}
+
+// Contoh layanan berbeda WA text
+addService({
+  title:"Joki & Gift Dead Rails",
+  photos:[{src:"https://i.imgur.com/LskSGfN.jpeg", date:"10 Oktober 2025"},{src:"https://i.imgur.com/2LvDMJt.jpeg", date:"24 Januari 2026"}],
+  release:"12 Mei 2025",
+  waText:"Halo admin, saya ingin pesan jasa joki & gift Dead Rails, tolong kirimkan list nya"
+});
+
+addService({
+  title:"Joki Game Lain",
+  photos:[{src:"https://i.imgur.com/fKt8LYa.jpeg", date:"15 Januari 2026"}],
+  release:"15 Januari 2026",
+  waText:"Halo admin, saya ingin pesan jasa Joki Game Lain, tolong kirimkan list nya"
+});
+</script>
 </body>
 </html>
