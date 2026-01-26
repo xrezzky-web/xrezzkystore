@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XREZZKY STORE | Digital Game Services</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -15,7 +14,6 @@ body{
   padding:12px;
 }
 
-/* CONTAINER */
 .container{
   max-width:520px;
   width:100%;
@@ -26,7 +24,13 @@ body{
   box-shadow:0 20px 45px rgba(0,0,0,.12);
 }
 
-/* TOP BOX */
+.top-box, .top-box *,.logo,h1,.desc,.info-board,.btn,.grid-item,.section-title,.service,.service *{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Top box */
 .top-box{
   position:sticky;
   top:10px;
@@ -35,215 +39,55 @@ body{
   border-radius:18px;
   box-shadow:0 10px 25px rgba(0,0,0,.15);
   z-index:100;
-  opacity:0;
-  transform:translateY(-20px);
-  transition:opacity 0.5s ease, transform 0.5s ease;
 }
-.top-title{
-  font-weight:700;
-  font-size:15px;
-  margin-bottom:10px;
-}
-.top-btns{
-  display:flex;
-  gap:10px;
-}
-.top-btns a{
-  flex:1;
-  padding:12px;
-  border-radius:14px;
-  text-align:center;
-  text-decoration:none;
-  font-weight:600;
-  color:#fff;
-}
+.top-title{font-weight:700;font-size:15px;margin-bottom:10px;}
+.top-btns{display:flex;gap:10px;}
+.top-btns a{flex:1;padding:12px;border-radius:14px;text-align:center;text-decoration:none;font-weight:600;color:#fff;}
+.btn-dark{background:#111} .btn-blue{background:linear-gradient(135deg,#00c6ff,#0072ff)} .btn-gray{background:#555}
 
-/* BUTTON COLORS */
-.btn-dark{background:#111}
-.btn-blue{background:linear-gradient(135deg,#00c6ff,#0072ff)}
-.btn-gray{background:#555}
+/* Header */
+.logo{width:160px;height:160px;border-radius:26px;object-fit:cover;display:block;margin:24px auto 12px;}
+h1{text-align:center;font-size:24px}
+.desc{text-align:center;font-size:15px;color:#555;margin-bottom:18px}
+
+/* Info board */
+.info-board{background:#f3f6fb;border-left:5px solid #007bff;padding:16px;border-radius:16px;font-size:14px;margin-bottom:18px;}
+
+/* Buttons bottom */
+.btn{display:flex;justify-content:center;align-items:center;gap:8px;padding:15px;border-radius:16px;text-decoration:none;color:#fff;font-weight:700;margin-top:12px;}
 .btn-wa{background:#111}
 .btn-info{background:linear-gradient(135deg,#00c6ff,#0072ff)}
 
-/* HEADER */
-.logo{
-  width:160px;
-  height:160px;
-  border-radius:26px;
-  object-fit:cover;
-  display:block;
-  margin:24px auto 12px;
-  opacity:0;
-  transform:translateY(-20px);
-  transition:opacity 0.5s ease, transform 0.5s ease;
-}
-h1{text-align:center;font-size:24px;opacity:0;transform:translateY(-20px);transition:opacity 0.5s ease, transform 0.5s ease;}
-.desc{text-align:center;font-size:15px;color:#555;margin-bottom:18px;opacity:0;transform:translateY(-20px);transition:opacity 0.5s ease, transform 0.5s ease;}
-
-/* INFO BOARD */
-.info-board{
-  background:#f3f6fb;
-  border-left:5px solid #007bff;
-  padding:16px;
-  border-radius:16px;
-  font-size:14px;
-  margin-bottom:18px;
-  opacity:0;
-  transform:translateY(-20px);
-  transition:opacity 0.5s ease, transform 0.5s ease;
-}
-
-/* BUTTONS BOTTOM */
-.btn{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  padding:15px;
-  border-radius:16px;
-  text-decoration:none;
-  color:#fff;
-  font-weight:700;
-  margin-top:12px;
-  opacity:0;
-  transform:translateY(-20px);
-  transition:opacity 0.5s ease, transform 0.5s ease;
-}
-.btn:active{transform:scale(.96);}
-
-/* PLATFORM */
-.section-title{
-  margin:28px 0 14px;
-  font-size:16px;
-  color:#444;
-  font-weight:700;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-}
-.grid-item{
-  border:1px solid #eee;
-  border-radius:18px;
-  padding:16px;
-  text-align:center;
-  font-size:14px;
-  font-weight:600;
-  color:#000;
-  cursor:pointer;
-  opacity:0;
-  transform:translateY(30px);
-  transition:opacity .5s ease, transform .5s ease, box-shadow .2s ease;
-}
+/* Platform grid */
+.section-title{margin:28px 0 14px;font-size:16px;color:#444;font-weight:700;}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.grid-item{border:1px solid #eee;border-radius:18px;padding:16px;text-align:center;font-size:14px;font-weight:600;color:#000;cursor:pointer;opacity:0;transform:translateY(30px);transition:opacity .5s ease, transform .5s ease;}
 .grid-item:hover{box-shadow:0 8px 20px rgba(0,0,0,.12)}
 .grid-item:active{transform:scale(.95)}
 .grid-item i{font-size:22px;margin-bottom:6px}
 
-/* SERVICE */
-.service{
-  border:1px solid #eee;
-  border-radius:22px;
-  padding:16px;
-  opacity:0;
-  transform:translateY(30px);
-  transition:opacity 0.5s ease, transform 0.5s ease;
-}
-.service h3, .photo-scroll, .release, .service button{
-  opacity:0;
-  transform:translateY(20px);
-  transition:opacity 0.5s ease, transform 0.5s ease;
-}
-
-.photo-scroll{
-  display:flex;
-  gap:14px;
-  overflow-x:auto;
-  padding-bottom:10px;
-}
+/* Services */
+.service{border:1px solid #eee;border-radius:22px;padding:16px;margin-bottom:20px;}
+.photo-scroll{display:flex;gap:14px;overflow-x:auto;padding-bottom:10px;}
 .photo-box{min-width:180px;text-align:center}
-.photo-box img{
-  width:100%;
-  height:160px;
-  border-radius:16px;
-  object-fit:cover;
-  cursor:pointer;
-}
-.photo-date{
-  font-size:12px;
-  color:#666;
-  margin-top:6px;
-}
+.photo-box img{width:100%;height:160px;border-radius:16px;object-fit:cover;cursor:pointer}
+.photo-date{font-size:12px;color:#666;margin-top:6px;}
+.release{font-size:13px;color:#555;margin:12px 0 10px;}
+.service button{width:100%;padding:15px;border:none;border-radius:16px;background:#007bff;color:#fff;font-weight:700;font-size:15px;}
 
-.release{
-  font-size:13px;
-  color:#555;
-  margin:12px 0 10px;
-}
-
-.service button{
-  width:100%;
-  padding:15px;
-  border:none;
-  border-radius:16px;
-  background:#007bff;
-  color:#fff;
-  font-weight:700;
-  font-size:15px;
-}
-
-/* MODAL */
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.7);
-  justify-content:center;
-  align-items:center;
-  z-index:999;
-}
-.modal-box{
-  background:#fff;
-  border-radius:22px;
-  padding:20px;
-  max-width:92vw;
-}
+/* Modal */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);justify-content:center;align-items:center;z-index:999;}
+.modal-box{background:#fff;border-radius:22px;padding:20px;max-width:92vw;}
 .modal-box img{width:100%;border-radius:16px}
-.modal-info{
-  font-size:13px;
-  color:#555;
-  text-align:center;
-  margin-top:10px;
-}
-
-/* GROUP MODAL */
-.group-box{
-  max-width:460px;
-  padding:24px;
-}
-.group-title{
-  font-weight:700;
-  font-size:18px;
-  text-align:center;
-  margin-bottom:16px;
-}
-.choice{
-  display:block;
-  padding:18px;
-  margin-top:14px;
-  border-radius:18px;
-  text-align:center;
-  color:#fff;
-  font-weight:700;
-  text-decoration:none;
-  font-size:16px;
-}
+.modal-info{font-size:13px;color:#555;text-align:center;margin-top:10px;}
+.group-box{max-width:460px;padding:24px;}
+.group-title{font-weight:700;font-size:18px;text-align:center;margin-bottom:16px;}
+.choice{display:block;padding:18px;margin-top:14px;border-radius:18px;text-align:center;color:#fff;font-weight:700;text-decoration:none;font-size:16px;}
 .choice:active{transform:scale(.96)}
 .bg-wa{background:#25D366}
 .bg-grup{background:#007bff}
 </style>
 </head>
-
 <body>
 
 <div class="container">
@@ -263,33 +107,18 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(-20px);transi
 <p class="desc" id="mainDesc">Layanan digital game aman & terpercaya</p>
 
 <div class="info-board" id="infoBoard">
-📌 Ready joki & gift <br>
-⚡ Proses cepat & aman<br>
-💬 Fast respon admin
+📌 Ready joki & gift <br>⚡ Proses cepat & aman<br>💬 Fast respon admin
 </div>
 
-<a href="https://wa.me/6288293064112" class="btn btn-wa" id="btnWA">
-<i class="fab fa-whatsapp"></i> Kontak Admin
-</a>
-
-<a href="javascript:void(0)" class="btn btn-info" id="btnInfo" onclick="openInfo()">
-<i class="fas fa-bullhorn"></i> Info Stok & Testimoni
-</a>
+<a href="https://wa.me/6288293064112" class="btn btn-wa" id="btnWA"><i class="fab fa-whatsapp"></i> Kontak Admin</a>
+<a href="javascript:void(0)" class="btn btn-info" id="btnInfo" onclick="openInfo()"><i class="fas fa-bullhorn"></i> Info Stok & Testimoni</a>
 
 <div class="section-title reveal">Platform & Komunitas</div>
 <div class="grid">
-  <div class="grid-item" onclick="openGroup()">
-    <i class="fab fa-whatsapp" style="color:#25D366"></i><br>Komunitas & Grup
-  </div>
-  <div class="grid-item" onclick="openLink('https://www.instagram.com/xrezzkystore?igsh=MW81a2F0YzgyeTVxcg==')">
-    <i class="fab fa-instagram" style="color:#E1306C"></i><br>Instagram
-  </div>
-  <div class="grid-item" onclick="openLink('https://www.tiktok.com/@xrezzky.store?_r=1&_t=ZS-93OABhTFTnB')">
-    <i class="fab fa-tiktok"></i><br>TikTok
-  </div>
-  <div class="grid-item" onclick="openLink('https://discord.gg/UMPthnUVZB')">
-    <i class="fab fa-discord" style="color:#5865F2"></i><br>Discord
-  </div>
+  <div class="grid-item" onclick="openGroup()"><i class="fab fa-whatsapp" style="color:#25D366"></i><br>Komunitas & Grup</div>
+  <div class="grid-item" onclick="openLink('https://www.instagram.com/xrezzkystore?igsh=MW81a2F0YzgyeTVxcg==')"><i class="fab fa-instagram" style="color:#E1306C"></i><br>Instagram</div>
+  <div class="grid-item" onclick="openLink('https://www.tiktok.com/@xrezzky.store?_r=1&_t=ZS-93OABhTFTnB')"><i class="fab fa-tiktok"></i><br>TikTok</div>
+  <div class="grid-item" onclick="openLink('https://discord.gg/UMPthnUVZB')"><i class="fab fa-discord" style="color:#5865F2"></i><br>Discord</div>
 </div>
 
 <div class="section-title reveal">Layanan Kami</div>
@@ -298,14 +127,8 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(-20px);transi
 <div class="service">
   <h3>Joki & Gift Dead Rails</h3>
   <div class="photo-scroll">
-    <div class="photo-box">
-      <img src="https://i.imgur.com/LskSGfN.jpeg" onclick="openImg(this.src,'10 Oktober 2025')">
-      <div class="photo-date">Upload: 10 Oktober 2025</div>
-    </div>
-    <div class="photo-box">
-      <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src,'24 Januari 2026')">
-      <div class="photo-date">Upload: 24 Januari 2026</div>
-    </div>
+    <div class="photo-box"><img src="https://i.imgur.com/LskSGfN.jpeg" onclick="openImg(this.src,'10 Oktober 2025')"><div class="photo-date">Upload: 10 Oktober 2025</div></div>
+    <div class="photo-box"><img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src,'24 Januari 2026')"><div class="photo-date">Upload: 24 Januari 2026</div></div>
   </div>
   <div class="release">📅 Rilis layanan: 12 Mei 2025</div>
   <button onclick="pesanDeadRails()">Pesan Sekarang</button>
@@ -313,16 +136,11 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(-20px);transi
 
 </div>
 
-<!-- MODAL FOTO -->
+<!-- MODAL -->
 <div id="imgModal" class="modal" onclick="this.style.display='none'">
-  <div class="modal-box">
-    <img id="modalImg">
-    <div id="modalInfo" class="modal-info"></div>
-  </div>
+  <div class="modal-box"><img id="modalImg"><div id="modalInfo" class="modal-info"></div></div>
 </div>
-
-<!-- MODAL GROUP -->
-<div id="groupModal" class="modal" onclick="this.style.display='none'">
+<div id="groupModal" class="modal" onclick="this.style.display='none'>
   <div class="modal-box group-box" onclick="event.stopPropagation()">
     <div class="group-title">Komunitas & Grup Resmi</div>
     <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa" target="_blank">Komunitas</a>
@@ -333,21 +151,17 @@ h1{text-align:center;font-size:24px;opacity:0;transform:translateY(-20px);transi
 <script>
 const INFO_CHANNEL="https://whatsapp.com/channel/0029Vb6wSkq05MUaGz8NkL26";
 
-function openImg(src,date){
-  modalImg.src=src;
-  modalInfo.innerText="📸 Upload: "+date;
-  imgModal.style.display="flex";
-}
+function openImg(src,date){modalImg.src=src;modalInfo.innerText="📸 Upload: "+date;imgModal.style.display="flex";}
 function openGroup(){ groupModal.style.display="flex"; }
 function openInfo(){ window.open(INFO_CHANNEL,"_blank"); }
 function openLink(url){ window.open(url,"_blank"); }
-function pesanDeadRails(){
-  window.open("https://wa.me/6288293064112?text=Halo admin, saya mau pesan jasa joki & gift, tolong kirimkan list nya","_blank");
-}
+function pesanDeadRails(){ window.open("https://wa.me/6288293064112?text=Halo admin, saya mau pesan jasa joki & gift, tolong kirimkan list nya","_blank"); }
 
-/* ANIMASI DARI KOSONG SEMUA, LAYANAN + CHILDREN */
-function animateFullSequential(){
-  const elements = [
+/* ===== ANIMASI SEMUA DARI KOSONG ===== */
+let animSpeed = 200; // <--- ubah kecepatan animasi disini (ms)
+
+function animateSequential(){
+  const allEls = [
     document.getElementById('topBox'),
     ...document.querySelectorAll('.top-btns a'),
     document.getElementById('logo'),
@@ -358,60 +172,45 @@ function animateFullSequential(){
     document.getElementById('btnInfo')
   ];
 
-  let delay = 0;
-  elements.forEach(el=>{
-    el.style.opacity = 0;
-    el.style.transform = "translateY(-20px)";
-    el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-    setTimeout(()=>{
-      el.style.opacity = 1;
-      el.style.transform = "translateY(0)";
-    }, delay);
-    delay += 400;
+  let delay=0;
+  allEls.forEach(el=>{
+    setTimeout(()=>{el.style.opacity=1;el.style.transform="translateY(0)";}, delay);
+    delay+=animSpeed;
   });
 
   // grid platform
   setTimeout(()=>{
-    const gridItems = document.querySelectorAll(".grid-item");
-    gridItems.forEach((item,index)=>{
-      item.style.opacity=0;
-      item.style.transform="translateY(30px)";
-      item.style.transition="opacity 0.5s ease, transform 0.5s ease";
-      setTimeout(()=>{
-        item.style.opacity=1;
-        item.style.transform="translateY(0)";
-      }, index*400);
+    const gridItems=document.querySelectorAll(".grid-item");
+    gridItems.forEach((item,i)=>{
+      setTimeout(()=>{item.style.opacity=1;item.style.transform="translateY(0)";}, i*animSpeed);
     });
   }, delay);
 
-  // layanan
+  // services
   setTimeout(()=>{
-    const services = document.querySelectorAll('.service');
-    services.forEach((service,svcIndex)=>{
-      service.style.opacity=0;
-      service.style.transform="translateY(30px)";
-      service.style.transition="opacity 0.5s ease, transform 0.5s ease";
+    const services=document.querySelectorAll('.service');
+    services.forEach((svc,svcIndex)=>{
       setTimeout(()=>{
-        service.style.opacity=1;
-        service.style.transform="translateY(0)";
-
-        // anak-anak service
-        const children = Array.from(service.children);
-        children.forEach((child,childIndex)=>{
-          child.style.opacity=0;
-          child.style.transform="translateY(20px)";
-          child.style.transition="opacity 0.5s ease, transform 0.5s ease";
-          setTimeout(()=>{
-            child.style.opacity=1;
-            child.style.transform="translateY(0)";
-          }, childIndex*300);
+        svc.style.opacity=1;svc.style.transform="translateY(0)";
+        const children=Array.from(svc.children);
+        children.forEach((child,idx)=>{
+          setTimeout(()=>{child.style.opacity=1;child.style.transform="translateY(0)";}, idx*animSpeed);
+          // foto scroll khusus
+          if(child.classList.contains('photo-scroll')){
+            const photos=child.querySelectorAll('img');
+            photos.forEach((img,j)=>{
+              img.style.opacity=0;
+              img.style.transform="translateY(20px)";
+              setTimeout(()=>{img.style.opacity=1;img.style.transform="translateY(0)";}, j*animSpeed);
+            });
+          }
         });
-      }, svcIndex*600);
+      }, svcIndex*animSpeed);
     });
-  }, delay+document.querySelectorAll(".grid-item").length*400);
+  }, delay + document.querySelectorAll(".grid-item").length*animSpeed);
 }
 
-window.addEventListener("load", animateFullSequential);
+window.addEventListener("load", animateSequential);
 </script>
 
 </body>
