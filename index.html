@@ -4,37 +4,92 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XREZZKY STORE | Digital Game Services</title>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 :root{
   --primary:#007bff;
   --gradient:linear-gradient(135deg,#00c6ff,#0072ff);
-  --dark1:#1f1f1f;
-  --dark2:#3a3a3a;
+  --dark:#1f1f1f;
   --soft:#f9fafb;
 }
-*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;}
+
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto}
+
 body{
   background:linear-gradient(135deg,#e0eafc,#cfdef3);
-  min-height:100vh;
   display:flex;
   justify-content:center;
   padding:20px;
 }
+
 .container{
   max-width:480px;
   width:100%;
   background:#fff;
   border-radius:26px;
-  padding:26px;
+  padding:24px;
   box-shadow:0 20px 50px rgba(0,0,0,.12);
 }
 
-/* ===== Animasi ===== */
-.show{opacity:1!important;transform:translateY(0)!important;transition:all 1s ease!important;}
+/* ===== ANIMASI ===== */
+.anim{opacity:0;transition:all 1.1s ease}
+.show{opacity:1}
 
-h1{text-align:center;margin-bottom:10px;}
-.desc{text-align:center;font-size:14px;color:#555;margin-bottom:20px;}
+.slide-left{transform:translateX(-40px)}
+.slide-up{transform:translateY(40px)}
+.fade{transform:none}
+
+/* ===== TOP BOX ===== */
+.top-box{
+  background:#fff;
+  border-radius:18px;
+  padding:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  margin-bottom:22px;
+}
+
+.top-title{
+  font-weight:700;
+  font-size:14px;
+  color:#000;
+  text-align:center;
+}
+
+.top-btns{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+.btn{
+  flex:1;
+  padding:12px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:600;
+  color:#fff;
+  text-align:center;
+}
+
+.btn-wa{background:linear-gradient(135deg,#1f1f1f,#3a3a3a)}
+.btn-info{background:var(--gradient)}
+
+/* ===== LOGO + JUDUL ===== */
+.main-logo{
+  width:120px;
+  height:120px;
+  border-radius:24px;
+  object-fit:cover;
+  display:block;
+  margin:20px auto 10px;
+}
+
+h1{text-align:center}
+.desc{text-align:center;color:#555;font-size:14px;margin-bottom:16px}
+
+/* ===== INFO ===== */
 .info-board{
   background:var(--soft);
   border-left:5px solid var(--primary);
@@ -42,202 +97,161 @@ h1{text-align:center;margin-bottom:10px;}
   border-radius:14px;
   font-size:13px;
 }
-.btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  padding:14px;
-  border-radius:14px;
-  text-decoration:none;
-  color:#fff;
-  font-weight:600;
-  margin-top:10px;
-  transition:.25s;
+
+/* ===== PLATFORM ===== */
+.section-title{
+  margin:26px 0 12px;
+  font-size:15px;
+  color:#444;
 }
-.btn-wa{background:linear-gradient(135deg,var(--dark1),var(--dark2));}
-.btn-info{background:var(--gradient);}
-.btn:hover{transform:translateY(-2px);opacity:.95;}
-.section-title{margin:26px 0 12px;font-size:15px;color:#444;}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
 .grid-item{
-  background:#fff;
   border:1px solid #eee;
-  border-radius:18px;
+  border-radius:16px;
   padding:14px;
   text-align:center;
   font-size:13px;
   font-weight:600;
   color:#000;
   cursor:pointer;
-  transition:.5s;
-  opacity:0;
-  transform:translateY(20px);
-}
-.grid-item i{font-size:22px;margin-bottom:6px;}
-.grid-item:hover{transform:translateY(-3px);}
-.services{display:grid;gap:18px;}
-.service{border:1px solid #eee;border-radius:20px;padding:12px;opacity:0;transform:translateY(40px);transition:all .7s ease;}
-.photos{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
-.photos img{width:100%;height:auto;border-radius:12px;cursor:pointer;display:block;}
-.time-info{font-size:11px;color:#888;margin-top:4px;text-align:center;}
-.service button{width:100%;margin-top:10px;background:var(--primary);color:#fff;border:none;padding:12px;border-radius:12px;font-weight:600;cursor:pointer;}
-
-/* ===== MODAL ===== */
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);justify-content:center;align-items:center;z-index:999;}
-.modal-box{width:90%;max-height:90%;padding:20px;background:#fff;border-radius:16px;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;}
-.modal-box img{width:auto;max-width:100%;height:auto;max-height:100%;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.3);display:block;}
-.modal-title{text-align:center;font-weight:600;margin-bottom:10px;}
-.modal-info{text-align:center;font-size:12px;color:#555;margin-top:6px;}
-.choice{display:block;margin:10px 0;padding:12px;border-radius:12px;color:#fff;text-decoration:none;text-align:center;font-weight:600;}
-.bg-wa{background:#25D366;}
-.bg-grup{background:var(--primary);}
-
-/* ===== KOTAK ATAS ===== */
-.top-box{
-  position:sticky;
-  top:10px;
-  background:#fff;
-  padding:16px;
-  border-radius:14px;
-  box-shadow:0 10px 30px rgba(0,0,0,.1);
-  z-index:1000;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  width:90%;
-  margin:auto;
-}
-.top-title{
-  font-weight:700;
-  color:#000;
-  opacity:0;
-  transform:translateX(-40px);
-  transition:all 1s ease;
-}
-.top-btns{
-  display:flex;
-  gap:8px;
-  justify-content:center;
-  opacity:0;
-  transform:translateY(20px);
-  transition:all 1s ease;
 }
 
-/* LOGO DI TENGAH JUDUL */
-.main-logo{
-  width:160px;
-  height:160px;
+/* ===== LAYANAN ===== */
+.services{display:grid;gap:20px}
+
+.service{
+  border:1px solid #eee;
   border-radius:20px;
-  object-fit:cover;
-  margin:10px auto 20px auto;
-  opacity:0;
-  transform:scale(0.5);
-  transition:all 1s ease;
+  padding:14px;
+}
+
+.photos img{
+  width:100%;
+  border-radius:14px;
+  cursor:pointer;
+}
+
+.photo-info{
+  font-size:11px;
+  color:#777;
+  margin-top:6px;
+}
+
+.service h3{margin:10px 0 4px}
+.release{
+  font-size:12px;
+  color:#666;
+}
+
+.service button{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border-radius:14px;
+  border:none;
+  background:var(--primary);
+  color:#fff;
+  font-weight:600;
+}
+
+/* ===== MODAL FOTO ===== */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+.modal img{
+  max-width:95%;
+  max-height:95%;
+  border-radius:16px;
 }
 </style>
 </head>
+
 <body>
+
 <div class="container">
-  <!-- KOTAK ATAS -->
-  <div class="top-box">
-    <div class="top-title" id="topTitle">XREZZKY STORE</div>
-    <div class="top-btns" id="topBtns">
-      <a href="https://wa.me/6288293064112" class="btn btn-wa" target="_blank">Kontak</a>
-      <a href="javascript:void(0)" onclick="openGroup()" class="btn btn-info">Komunitas/Grup</a>
+
+<!-- TOP BOX -->
+<div class="top-box anim slide-left" id="a1">
+  <div class="top-title">XREZZKY STORE</div>
+  <div class="top-btns anim slide-up" id="a2">
+    <a href="https://wa.me/6288293064112" class="btn btn-wa">Kontak</a>
+    <a href="javascript:void(0)" onclick="openGroup()" class="btn btn-info">Komunitas/Grup</a>
+  </div>
+</div>
+
+<!-- LOGO + JUDUL -->
+<img src="https://i.imgur.com/fKt8LYa.jpeg" class="main-logo anim fade" id="a3">
+<h1 class="anim fade" id="a3b">XREZZKY STORE</h1>
+<p class="desc anim fade">Layanan digital game aman & terpercaya</p>
+
+<div class="info-board anim slide-up" id="a4">
+📌 Ready joki & gift all game<br>
+⚡ Proses cepat & aman<br>
+💬 Fast respon admin
+</div>
+
+<!-- PLATFORM -->
+<div class="section-title anim slide-up" id="a5">Platform & Komunitas</div>
+<div class="grid">
+  <div class="grid-item anim fade">Komunitas & Grup</div>
+  <div class="grid-item anim fade">Instagram</div>
+  <div class="grid-item anim fade">TikTok</div>
+  <div class="grid-item anim fade">Discord</div>
+</div>
+
+<!-- LAYANAN -->
+<div class="section-title anim slide-up">Layanan Kami</div>
+<div class="services">
+  <div class="service anim slide-up">
+    <div class="photos">
+      <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src)">
+      <div class="photo-info">Upload foto: 25 Januari 2026, 09:05 WIB</div>
     </div>
+    <h3>Jasa joki & gift Dead Rails</h3>
+    <div class="release">Dirilis: 25 Januari 2026, 09:00 WIB</div>
+    <button onclick="pesan()">Pesan Sekarang</button>
   </div>
+</div>
 
-  <!-- LOGO DI TENGAH JUDUL -->
-  <img src="https://i.imgur.com/fKt8LYa.jpeg" class="main-logo" id="mainLogo">
-
-  <h1>XREZZKY STORE</h1>
-  <p class="desc">Layanan digital game aman & terpercaya</p>
-
-  <div class="info-board">
-    📌 Ready joki & gift all game<br>
-    ⚡ Proses cepat & aman<br>
-    💬 Fast respon admin
-  </div>
-
-  <div class="section-title">Platform & Komunitas</div>
-  <div class="grid">
-    <div class="grid-item" onclick="openGroup()"> <i class="fab fa-whatsapp" style="color:#25D366"></i> Komunitas & Grup </div>
-    <a href="https://instagram.com/xrezzkystore" class="grid-item" target="_blank"> <i class="fab fa-instagram" style="color:#E1306C"></i> Instagram </a>
-    <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item" target="_blank"> <i class="fab fa-tiktok" style="color:#000"></i> TikTok </a>
-    <a href="https://discord.gg/xDfZJHb2yK" class="grid-item" target="_blank"> <i class="fab fa-discord" style="color:#5865F2"></i> Discord </a>
-  </div>
-
-  <div class="section-title">Layanan Kami</div>
-  <div class="services">
-    <div class="service">
-      <div class="photos">
-        <img src="https://i.imgur.com/2LvDMJt.jpeg" 
-             data-upload="25 Januari 2026, 09:05 WIB" 
-             onclick="openImg(this.src,this.dataset.upload)">
-        <div class="time-info">Upload foto: 25 Januari 2026, 09:05 WIB</div>
-      </div>
-      <h3>Jasa joki & gift Dead Rails</h3>
-      <div class="time-info">Dirilis: 25 Januari 2026, 09:00 WIB</div>
-      <button onclick="pesan(this)" data-pesan="Halo admin, saya mau pesan *Jasa Joki & gift*. Mohon kirimkan listnya 🙏">Pesan Sekarang</button>
-    </div>
-  </div>
 </div>
 
 <!-- MODAL FOTO -->
-<div id="imgModal" class="modal" onclick="if(event.target===this) closeImg()">
-  <div class="modal-box">
-    <img id="modalImg">
-    <div class="modal-info" id="modalInfo"></div>
-  </div>
-</div>
-
-<!-- MODAL GROUP -->
-<div id="groupModal" class="modal" onclick="if(event.target===this) closeGroup()">
-  <div class="modal-box">
-    <div class="modal-title">Pilih Platform / Grup</div>
-    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa" target="_blank">Komunitas</a>
-    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-grup" target="_blank">Grup Jual Beli</a>
-  </div>
+<div class="modal" id="imgModal" onclick="this.style.display='none'">
+  <img id="modalImg">
 </div>
 
 <script>
-const WA = "6288293064112";
-const imgModal = document.getElementById("imgModal");
-const modalImg = document.getElementById("modalImg");
-const modalInfo = document.getElementById("modalInfo");
-const groupModal = document.getElementById("groupModal");
-const topTitle = document.getElementById("topTitle");
-const topBtns = document.getElementById("topBtns");
-const mainLogo = document.getElementById("mainLogo");
+const WA="6288293064112";
 
-function openImg(src,upload){
-  modalImg.src=src; 
-  modalInfo.textContent = "Upload foto: " + upload;
+function openImg(src){
+  modalImg.src=src;
   imgModal.style.display="flex";
 }
-function closeImg(){ imgModal.style.display="none"; }
-function openGroup(){ groupModal.style.display="flex"; }
-function closeGroup(){ groupModal.style.display="none"; }
-function pesan(btn){
-  const text = encodeURIComponent(btn.dataset.pesan);
-  window.open(`https://wa.me/${WA}?text=${text}`,"_blank");
+function pesan(){
+  window.open(`https://wa.me/${WA}?text=Halo admin, saya mau pesan layanan 🙏`);
 }
 
-// Animasi muncul langsung saat load
-window.addEventListener('load',()=>{
-  topTitle.classList.add('show');
-  topBtns.classList.add('show');
-  mainLogo.classList.add('show');
-
-  document.querySelectorAll('.grid-item').forEach((item,i)=>{
-    setTimeout(()=>{item.classList.add('show');}, i*150);
-  });
-
-  document.querySelectorAll('.service').forEach((s,i)=>{
-    setTimeout(()=>s.classList.add('show'), i*300);
+/* ANIMASI OTOMATIS */
+window.addEventListener("load",()=>{
+  const els=document.querySelectorAll(".anim");
+  els.forEach((el,i)=>{
+    setTimeout(()=>el.classList.add("show"),i*200);
   });
 });
 </script>
+
 </body>
 </html>
