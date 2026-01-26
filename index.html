@@ -83,6 +83,7 @@ h1{text-align:center;margin-bottom:10px;}
 .photos{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
 .photos img{width:100%;height:auto;border-radius:12px;cursor:pointer;display:block;}
 .service button{width:100%;margin-top:10px;background:var(--primary);color:#fff;border:none;padding:12px;border-radius:12px;font-weight:600;cursor:pointer;}
+.time-info{font-size:11px;color:#888;margin-top:4px;text-align:center;}
 /* ===== MODAL ===== */
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);justify-content:center;align-items:center;z-index:999;}
 .modal-box{max-width:95%;max-height:95%;padding:20px;background:#fff;border-radius:16px;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;}
@@ -109,7 +110,7 @@ h1{text-align:center;margin-bottom:10px;}
   color:#000;
   opacity:0;
   transform:translateX(-40px);
-  transition:all 1.2s ease;
+  transition:all 1s ease;
 }
 .top-title.show{opacity:1;transform:translateX(0);}
 .top-btns{
@@ -122,15 +123,16 @@ h1{text-align:center;margin-bottom:10px;}
 }
 .top-btns.show{opacity:1;transform:translateY(0);}
 .top-logo{
-  width:140px;
-  height:140px;
+  width:160px;
+  height:160px;
   border-radius:20px;
   object-fit:cover;
-  margin:20px auto 0;
+  margin:20px auto;
   opacity:0;
-  transition:all 1.2s ease;
+  transform:scale(0.5);
+  transition:all 1s ease;
 }
-.top-logo.show{opacity:1;}
+.top-logo.show{opacity:1;transform:scale(1);}
 </style>
 </head>
 <body>
@@ -165,7 +167,7 @@ h1{text-align:center;margin-bottom:10px;}
 
   <div class="section-title">Platform & Komunitas</div>
   <div class="grid">
-    <div class="grid-item" onclick="openGroup()"> <i class="fab fa-whatsapp" style="color:#25D366"></i> Komunitas & Grup </div>
+    <div class="grid-item"> <i class="fab fa-whatsapp" style="color:#25D366"></i> Komunitas & Grup </div>
     <a href="https://instagram.com/xrezzkystore" class="grid-item" target="_blank"> <i class="fab fa-instagram" style="color:#E1306C"></i> Instagram </a>
     <a href="https://www.tiktok.com/@xrezzky.store" class="grid-item" target="_blank"> <i class="fab fa-tiktok" style="color:#000"></i> TikTok </a>
     <a href="https://discord.gg/xDfZJHb2yK" class="grid-item" target="_blank"> <i class="fab fa-discord" style="color:#5865F2"></i> Discord </a>
@@ -178,6 +180,8 @@ h1{text-align:center;margin-bottom:10px;}
         <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src)">
       </div>
       <h3>Jasa joki & gift Dead Rails</h3>
+      <div class="time-info">Dirilis: 25 Januari 2026, 09:00 WIB</div>
+      <div class="time-info">Foto di-upload: 25 Januari 2026, 09:05 WIB</div>
       <button onclick="pesan(this)" data-pesan="Halo admin, saya mau pesan *Jasa Joki & gift*. Mohon kirimkan listnya 🙏">Pesan Sekarang</button>
     </div>
   </div>
@@ -208,6 +212,7 @@ const topTitle = document.getElementById("topTitle");
 const topBtns = document.getElementById("topBtns");
 const topLogo = document.getElementById("topLogo");
 
+// Fungsi Modal
 function openImg(src){ modalImg.src=src; imgModal.style.display="flex"; }
 function closeImg(){ imgModal.style.display="none"; }
 function openGroup(){ groupModal.style.display="flex"; }
@@ -217,25 +222,20 @@ function pesan(btn){
   window.open(`https://wa.me/${WA}?text=${text}`,"_blank");
 }
 
-// Animasi bertahap
-window.addEventListener('scroll',()=>{
-  const scrollPos = window.scrollY;
-  if(scrollPos>50){
-    topTitle.classList.add('show');
-    setTimeout(()=>topBtns.classList.add('show'),200);
-    setTimeout(()=>topLogo.classList.add('show'),400);
+// Animasi muncul langsung saat load
+window.addEventListener('load',()=>{
+  topTitle.classList.add('show');
+  setTimeout(()=>topBtns.classList.add('show'),200);
+  setTimeout(()=>topLogo.classList.add('show'),400);
 
-    const gridItems = document.querySelectorAll('.grid-item');
-    gridItems.forEach((item,i)=>{
-      setTimeout(()=>item.style.opacity=1, 600 + i*200);
-      setTimeout(()=>item.style.transform='translateY(0)', 600 + i*200);
-    });
+  document.querySelectorAll('.grid-item').forEach((item,i)=>{
+    setTimeout(()=>{item.style.opacity=1;item.style.transform='translateY(0)';}, 600 + i*200);
+  });
 
-    document.querySelectorAll('.service').forEach((s,i)=>{
-      setTimeout(()=>s.classList.add('show'), 1200 + i*300);
-    });
-  }
+  document.querySelectorAll('.service').forEach((s,i)=>{
+    setTimeout(()=>s.classList.add('show'), 1200 + i*300);
+  });
 });
 </script>
 </body>
-</html>
+                              </html>
