@@ -360,27 +360,31 @@ const obs=new IntersectionObserver(e=>{
 },{threshold:.15});
 document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
 
-// Animasi grid-item muncul satu per satu
 function animateGridSequential(){
   const items = document.querySelectorAll(".grid-item");
-  
-  // Reset semua dulu
+
+  // Reset semua
   items.forEach(item => {
     item.style.opacity = 0;
     item.style.transform = "translateY(30px)";
     item.style.transition = "opacity 0.5s ease, transform 0.5s ease";
   });
 
-  // Munculkan satu per satu
-  items.forEach((item, idx) => {
-    setTimeout(() => {
-      item.style.opacity = 1;
-      item.style.transform = "translateY(0)";
-    }, idx * 400); // delay tiap item 400ms, bisa diubah
-  });
+  // Fungsi muncul satu per satu
+  let idx = 0;
+  function showNext(){
+    if(idx < items.length){
+      items[idx].style.opacity = 1;
+      items[idx].style.transform = "translateY(0)";
+      idx++;
+      setTimeout(showNext, 600); // delay 600ms antar item
+    }
+  }
+
+  showNext(); // mulai animasi
 }
 
-// Jalankan animasi saat load
+// Jalankan saat load
 window.addEventListener("load", animateGridSequential);
 
 </script>
