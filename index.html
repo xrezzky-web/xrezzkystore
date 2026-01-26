@@ -4,126 +4,102 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XREZZKY STORE | Digital Game Services</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-:root{
-  --primary:#007bff;
-  --soft:#f9fafb;
-  --dark:#1f1f1f;
-}
-*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;}
-
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto}
 body{
   background:linear-gradient(135deg,#e0eafc,#cfdef3);
   min-height:100vh;
   display:flex;
   justify-content:center;
-  padding:20px;
+  padding:18px;
 }
-
 .container{
   max-width:480px;
   width:100%;
   background:#fff;
-  border-radius:26px;
+  border-radius:24px;
   padding:22px;
   box-shadow:0 20px 50px rgba(0,0,0,.12);
 }
 
-/* ===== TOP BOX (KECIL & AMAN) ===== */
-.top-box{
-  background:#fff;
-  border-radius:14px;
-  padding:10px 14px;
-  box-shadow:0 6px 18px rgba(0,0,0,.08);
-  margin-bottom:18px;
+/* ===== ANIMASI ===== */
+.fade{opacity:0;transform:translateY(20px);animation:fadeIn 1s forwards}
+.delay1{animation-delay:.2s}
+.delay2{animation-delay:.4s}
+.delay3{animation-delay:.6s}
+.delay4{animation-delay:.8s}
+@keyframes fadeIn{
+  to{opacity:1;transform:none}
 }
 
+/* ===== TOP BOX ===== */
+.top-box{
+  position:sticky;
+  top:10px;
+  background:#fff;
+  padding:10px 14px;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,.12);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  z-index:100;
+}
 .top-title{
   font-weight:700;
-  font-size:13px;
-  color:#000;
+  font-size:15px;
+  animation:slideLeft 1s forwards;
+  opacity:0;
 }
-
+@keyframes slideLeft{
+  from{opacity:0;transform:translateX(-40px)}
+  to{opacity:1;transform:none}
+}
 .top-btns{
   display:flex;
   gap:8px;
-  margin-top:8px;
+  animation:fadeIn 1.2s forwards;
+  opacity:0;
 }
-
-.top-btns a{
-  flex:1;
-  text-align:center;
-  padding:8px;
-  border-radius:10px;
-  font-size:12px;
-  font-weight:600;
-  color:#fff;
-  text-decoration:none;
-}
-
-.btn-dark{background:#2c2c2c;}
-.btn-blue{background:var(--primary);}
 
 /* ===== HEADER ===== */
-.logo{
-  width:110px;
-  height:110px;
+.logo-main{
+  width:130px;
+  height:130px;
   border-radius:22px;
   object-fit:cover;
   display:block;
-  margin:10px auto 8px;
+  margin:18px auto 8px;
 }
+h1{text-align:center;font-size:22px}
+.desc{text-align:center;font-size:14px;color:#555;margin-bottom:14px}
 
-h1{text-align:center;margin-bottom:6px;}
-.desc{text-align:center;font-size:14px;color:#555;margin-bottom:16px;}
-
-.info-board{
-  background:var(--soft);
-  border-left:4px solid var(--primary);
-  padding:12px;
-  border-radius:12px;
-  font-size:13px;
-  margin-bottom:14px;
-}
-
+/* ===== BUTTON ===== */
 .btn{
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   gap:8px;
-  padding:14px;
+  padding:13px;
   border-radius:14px;
-  font-weight:600;
   text-decoration:none;
   color:#fff;
+  font-weight:600;
   margin-top:10px;
 }
+.btn-wa{background:linear-gradient(135deg,#1f1f1f,#3a3a3a)}
+.btn-info{background:linear-gradient(135deg,#00c6ff,#0072ff)}
 
-.btn-wa{background:#1f1f1f;}
-.btn-info{background:var(--primary);}
-
-.section-title{
-  margin:22px 0 12px;
-  font-size:15px;
-  font-weight:600;
-  color:#444;
-}
+.section-title{margin:22px 0 10px;font-size:15px;color:#444}
 
 /* ===== PLATFORM ===== */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .grid-item{
-  background:#fff;
   border:1px solid #eee;
   border-radius:16px;
-  padding:12px;
+  padding:14px;
   text-align:center;
   font-size:13px;
   font-weight:600;
@@ -131,47 +107,53 @@ h1{text-align:center;margin-bottom:6px;}
   cursor:pointer;
 }
 
-.grid-item i{font-size:20px;margin-bottom:6px;}
-
 /* ===== LAYANAN ===== */
+.services{display:grid;gap:18px}
 .service{
   border:1px solid #eee;
   border-radius:20px;
   padding:14px;
 }
+.service h3{font-size:15px;margin-bottom:6px}
 
-.service img{
-  width:100%;
+/* FOTO SCROLL */
+.photo-scroll{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding-bottom:6px;
+}
+.photo-box{
+  min-width:120px;
+  text-align:center;
+}
+.photo-box img{
+  width:120px;
+  height:120px;
   border-radius:14px;
+  object-fit:cover;
   cursor:pointer;
 }
-
-.photo-info{
+.photo-date{
   font-size:11px;
   color:#666;
-  margin-top:6px;
-}
-
-.service h3{
-  margin:10px 0 4px;
-  font-size:15px;
+  margin-top:4px;
 }
 
 .release{
-  font-size:11px;
-  color:#777;
-  margin-bottom:10px;
+  font-size:12px;
+  color:#555;
+  margin:10px 0 6px;
 }
 
 .service button{
   width:100%;
-  background:var(--primary);
-  color:#fff;
-  border:none;
   padding:12px;
+  border:none;
   border-radius:12px;
+  background:#007bff;
+  color:#fff;
   font-weight:600;
-  cursor:pointer;
 }
 
 /* ===== MODAL ===== */
@@ -179,127 +161,121 @@ h1{text-align:center;margin-bottom:6px;}
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.6);
+  background:rgba(0,0,0,.65);
   justify-content:center;
   align-items:center;
   z-index:999;
 }
-
 .modal-box{
   background:#fff;
-  border-radius:16px;
-  padding:14px;
-  max-width:95%;
+  border-radius:18px;
+  padding:18px;
+  max-width:92%;
 }
-
 .modal-box img{
   max-width:100%;
-  border-radius:12px;
+  border-radius:14px;
 }
 
+/* MODAL GROUP */
 .choice{
   display:block;
+  padding:14px;
   margin-top:10px;
-  padding:12px;
+  border-radius:14px;
   text-align:center;
   color:#fff;
   font-weight:600;
-  border-radius:12px;
   text-decoration:none;
 }
-
-.bg-wa{background:#25D366;}
-.bg-blue{background:var(--primary);}
+.bg-wa{background:#25D366}
+.bg-grup{background:#007bff}
 </style>
 </head>
 
 <body>
 <div class="container">
 
-  <!-- TOP BOX -->
-  <div class="top-box">
-    <div class="top-title">XREZZKY STORE</div>
-    <div class="top-btns">
-      <a href="https://wa.me/6288293064112" class="btn-dark" target="_blank">Kontak</a>
-      <a href="javascript:void(0)" onclick="openGroup()" class="btn-blue">Komunitas / Grup</a>
-    </div>
+<!-- TOP BOX -->
+<div class="top-box">
+  <div class="top-title">XREZZKY STORE</div>
+  <div class="top-btns">
+    <a class="btn btn-wa" href="https://wa.me/6288293064112">Kontak</a>
+    <a class="btn btn-info" onclick="openGroup()">Komunitas</a>
   </div>
+</div>
 
-  <!-- LOGO & TITLE -->
-  <img src="https://i.imgur.com/fKt8LYa.jpeg" class="logo">
-  <h1>XREZZKY STORE</h1>
-  <p class="desc">Layanan digital game aman & terpercaya</p>
+<!-- HEADER -->
+<img src="https://i.imgur.com/fKt8LYa.jpeg" class="logo-main fade delay1">
+<h1 class="fade delay2">XREZZKY STORE</h1>
+<p class="desc fade delay3">Layanan digital game aman & terpercaya</p>
 
-  <div class="info-board">
-    📌 Ready joki & gift all game<br>
-    ⚡ Proses cepat & aman<br>
-    💬 Fast respon admin
-  </div>
+<!-- PLATFORM -->
+<div class="section-title fade delay4">Platform & Komunitas</div>
+<div class="grid fade delay4">
+  <div class="grid-item" onclick="openGroup()"><i class="fab fa-whatsapp" style="color:#25D366"></i><br>Komunitas</div>
+  <a class="grid-item" href="https://instagram.com/xrezzkystore"><i class="fab fa-instagram" style="color:#E1306C"></i><br>Instagram</a>
+</div>
 
-  <a href="https://wa.me/6288293064112" class="btn btn-wa" target="_blank">
-    <i class="fab fa-whatsapp"></i> Kontak Admin
-  </a>
-
-  <a href="#" class="btn btn-info">
-    <i class="fas fa-bullhorn"></i> Info & Update
-  </a>
-
-  <!-- PLATFORM -->
-  <div class="section-title">Platform & Komunitas</div>
-  <div class="grid">
-    <div class="grid-item" onclick="openGroup()">
-      <i class="fab fa-whatsapp" style="color:#25D366"></i> Komunitas
-    </div>
-    <a href="https://instagram.com/xrezzkystore" class="grid-item" target="_blank">
-      <i class="fab fa-instagram" style="color:#E1306C"></i> Instagram
-    </a>
-    <a href="https://tiktok.com/@xrezzky.store" class="grid-item" target="_blank">
-      <i class="fab fa-tiktok"></i> TikTok
-    </a>
-    <a href="https://discord.gg/xDfZJHb2yK" class="grid-item" target="_blank">
-      <i class="fab fa-discord" style="color:#5865F2"></i> Discord
-    </a>
-  </div>
-
-  <!-- LAYANAN -->
-  <div class="section-title">Layanan Kami</div>
+<!-- LAYANAN -->
+<div class="section-title">Layanan Kami</div>
+<div class="services">
   <div class="service">
-    <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src)">
-    <div class="photo-info">Upload foto: 25 Januari 2026, 09:05 WIB</div>
-    <h3>Jasa joki & gift Dead Rails</h3>
-    <div class="release">Dirilis: 25 Januari 2026, 09:00 WIB</div>
+    <h3>Joki & Gift Dead Rails</h3>
+
+    <div class="photo-scroll">
+      <div class="photo-box">
+        <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src)">
+        <div class="photo-date">Upload: 12 Feb 2026</div>
+      </div>
+      <div class="photo-box">
+        <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src)">
+        <div class="photo-date">Upload: 12 Feb 2026</div>
+      </div>
+      <div class="photo-box">
+        <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src)">
+        <div class="photo-date">Upload: 12 Feb 2026</div>
+      </div>
+      <div class="photo-box">
+        <img src="https://i.imgur.com/2LvDMJt.jpeg" onclick="openImg(this.src)">
+        <div class="photo-date">Upload: 12 Feb 2026</div>
+      </div>
+    </div>
+
+    <div class="release">📅 Rilis layanan: 10 Feb 2026</div>
     <button onclick="pesan()">Pesan Sekarang</button>
   </div>
+</div>
 
 </div>
 
 <!-- MODAL FOTO -->
-<div id="imgModal" class="modal" onclick="closeImg()">
+<div id="imgModal" class="modal" onclick="this.style.display='none'">
   <div class="modal-box">
     <img id="modalImg">
   </div>
 </div>
 
 <!-- MODAL GROUP -->
-<div id="groupModal" class="modal" onclick="closeGroup()">
+<div id="groupModal" class="modal" onclick="this.style.display='none'">
   <div class="modal-box">
-    <a href="https://chat.whatsapp.com/JPhQHMBp5qKIjMmmTxbWXt" class="choice bg-wa" target="_blank">Komunitas</a>
-    <a href="https://chat.whatsapp.com/LnLWKCcc6l9CDXq0ybF01J" class="choice bg-blue" target="_blank">Grup Jual Beli</a>
+    <a class="choice bg-wa" href="#">Komunitas WhatsApp</a>
+    <a class="choice bg-grup" href="#">Grup Jual Beli</a>
   </div>
 </div>
 
 <script>
-const imgModal=document.getElementById("imgModal");
-const modalImg=document.getElementById("modalImg");
-const groupModal=document.getElementById("groupModal");
-
-function openImg(src){modalImg.src=src;imgModal.style.display="flex";}
-function closeImg(){imgModal.style.display="none";}
-function openGroup(){groupModal.style.display="flex";}
-function closeGroup(){groupModal.style.display="none";}
+function openImg(src){
+  document.getElementById('modalImg').src = src;
+  document.getElementById('imgModal').style.display='flex';
+}
+function openGroup(){
+  document.getElementById('groupModal').style.display='flex';
+}
 function pesan(){
-  window.open("https://wa.me/6288293064112?text=Halo admin, saya mau pesan jasa Dead Rails","_blank");
+  window.open("https://wa.me/6288293064112?text=Halo admin, saya mau pesan layanan","_blank");
 }
 </script>
+
 </body>
 </html>
